@@ -1,0 +1,49 @@
+---
+import Collapse from '@/components/Collapse.astro'
+import Timeline from '@/components/Timeline.astro'
+import FriendList from '@/components/links/FriendList.astro'
+import PageLayout from '@/layouts/CommonPage.astro'
+import Comment from '@/components/Comment.astro'
+import { siteConfig } from '@/site-config'
+
+import links from 'public/links.json'
+import '@/assets/styles/links.css'
+
+const headings = [
+  {
+    depth: 2,
+    slug: 'common-links',
+    text: 'Common Links'
+  },
+  {
+    depth: 2,
+    slug: 'special-links',
+    text: 'Special Links'
+  }
+   
+]
+
+const friendlist = links.friends
+---
+
+<PageLayout title='Links' headings={headings} info='/links'>
+  <p>怎么可能有顺序呢，当然是随机的~</p>
+  <h2 id='common-links'>Common Links</h2>
+  <FriendList list={friendlist[0]} />
+  <Collapse title='Links with Bad Status'>
+    <FriendList list={friendlist[1]} />
+  </Collapse>
+  <Collapse title='Link History Book'>
+    <Timeline
+      events={[
+        { date: '2024-11-11', content: 'start website' },
+      ]}
+    />
+  </Collapse>
+  <FriendList list={friendlist[2]} title='Special Links' />
+
+  <!-- apply-links -->
+  
+
+  <Comment slot='bottom' />
+</PageLayout>

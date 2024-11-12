@@ -1,0 +1,219 @@
+---
+import Collapse from '@/components/Collapse.astro'
+import Timeline from '@/components/Timeline.astro'
+import PageLayout from '@/layouts/CommonPage.astro'
+import Comment from '@/components/Comment.astro'
+import ToolSection from '@/components/about/ToolSection.astro'
+import Button from '@/components/Button.astro'
+import Substats from '@/components/about/Substats.astro'
+import Spoiler from '@/components/Spoiler.astro'
+
+const headings = [
+  {
+    depth: 2,
+    slug: 'about',
+    text: 'about'
+  },
+  {
+    depth: 2,
+    slug: 'tools',
+    text: 'Tools'
+  },
+  {
+    depth: 2,
+    slug: 'social-networks',
+    text: 'Social Networks'
+  },
+  {
+    depth: 2,
+    slug: 'Education',
+    text: 'Education'
+  },
+  {
+    depth: 2,
+    slug: 'about-blog',
+    text: 'About Blog'
+  }
+]
+---
+
+<PageLayout title='About' headings={headings} info='/about'>
+
+ <h2 id='about'>Aki</h2>
+  <p>CS PHD Candidate / Jolo / Otaku</p>
+  <p>   
+        PKU EECS21 在读、CS PHD 25预录取的一只落魄鼠鼠<br>
+        阿宅一只，看的动漫还算多<br>
+        半个胶佬，因为钱包空空所以玩的国产翻模更多一点<br>
+        目前在做普适计算的相关研究
+  </p>
+  <p> Motto: 身構えているときには、死神は来ないものだ . <Spoiler>做好准备的时候，死神是不会来的。</Spoiler></p>
+ 
+
+  <!-- tools -->
+  <h2 id='tools'>Tools</h2>
+  <p>Current support tools as follow:</p>
+  <ToolSection
+    class='mb-5'
+    title='Productivity'
+    tools={[
+      {
+        name: 'Safari',
+        description: 'Broswer',
+        href: 'https://www.apple.com/safari/',
+        iconPath: 'safari'
+      },
+      {
+        name: 'Chrome',
+        description: 'Broswer',
+        href: 'https://www.google.com/chrome/',
+        iconPath: 'chrome'
+      },
+      {
+        name: 'Obsidian',
+        description: 'Markdown Editor',
+        href: 'https://obsidian.md',
+        iconPath: 'illustrator'
+      },
+      {
+        name: 'Foxin',
+        description: 'PDF Viewer and Editor',
+        href: 'https://www.foxitsoftware.cn/foxitoffice/',
+        iconPath: 'firefox'
+      },
+      {
+        name: 'OBS',
+        description: 'Live Video Capture',
+        href: 'https://obsproject.com/',
+        iconPath: 'neovim'
+      },
+
+    ]}
+  />
+  <ToolSection
+    class='mb-5'
+    title='Development'
+    tools={[
+      {
+        name: 'VS Code',
+        description: 'IDE',
+        href: 'https://code.visualstudio.com/',
+        iconPath: 'vscode'
+      },
+      {
+        name: 'QT',
+        description: 'IDE',
+        href: 'https://www.qt.io',
+        iconPath: 'qt'
+      },
+      {
+        name: 'Matlab',
+        description: 'IDE',
+        href: 'https://ww2.mathworks.cn/',
+        iconPath: 'aftereffects'
+      },
+      {
+        name: 'Docker',
+        description: 'Developer Tool',
+        href: 'https://www.docker.com/',
+        iconPath: 'warp'
+      },
+      
+    ]}
+  />
+
+  <ToolSection
+    class='mb-5'
+    title='Environment'
+    tools={[
+      {
+        name: 'Ubuntu 22.04 LTS',
+        description: 'Linux',
+        href: 'https://ubuntu.com/',
+        iconPath: 'ubuntu'
+      },
+      {
+        name: 'Raspberry Pi OS',
+        description: 'Linux in RaspberryPi',
+        href: 'https://www.raspberrypi.com/software/',
+        iconPath: 'archlinux'
+      },
+      {
+        name: 'MacOS Sonoma',
+        description: 'MacBook Pro',
+        href: 'https://www.apple.com/macos/',
+        iconPath: 'apple'
+      },
+      {
+        name: 'Windows 11',
+        description: 'Desktop@dom',
+        href: 'https://news.microsoft.com/windows11-general-availability/',
+        iconPath: 'windows11'
+      }
+    ]}
+  />
+
+
+
+  <!-- social-networks -->
+  <h2 id='social-networks'>Social Networks</h2>
+  <p>
+      
+  </p>
+  <Substats />
+
+
+
+
+  <h2 id='Education'>Education</h2>
+  <Timeline
+    events={[
+      {
+        date: '2025-08-20',
+        content:
+          '<a href="https://cs.pku.edu.cn"target="_blank">School of Computer Science, Peking University</a>'
+      },
+      {
+        date: '2021-08-26',
+        content:
+          '<a href="https://eecs.pku.edu.cn"target="_blank">The School of Electronics Engineering and Computer Science, Peking University</a>'
+      },
+      {
+        date: '2018-09-01',
+        content: '<a href="https://www.jkfz.cn"target="_blank">Jiangxi University of Technology High School</a>'
+      }
+    ]}
+  />
+  <!-- about-blog -->
+ <h2 id='about-blog'>About blog</h2>
+  <ul>
+    <li>
+      Framework & Theme: <a href='https://astro.build/' target='_blank'>Astro</a> + <a
+        href='https://github.com/cworld1/astro-theme-pure'
+        target='_blank'>Astro Theme Pure</a
+      >
+    </li>
+    <li>
+      Site hosting: <a href='https://vercel.com/' target='_blank'>Vercel</a>
+    </li>
+    <li>
+      CI/CD: <a href='https://vercel.com/workflow' target='_blank'>Vercel Workflow</a>
+    </li>
+    <!-- <li>资源加速：<a href='https://cdn.cbd.int/' target='_blank'>CBD CDN</a></li> -->
+    <li>Comment system：<a href='https://waline.js.org' target='_blank'>Waline</a></li>
+    <li>
+      Visits: <a href='https://supabase.com/' target='_blank'>Supabase</a> +
+      <a href='https://waline.js.org/' target='_blank'>Waline</a>
+    </li>
+    <li>
+      Follower statistics: <a href='https://github.com/spencerwooo/substats' target='_blank'
+        >Substats</a
+      >
+    </li>
+        <li>
+      to be continued with other pages such as GUNPLA and ANIME,and backimage wait to be created
+      
+    </li>
+  </ul>
+  <Comment slot='bottom' />
+</PageLayout>

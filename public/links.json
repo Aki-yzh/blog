@@ -1,0 +1,30 @@
+{
+  "friends": [
+    {
+      "id_name": "cf-links",
+      "desc": "列入友链朋友圈的好友",
+      "link_list": [
+        {
+          "name": "xlxq",
+          "intro": "坐见幽州骑，长驱河洛昏",
+          "link": "https://www.xlxq.fun/",
+          "avatar": "https://cravatar.cn/avatar/1ffe42aa45a6b1444a786b1f32dfa8aa?s=200"
+        }
+      ]
+    },
+    {
+      "id_name": "inactive-links",
+      "desc": "不太活跃的好友",
+      "link_list": [
+      ]
+    },
+    {
+      "id_name": "special-links",
+      "desc": "其他特殊链接",
+      "link_list": [
+       
+
+      ]
+    }
+  ]
+}

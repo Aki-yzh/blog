@@ -1,0 +1,93 @@
+---
+import Button from '@/components/Button.astro'
+import Collapse from '@/components/Collapse.astro'
+import ProjectSection from '@/components/projects/ProjectSection.astro'
+import PageLayout from '@/layouts/CommonPage.astro'
+import { Image } from 'astro:assets'
+
+
+const headings = [
+
+  {
+    depth: 2,
+    slug: 'programs',
+    text: 'Programs'
+  },
+  {
+    depth: 2,
+    slug: 'learnings',
+    text: 'Labs repos'
+  },
+  {
+    depth: 2,
+    slug: 'Scientific Projects',
+    text: 'Scientific Projects'
+  },
+
+]
+---
+
+<PageLayout title='Projects' headings={headings} info={{ slug: '/projects', hideComment: true }}>
+  <p>Github Activities:</p>
+  <p>
+    <Image
+      src='https://ghchart.rshah.org/659eb9/Aki-yzh'
+      alt='github activities'
+      inferSize
+      loading='eager'
+      decoding='async'
+    />
+  </p>
+
+
+
+
+  <h2 id='programs'>Programs</h2>
+  <ProjectSection
+    project={[
+      {
+        name: '🖼 Mosaic-image',
+        description: 'Milligram imaging/Generating Mosaic pictures , using Matlab',
+        links: [
+          { type: 'github', href: 'https://github.com/Aki-yzh/Mosaic-image'},
+        ]
+      }
+      
+    ]}
+  />
+  <Collapse title='Some old projects'>
+    <ProjectSection
+      project={[
+        {
+          name: '📱 Tetris',
+          description: 'Easy Realization for Tetris ,using QT',
+          links: [{ type: 'github', href: 'https://github.com/Aki-yzh/Tetris' }]
+        }
+       
+      ]}
+    />
+  </Collapse>
+
+  <h2 id='learnings'>Labs repos</h2>
+  <ProjectSection
+    class='my-2'
+    project={[
+      {
+        name: 'ICS',
+        description: 'Introduction to Computer System',
+        links: [{ type: 'github', href: 'https://github.com/Aki-yzh/PKU-ICS-2022'}]
+      },
+      {
+        name: 'Computer Network',
+        description: 'MYFTP,ROUTER AND SWITCH',
+        links: [
+          {
+            type: 'github',
+            href: 'https://github.com/Aki-yzh/Computer-Network'
+          }
+        ]
+      }
+    ]}
+  />
+ <h2 id='Scientific Projects'>Scientific Projects</h2>
+<p> when papers are pulished,I will show the demo photos(the code is not open source)<p>

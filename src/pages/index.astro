@@ -1,0 +1,172 @@
+---
+import { Image } from 'astro:assets'
+
+import PageLayout from '@/layouts/BaseLayout.astro'
+import Section from '@/components/home/Section.astro'
+import Card from '@/components/Card.astro'
+import ProjectCard from '@/components/home/ProjectCard.astro'
+import Label from '@/components/home/Label.astro'
+import SkillLayout from '@/components/home/SkillLayout.astro'
+import Hitokoto from '@/components/home/Hitokoto.astro'
+import PostPreview from '@/components/blog/PostPreview.astro'
+import Button from '@/components/Button.astro'
+import { siteConfig } from '@/site-config'
+import { getAllPosts, sortMDByDate } from '@/utils'
+import GithubCard from '@/components/GithubCard.astro'
+
+import avatar from '@/assets/avatar.png'
+
+const languages = ['Html', 'JavaScript', 'CSS', 'Shell']
+const frontend = ['TypeScript', 'Vite', 'Webpack', 'Astro']
+const backend = ['Vercel', 'Waline']
+
+const MAX_POSTS = 10
+const allPosts = await getAllPosts()
+const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
+---
+
+<PageLayout meta={{ title: 'Home' }} highlightColor='#659EB966'>
+  <div class='flex w-full flex-col gap-y-10 md:w-4/5 lg:w-5/6'>
+    <section class='animate flex flex-col items-center gap-y-7'>
+      <Image
+        src={avatar}
+        alt='profile'
+        class='h-28 w-auto rounded-full border p-1'
+        loading='eager'
+      />
+
+      <div class='flex flex-col items-center gap-y-4'>
+        <h1 class='text-3xl font-bold'>{siteConfig.author}</h1>
+        <div class='flex flex-wrap justify-center gap-x-7 gap-y-3'>
+          <Label title='China'>
+            <svg class='size-5' slot='icon'>
+              <use href='/icons/social.svg#mingcute-location-line'></use>
+            </svg>
+          </Label>
+          <Label
+            title='Source code'
+            as='a'
+            href='https://github.com/Aki-yzh/Aki-yzh.github.io'
+            target='_blank'
+          >
+            <svg class='size-5' slot='icon'>
+              <use href='/icons/social.svg#mingcute-github-line'></use>
+            </svg>
+          </Label>
+        </div>
+      </div>
+    </section>
+
+    <Section title='About'>
+      <p class='text-muted-foreground'>CS PHD Candidate / Jolo / Otaku </p>
+      <p class='text-muted-foreground'>
+        PKU EECS21 在读、CS PHD 25预录取的一只落魄鼠鼠<br>
+        阿宅一只，看的动漫还算多<br>
+        半个胶佬，因为钱包空空所以玩的国产翻模更多一点
+      </p>
+      <Button title='More about me' class='w-fit self-end' href='/about' style='ahead' />
+    </Section>
+    {
+      allPostsByDate.length > 0 && (
+        <Section title='Posts'>
+          <ul class='flex flex-col gap-y-1.5 sm:gap-y-2'>
+            {allPostsByDate.map((p) => (
+              <li class='flex flex-col gap-x-2 sm:flex-row'>
+                {/* @ts-ignore */}
+                <PostPreview post={p} />
+              </li>
+            ))}
+          </ul>
+          <Button title='More posts' class='w-fit self-end' href='/blog' style='ahead' />
+        </Section>
+      )
+    }
+
+    <!-- <Section title='Experience'>
+      <Card
+        heading='Lorem Ipsum'
+        subheading='Sit amet consectetur'
+        date='Dec 2022 - Nov 2023'
+        imagePath='/src/assets/about-astro.png'
+        altText='Lorem, ipsum dolor sit'
+        imageClass='h-12 w-auto md:-start-16'
+      >
+        <ul class='ms-4 list-disc text-muted-foreground'>
+          <li>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore debitis recusandae, ut
+            molestiae laboriosam pariatur!
+
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, pariatur!</li>
+          </li>
+        </ul>
+      </Card>
+      <Card
+        heading='Lorem Ipsum'
+        subheading='Sit amet consectetur'
+        date='Dec 2022 - Nov 2023'
+        imagePath='/src/assets/about-astro.png'
+        altText='Lorem, ipsum dolor sit'
+        imageClass='h-12 w-auto md:-start-16'
+      />
+    </Section> -->
+
+    <Section title='Education'>
+      <Card
+        as='a'
+        heading='Peking University'
+        subheading='Doctor’s degree in Computer Science and Technology.'
+        date='August 2025 - '
+        href='https://www.pku.edu.cn/'
+      
+      />
+      <Card
+        as='a'
+        heading='Peking University'
+        subheading='Bachelor’s degree in Computer Science and Technology.'
+        date='August 2021 - July 2025'
+        href='https://www.pku.edu.cn/'
+      
+      />
+      <Card
+        as='a'
+        heading='Jiangxi University of Technology High School'
+        subheading='7班 -> 8班'
+        date='August 2018 - July 2021'
+        href='https://www.jkfz.cn/'
+        
+      
+      />
+        <ul class='ms-4 list-disc text-muted-foreground'>
+          <!-- <li>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore debitis recusandae, ut
+            molestiae laboriosam pariatur!
+          </li>
+          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, pariatur!</li> -->
+        </ul>
+      </Card>
+    </Section>
+
+
+
+
+<Section title='Skills'>
+      <SkillLayout title='Languages' skills={languages} />
+      <SkillLayout title='Frontend' skills={frontend} />
+      <SkillLayout title='Backend' skills={backend} />
+</Section>
+
+</div>
+
+  <div
+    class='mt-16 flex flex-row items-center gap-x-3 rounded-3xl border border-input px-4 py-2 text-sm shadow-sm transition-all hover:shadow-md'
+  >
+    <span class='relative flex items-center justify-center'>
+      <span
+        class='absolute inline-flex h-2 w-2 animate-ping rounded-full border border-green-400 bg-green-400 opacity-75'
+      ></span>
+      <span class='relative inline-flex h-2 w-2 rounded-full bg-green-400'></span>
+    </span>
+
+    <Hitokoto />
+  </div>
+</PageLayout>
