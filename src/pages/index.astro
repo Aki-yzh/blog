@@ -16,8 +16,8 @@ import GithubCard from '@/components/GithubCard.astro'
 
 import avatar from '@/assets/avatar.png'
 
-const languages = ['Html', 'JavaScript', 'CSS', 'Shell']
-const frontend = ['TypeScript', 'Vite', 'Webpack', 'Astro']
+const languages = ['C++', 'Python', 'Matlab', 'Java','JavaScript']
+const frontend = ['TypeScript',  'Hexo', 'Astro']
 const backend = ['Vercel', 'Waline']
 
 const MAX_POSTS = 10
@@ -147,7 +147,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
     </Section>
 
 
-
+<br>
 
 <Section title='Skills'>
       <SkillLayout title='Languages' skills={languages} />
