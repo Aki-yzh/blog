@@ -1,7 +1,7 @@
 ---
 title: new blog
 publishDate: 2024-11-11 23:01:10
-description: 迁移的一点说明
+description: '关于个人网站迁移的一点说明'
 language: 中文
 tags:
   - default
