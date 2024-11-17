@@ -17,6 +17,7 @@ import GithubCard from '@/components/GithubCard.astro'
 import avatar from '@/assets/images/avatar.png'
 
 import jkfz from '@/assets/images/jkfz.svg'
+import uni from '@/assets/images/pekinguni.svg'
 
 
 const languages = ['C++', 'Python', 'Matlab', 'Java','JavaScript']
@@ -94,7 +95,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
         subheading='Doctor’s degree in Computer Science and Technology.'
         date='August 2025 - '
         href='https://www.pku.edu.cn/'
-        backgroundImage = {jkfz.src}
+        backgroundImage = {uni.src}
       />
       <Card
         as='a'
@@ -102,7 +103,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
         subheading='Bachelor’s degree in Computer Science and Technology.'
         date='August 2021 - July 2025'
         href='https://www.pku.edu.cn/'
-        backgroundImage = {jkfz.src}
+        backgroundImage = {uni.src}
       />
       <Card
         as='a'
