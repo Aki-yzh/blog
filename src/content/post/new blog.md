@@ -14,10 +14,18 @@ $\quad$ hexo用了一段时间，说又有了新的基于markdown文档的静态
 
 $\quad$ 基于astro theme pure 进行了一些个性化的更改，未来也将继续更改
 
+> LINKS , EDUCATION背景图等 ，DONE
+
 $\quad$ $\quad$ GUNPLA页面的重构与加入
 
-$\quad$ $\quad$ 基于banggumi的anime页面加入 $\checkmark$
+> WAIT TO BE DONE
+
+$\quad$ $\quad$ 基于banggumi的anime页面加入 $\checkmark$ 
+
+> 会出现https的跨域问题，http 可以调用https而https不可以调用http
 
 $\quad$ $\quad$ 科研论文发表后的demo图加入（源代码非开源）
+
+> WAIT TO BE DONE
 
 ---
