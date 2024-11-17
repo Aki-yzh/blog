@@ -15,7 +15,7 @@ import { getAllPosts, sortMDByDate } from '@/utils'
 import GithubCard from '@/components/GithubCard.astro'
 
 import avatar from '@/assets/images/avatar.png'
-import pku from '@/assets/images/pku.svg'
+
 import jkfz from '@/assets/images/jkfz.svg'
 
 
@@ -94,7 +94,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
         subheading='Doctor’s degree in Computer Science and Technology.'
         date='August 2025 - '
         href='https://www.pku.edu.cn/'
-        backgroundImage = {pku.src}
+        backgroundImage = {jkfz.src}
       />
       <Card
         as='a'
@@ -102,7 +102,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
         subheading='Bachelor’s degree in Computer Science and Technology.'
         date='August 2021 - July 2025'
         href='https://www.pku.edu.cn/'
-        backgroundImage = {pku.src}
+        backgroundImage = {jkfz.src}
       />
       <Card
         as='a'
