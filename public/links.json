@@ -4,18 +4,7 @@
       "id_name": "cf-links",
       "desc": "列入友链朋友圈的好友",
       "link_list": [
-        {
-          "name": "星落溪桥",
-          "intro": "Every star will fall",
-          "link": "https://www.xlxq.fun/",
-          "avatar": "images/avatar1.png"
-        },
-        {
-          "name": "NGC6302",
-          "intro": "死狗一条",
-          "link": "https://zy20031230.github.io/about/",
-          "avatar": "images/avatar2.png"
-        }
+
       ]
     },
     {
