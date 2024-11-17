@@ -16,7 +16,7 @@ $\quad$ 基于astro theme pure 进行了一些个性化的更改，未来也将�
 
 $\quad$ $\quad$ GUNPLA页面的重构与加入
 
-$\quad$ $\quad$ 基于banggumi的anime页面加入
+$\quad$ $\quad$ 基于banggumi的anime页面加入 $\checkmark$
 
 $\quad$ $\quad$ 科研论文发表后的demo图加入（源代码非开源）
 
