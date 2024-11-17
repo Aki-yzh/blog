@@ -25,15 +25,14 @@ const headings = [
   }
    
 ]
-
 const friendlist = links.friends.map(friend => {
   friend.link_list = friend.link_list.map(link => {
     switch (link.avatar) {
       case 'images/avatar1.png':
-        link.avatar = avatar1;
+        link.avatar = String(avatar1);
         break;
       case 'images/avatar2.png':
-        link.avatar = avatar2;
+        link.avatar = String(avatar2);
         break;
       // 根据需要继续添加更多图片映射
       default:
