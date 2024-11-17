@@ -8,6 +8,15 @@ import { siteConfig } from '@/site-config'
 
 import links from 'public/links.json'
 import '@/assets/styles/links.css'
+import avatar1 from '@/assets/images/avatar1.png'
+import avatar2 from '@/assets/images/avatar2.png'
+
+
+const avatars = {
+  'images/avatar1.png': avatar1,
+  'images/avatar2.png': avatar2,
+  // 根据需要继续添加更多图片映射
+};
 
 const headings = [
   {
@@ -23,12 +32,20 @@ const headings = [
    
 ]
 
-const friendlist = links.friends
+const friendlist = links.friends.map(friend => {
+   friend.link_list = friend.link_list.map(link => {
+    if (avatars[link.avatar]) {
+      link.avatar = avatars[link.avatar];
+    }
+    return link;
+  });
+  return friend;
+});
 ---
 
 <PageLayout title='Links' headings={headings} info='/links'>
   <p>怎么可能有顺序呢，当然是随机的~</p>
-  <h2 id='common-links'>Common Links</h2>
+  <h2 id='common-links'>Friend Links</h2>
   <FriendList list={friendlist[0]} />
   <Collapse title='Links with Bad Status'>
     <FriendList list={friendlist[1]} />
@@ -36,6 +53,8 @@ const friendlist = links.friends
   <Collapse title='Link History Book'>
     <Timeline
       events={[
+         { date: '2024-11-12', content: 'add NGC6302(zy)' },
+        { date: '2024-11-12', content: 'add 星落溪桥(hjj)' },
         { date: '2024-11-11', content: 'start website' },
       ]}
     />

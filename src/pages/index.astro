@@ -14,7 +14,10 @@ import { siteConfig } from '@/site-config'
 import { getAllPosts, sortMDByDate } from '@/utils'
 import GithubCard from '@/components/GithubCard.astro'
 
-import avatar from '@/assets/avatar.png'
+import avatar from '@/assets/images/avatar.png'
+import pku from '@/assets/images/pku.svg'
+import jkfz from '@/assets/images/jkfz.svg'
+
 
 const languages = ['C++', 'Python', 'Matlab', 'Java','JavaScript']
 const frontend = ['TypeScript',  'Hexo', 'Astro']
@@ -91,7 +94,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
         subheading='Doctor’s degree in Computer Science and Technology.'
         date='August 2025 - '
         href='https://www.pku.edu.cn/'
-      
+        backgroundImage = {pku.src}
       />
       <Card
         as='a'
@@ -99,15 +102,15 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
         subheading='Bachelor’s degree in Computer Science and Technology.'
         date='August 2021 - July 2025'
         href='https://www.pku.edu.cn/'
-      
+        backgroundImage = {pku.src}
       />
       <Card
         as='a'
         heading='Jiangxi University of Technology High School'
-        subheading='7班 -> 8班'
+        subheading=' 7班 -> 8班 '
         date='August 2018 - July 2021'
         href='https://www.jkfz.cn/'
-        
+        backgroundImage = {jkfz.src}
       
       />
 

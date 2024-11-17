@@ -60,6 +60,14 @@ export const menuLinks: MenuLinks = [
     label: 'Links'
   },
   {
+    link: '/anime',
+    label: 'Anime'
+  },
+  {
+    link: '/gunpla',
+    label: 'Gunpla'
+  },
+  {
     link: '/about',
     label: 'About'
   }
