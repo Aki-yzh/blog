@@ -24,15 +24,7 @@ const headings = [
    
 ]
 
-const friendlist = links.friends.map(friend => {
-   friend.link_list = friend.link_list.map(link => {
-    if (avatars[link.avatar]) {
-      link.avatar = avatars[link.avatar];
-    }
-    return link;
-  });
-  return friend;
-});
+const friendlist = links.friends
 ---
 
 <PageLayout title='Links' headings={headings} info='/links'>
