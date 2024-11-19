@@ -1,0 +1,65 @@
+---
+
+import PageLayout from '@/layouts/CommonPage.astro'
+import Collapse from '@/components/Collapse.astro'
+
+const headings = [
+  {
+    depth: 2,
+    slug: 'Anime',
+    text: 'Anime'
+  },
+  {
+    depth: 2,
+    slug: 'Comic',
+    text: 'Comic'
+  },
+  {
+    depth: 2,
+    slug: 'Game',
+    text: 'Game'
+  },
+  {
+    depth: 2,
+    slug: 'Detail',
+    text: 'Detail'
+  },
+]
+---
+
+<PageLayout title='ACG' headings={headings} info='/ACG'>
+
+  <p>
+  &nbsp;&nbsp;番剧和漫画看的比较多，游戏比较少，算半个宅宅吧（）<br> 
+  &nbsp;&nbsp;番剧从21年开始每年一部<br>
+  </p>
+
+  <h2 id='Anime'>Anime</h2>
+  <p>
+  &nbsp;&nbsp;番剧太多就不列举了，详情查看<a href="#Detail">Detail</a><br>
+  &nbsp;&nbsp;这里推荐两部，一部是所有的最推荐，一部是近期最推荐<br>
+  &nbsp;&nbsp;以及从21年开始每年推荐一部
+  </p>
+
+  <h2 id='Comic'>Comic</h2>
+  <p>
+  &nbsp;&nbsp;漫画就不列举了，详情查看<a href="#Detail">Detail</a><br>
+  &nbsp;&nbsp;因为看过的很多都动画化了，所以也不在banggumi里面<br>
+  &nbsp;&nbsp;这里就推荐两部，一部是所有的最推荐，一部是近期最推荐
+  </p>
+
+  <h2 id='Game'>Game</h2>
+  <p>&nbsp;&nbsp;游戏因为不多就全列举了</p>
+
+
+  <h2 id='Detail'>Detail</h2>
+
+  <p>&nbsp;&nbsp;番剧记录基本都在banggumi里，展开查看或<a href="https://bgm.tv/anime/list/aki_yzh/collect" target="_blank" rel="noopener noreferrer">跳转</a></p>
+
+  <Collapse title="详细信息">
+    <div style="width: 100%; height: 120vh; position: relative; overflow-x: hidden;">
+      <iframe width="100%" height="100%" style="border:none; position: absolute; top: 0; left: 0;" src="https://bgm.tv/anime/list/aki_yzh/collect"></iframe>
+    </div>
+  </Collapse>
+
+</PageLayout>
