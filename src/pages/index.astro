@@ -85,9 +85,12 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
         </Section>
       )
     }
-
-
-
+    <Section title='Projects'>
+        <GithubCard owner="Aki-yzh" repo="Mosaic-image" />
+        <GithubCard owner="Aki-yzh" repo="PKU-ICS-2022" />
+        <GithubCard owner="Aki-yzh" repo="Computer-Network" />
+         <Button title='More Projects' class='w-fit self-end' href='/projects' style='ahead' />
+    </Section>
     <Section title='Education'>
       <Card
         as='a'
