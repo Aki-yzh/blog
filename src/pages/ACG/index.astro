@@ -31,14 +31,13 @@ const headings = [
 
   <p>
   &nbsp;&nbsp;番剧和漫画看的比较多，游戏比较少，算半个宅宅吧（）<br> 
-  &nbsp;&nbsp;番剧从21年开始每年一部<br>
   </p>
 
   <h2 id='Anime'>Anime</h2>
   <p>
   &nbsp;&nbsp;番剧太多就不列举了，详情查看<a href="#Detail">Detail</a><br>
   &nbsp;&nbsp;这里推荐两部，一部是所有的最推荐，一部是近期最推荐<br>
-  &nbsp;&nbsp;以及从21年开始每年推荐一部
+  &nbsp;&nbsp;<a href="#timeline">timeline</a>为从21年开始每年最推荐的当年番
   </p>
 
 <div class="flex justify-between gap-4">
@@ -70,6 +69,7 @@ const headings = [
     </div>
   </a>
 </div>
+<h3 id='timeline'>timeline</h3>
 
   <h2 id='Comic'>Comic</h2>
   <p>
@@ -80,36 +80,78 @@ const headings = [
 
 
 
-  <div class="flex justify-between gap-4">
-    <a href="https://bgm.tv/subject/377599" style="text-decoration: none;" class="w-1/2">
-      <div class="card flex flex-row border border-gray-300 rounded-lg overflow-hidden shadow-md py-0 px-4 h-60">
-        <img src="https://lain.bgm.tv/r/400/pic/cover/l/7a/2d/377599_5cY50.jpg" alt="Anime Image" class="w-36 h-auto mr-4" />
-        <div class="flex items-center">
-          <p class="text-gray-700 leading-loose">
-            <strong>近期推荐</strong><br>
-            さよなら絵梨   <br>
-            <strong>评价</strong><br>
-            精彩的短篇
-          </p>
+ <div class="animate grid grid-cols-2 gap-2 w-full">
+    <a href="https://bgm.tv/subject/377599" class="no-underline">
+      <div class="group relative h-full overflow-hidden rounded-2xl border border-gray-300 bg-background px-4 py-3 transition-colors hover:bg-gray-50">
+        <div class="relative z-10 flex h-full items-center gap-8">
+          <div class="relative h-48 w-36 min-w-36 overflow-hidden rounded-lg">
+            <img 
+              src="https://lain.bgm.tv/r/400/pic/cover/l/7a/2d/377599_5cY50.jpg" 
+              alt="Anime Image" 
+              class="h-full w-full object-cover "
+              loading="lazy"
+            />
+            <div class="absolute start-0 top-0 h-full w-full">
+              <div class="flex h-full w-full items-center justify-center rounded-lg bg-foreground opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-50">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="me-2 stroke-background">
+                  <line x1="5" y1="12" x2="19" y2="12" class="translate-x-4 scale-x-0 transition-all duration-300 ease-in-out group-hover:translate-x-1 group-hover:scale-x-100"></line>
+                  <polyline points="12 5 19 12 12 19" class="translate-x-0 transition-all duration-300 ease-in-out group-hover:translate-x-1"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-y-2">
+            <p class="my-0 text-lg font-bold">近期推荐</p>
+            <p class="my-0 text-base">さよなら絵梨</p>
+            <p class="my-0 text-sm text-gray-600">精彩的短篇</p>
+          </div>
         </div>
+        <img 
+          src="https://lain.bgm.tv/r/400/pic/cover/l/7a/2d/377599_5cY50.jpg" 
+          class="absolute -start-2 top-0 z-0 my-0 h-full w-2/3 object-cover opacity-15" 
+          alt="background" 
+          loading="lazy" 
+          style="mask-image:linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);-webkit-mask-image:-webkit-linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%)"
+        />
       </div>
     </a>
-    <a href="https://bgm.tv/subject/36261" style="text-decoration: none;" class="w-1/2">
-      <div class="card flex flex-row border border-gray-300 rounded-lg overflow-hidden shadow-md py-0 px-4 h-60">
-        <img src="https://lain.bgm.tv/r/400/pic/cover/l/3c/15/36261_JvgPl.jpg" alt="Anime Image" class="w-36 h-auto mr-4" />
-        <div class="flex items-center">
-          <p class="text-gray-700 leading-loose">
-            <strong>最推荐</strong><br>
-            おやすみプンプン  <br>
-            <strong>评价</strong><br>
-            细腻的情感描写<br>
-            极致的表现力
-          </p>
+    <a href="https://bgm.tv/subject/36261" class="no-underline">
+      <div class="group relative h-full overflow-hidden rounded-2xl border border-gray-300 bg-background px-4 py-3 transition-colors hover:bg-gray-50">
+        <div class="relative z-10 flex h-full items-center gap-8">
+          <div class="relative h-48 w-36 min-w-36 overflow-hidden rounded-lg">
+            <img 
+              src="https://lain.bgm.tv/r/400/pic/cover/l/3c/15/36261_JvgPl.jpg" 
+              alt="Anime Image" 
+              class="h-full w-full object-cover"
+              loading="lazy"
+            />
+            <div class="absolute start-0 top-0 h-full w-full">
+              <div class="flex h-full w-full items-center justify-center rounded-lg bg-foreground opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-50">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="me-2 stroke-background">
+                  <line x1="5" y1="12" x2="19" y2="12" class="translate-x-4 scale-x-0 transition-all duration-300 ease-in-out group-hover:translate-x-1 group-hover:scale-x-100"></line>
+                  <polyline points="12 5 19 12 12 19" class="translate-x-0 transition-all duration-300 ease-in-out group-hover:translate-x-1"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-y-2">
+            <p class="my-0 text-lg font-bold">最推荐</p>
+            <p class="my-0 text-base">おやすみプンプン</p>
+            <p class="my-0 text-sm text-gray-600">细腻的情感描写<br>极致的表现力</p>
+          </div>
         </div>
+        <img 
+          src="https://lain.bgm.tv/r/400/pic/cover/l/3c/15/36261_JvgPl.jpg" 
+          class="absolute -start-2 top-0 z-0 my-0 h-full w-2/3 object-cover opacity-15" 
+          alt="background" 
+          loading="lazy" 
+          style="mask-image:linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);-webkit-mask-image:-webkit-linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%)"
+        />
       </div>
     </a>
-  </div>
 
+
+  </div>
 
 
   <h2 id='Game'>Game</h2>
