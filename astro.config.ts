@@ -20,6 +20,8 @@ import remarkUnwrapImages from 'remark-unwrap-images'
 import { siteConfig } from './src/site.config.ts'
 import { remarkGithubCards, remarkReadingTime, remarkArxivCards } from './src/utils/remarkParser.ts'
 
+import netlify from '@astrojs/netlify';
+
 // https://astro.build/config
 export default defineConfig({
   // Top-Level Options
@@ -28,11 +30,7 @@ export default defineConfig({
   trailingSlash: 'never',
   output: 'server',
   // if you want deploy on vercel
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true
-    }
-  }),
+  adapter: netlify(),
   // ---
   // if you want deploy locally
   // adapter: node({
