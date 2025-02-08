@@ -9,11 +9,86 @@ const headings = [
     slug: 'Bandai',
     text: 'Bandai'
   },
+    {
+    depth: 3,
+    slug: 'MG',
+    text: 'MG'
+  },
+    {
+    depth: 3,
+    slug: 'RG',
+    text: 'RG'
+  },
+    {
+    depth: 3,
+    slug: 'PB',
+    text: 'PB'
+  },
+    {
+    depth: 3,
+    slug: 'HG',
+    text: 'HG'
+  },
+    {
+    depth: 3,
+    slug: 'OTH',
+    text: 'OTH'
+  },
   {
     depth: 2,
     slug: 'KO',
     text: 'KO'
-  }
+  },
+  {
+    depth: 3,
+    slug: 'Daban',
+    text: 'Daban'
+  },
+  {
+    depth: 4,
+    slug: 'PG',
+    text: 'PG'
+  },
+    {
+    depth: 4,
+    slug: '88MB',
+    text: '88MB'
+  },
+  {
+    depth: 4,
+    slug: '66MG',
+    text: '66MG'
+  },
+  {
+    depth: 4,
+    slug: 'MGSD',
+    text: 'MGSD'
+  },
+    {
+    depth: 4,
+    slug: 'HG',
+    text: 'HG'
+  },
+  {
+    depth: 3,
+    slug: 'JMS',
+    text: 'JMS'
+  },
+  {
+    depth: 3,
+    slug: 'XFS',
+    text: 'XFS'
+  },
+    {
+    depth: 3,
+    slug: 'XD',
+    text: 'XD'
+  },
+  {
+    depth: 3,
+    slug: 'OTH',
+    text: 'OTH'
+  },
   
 ]
 ---
@@ -22,7 +97,7 @@ const headings = [
 
 
 <h2 id='Bandai'>Bandai</h2>
-
+<h3 id='MG'>MG</h3>
 <div class="grid grid-cols-1 gap-6">
   <GunplaCard
     officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201912/13/165521ptv1k160ezzvpapn.jpg-w1200h1200', 
@@ -35,7 +110,7 @@ const headings = [
     link78="https://acg.78dm.net/ct/332258.html"
     review="铁血的机设比较合胃口，液压管骨架结构很戳人，能和rg牛掰手腕的19年最佳拼装"
   />
-
+<h3 id='RG'>RG</h3>
 <div class="grid grid-cols-1 gap-6">
   <GunplaCard
     officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2024/12/7f5842a068c43b2da93c64c6e8584f6b-w1200h1200', 
@@ -60,7 +135,7 @@ const headings = [
     link78="https://acg.78dm.net/ct/361669.html"
     review="高贵的基地限定85算，不过吉翁号优美的内购确实得搭配透明外甲才好看，逛高达基地时脑子一热买下的，不过倒也不错。"
   />
-
+<h3 id='PB'>PB</h3>
   <GunplaCard
     officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2023/06/0763e406e55f4d201308999d39639b03-w1200h1200', 
     'https://bandai-a.akamaihd.net/bc/images/gundambase/20230628_rcz_main.jpg']}
@@ -85,6 +160,7 @@ const headings = [
     review="真男人机体，外甲部分新规，自带战损，相当于扎古I和扎古II的结合体（省下了买GTO扎古I和扎古II的钱），废件过多（高情商：可还原GTO扎古II）按照万代按重量定价的尿性，血亏."
   />
 
+<h3 id='HG'>HG</h3>
     <GunplaCard
     officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2022/07/3bfbd4e50eb094ea13967f07b3d0b77f-w1200h1200', 
     'https://bbs-attachment-cdn.78dm.net/upload/2022/07/3f6f7a4528d4482c80d87996e0d52b12-w1200h1200']}
@@ -168,7 +244,7 @@ const headings = [
     link78="https://acg.78dm.net/ct/6679.html"
     review="组合度拉垮，可动性拉垮，分色优秀，价格低不是没有原因的，0080情怀产品，谁叫口袋里的战争是鼠鼠最喜欢的一部呢"
   />
-
+  <h3 id='OTH'>OTH</h3>
     <GunplaCard
     officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/202006/06/093430kxr35dftihthrhjh.jpg-w1200h1200']}
     myImages={['/images/wait.png']}
@@ -274,9 +350,7 @@ const headings = [
 </div>
 
 
-<h2 id='KO'>KO</h2>
-
-
+<h2 id='KO'>KO</h2><h3 id='Daban'>Daban</h3><h4 id='PG'>PG</h4>
 <div class="grid grid-cols-1 gap-6">
 
   <GunplaCard
@@ -305,6 +379,7 @@ const headings = [
     link78="https://acg.78dm.net/ct/7630.html"
     review="比较划算的pg，内构细节丰富，联动丰富，万代的里程碑产品，兼备内构、联动与外设。但是优点全是万代的，组合度一般，可动优秀。"
   />
+  <h4 id='88MB'>88MB</h4>
 
   <GunplaCard
   officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2022/10/2ce9cbf5bc682b6e69fc8287afe463da-w1200h1200',
@@ -375,6 +450,8 @@ const headings = [
   link78="https://acg.78dm.net/ct/129137.html"
   review="组合度不错，HIRM无毛比掉毛好看，值得购买"
   />
+
+  <h4 id='66MG'>66MG</h4>
 
   <GunplaCard
   officialImages={['https://bbs-attachment-cdn.78dm.net/c1/acg_20181105094509_f48a6a43a904293b62402bcb9819b210_a00001.jpg-w1200h1200',
@@ -476,6 +553,7 @@ const headings = [
   review="组合度不错，可动性不错，细节如哈罗相比万代有所阉割，但作为比较新的款式有这不错的表现"
   />
 
+  <h4 id='MGSD'>MGSD</h4>
   <GunplaCard
   officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2023/01/9285e23452b2adf4473dc8e1189d950b-w1200h1200',
 
@@ -504,6 +582,7 @@ const headings = [
   review="可以体验到万代设计，部分关节偏软"
   />
 
+  <h4 id='HG'>HG</h4>
   <GunplaCard
   officialImages={['https://acg.78dm.net/ctimage/263909/0634d13d66b347d2023e6447819245ce/600/2000/2',
 
@@ -588,6 +667,19 @@ const headings = [
   link78="https://acg.78dm.net/ct/92357.html"
   review="松，软，但是色正"
   />
+      <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2023/02/3b3607cd90cfe675b2a09e151702bcea-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/upload/2023/02/bd91729097dacb57f884c2a3c79e4bd9-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "HGTWFM XVX-016RN 风灵高达改修型"
+  releasePrice="1,700日元"
+  brand="Daban"
+  purchasePrice="21.5元"
+  link78="https://acg.78dm.net/ct/382723.html"
+  review="组合度良好，可动性良好，细节有点糊，总体不错"
+  />
 
     <GunplaCard
   officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201912/18/081049l3zooliu3hi3or7i.jpg-w1200h1200',
@@ -602,6 +694,48 @@ const headings = [
   link78="https://acg.78dm.net/ct/335619.html"
   review="组合度没有传闻那么糟糕，可动优秀，设计不错"
   />
+
+    <GunplaCard
+  officialImages={['https://acg.78dm.net/ctimage/380113/e7c7164f3315627ea0a5273bba339442/600/2000/2',
+
+    'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201508/12/210118ekcsyubfmk4uuu0u.jpg-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "HGI-BO  1/144 01 ASW-G-08 巴巴托斯第四形态"
+  releasePrice="1,000日元"
+  brand="Daban"
+  purchasePrice="5元"
+  link78="https://acg.78dm.net/ct/92672.html"
+  review="性价比神中神，组合度一般，可动性一般，这价格还考虑个啥啊"
+  />
+
+    <GunplaCard
+  officialImages={['https://acg.78dm.net/ctimage/20186/6afff58dcad1d0b980fe4bcc870b9524/600/2000/2'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "HGCE 1/144 ORB-01 不知火·拂晓"
+  releasePrice="2,400日元"
+  brand="Daban"
+  purchasePrice="22.5元"
+  link78="https://acg.78dm.net/ct/13029.html"
+  review="组合度拉垮，可动性拉垮，喷镀漆面拉垮"
+  />
+
+    <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/c1/acg_20200429130655_182576001c1461c8012b1da3466d0359_jsspdxxcrgvxa_!!3655240662.jpg-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/c1/acg_20200429130656_91d447e9180eaae596622f38e81be54b_jsszdxxaxufxa_!!3655240662.jpg-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "HGI-BO 1/144  33  ASW-G-08 巴巴托斯天狼座帝王形态"
+  releasePrice="1,400日元"
+  brand="Daban"
+  purchasePrice="21元"
+  link78="https://acg.78dm.net/ct/92672.html"
+  review="组合度良好，可动性良好，补色贴纸地狱"
+  />
+
+  <h3 id='JMS'>JMS</h3>
 
   <GunplaCard
     officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2021/06/61bb58b31549538e4d76f757b587c905-w1200h1200', 
@@ -638,6 +772,8 @@ const headings = [
     link78="https://acg.78dm.net/ct/132339.html"
     review="有万代八成功力，PC件一般"
   />
+
+ <h3 id='XFS'>XFS</h3>
 
   <GunplaCard
     officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2022/09/1b79a142b11c641a0605a9bb0d7d60c7-w1200h1200']}
@@ -697,6 +833,8 @@ const headings = [
     link78="https://acg.78dm.net/ct/382899.html"
     review="组合度一般,腰松，天线锐度不错，干脆全收集"
   />
+
+ <h3 id='XD'>XD</h3>
 
   <GunplaCard
   officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2024/12/d586d4d304eae688b38f183ca42b25ae-w1200h1200',
@@ -854,7 +992,7 @@ const headings = [
   review="比万代先发布还是不错了，但从现在的价格来看比较贵了"
   />
 
-
+<h3 id='OTH'>OTH</h3>
 
 
   <GunplaCard
@@ -991,7 +1129,7 @@ const headings = [
   myImages={['/images/wait.png']}
   name = "HGI-BO ASW-G-29 亚斯塔禄"
   releasePrice="1,000日元"
-  brand= "012"
+  brand= "点点"
   purchasePrice= "10元"
   link78="https://acg.78dm.net/ct/99721.html"
   review="垃圾中的垃圾，除了价格一无是处"
