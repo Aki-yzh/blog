@@ -216,7 +216,6 @@ const {
 
 
 <script>
-  // 为每个卡片组件分别添加事件监听
   document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('[data-gunpla]');
     
@@ -226,16 +225,23 @@ const {
 
       buttons.forEach(button => {
         button.addEventListener('click', () => {
+          // 类型断言为HTMLElement
+          const btn = button as HTMLElement;
+          const target = btn.dataset.target;
+          
           // 只在当前卡片内切换激活状态
           buttons.forEach(b => b.classList.remove('active'));
           button.classList.add('active');
           
           // 只在当前卡片内切换显示对应图片组
-          const target = button.dataset.target;
-          imageGroups.forEach(group => {
-            group.classList.toggle('active', group.classList.contains(target));
-            group.setAttribute('aria-hidden', !group.classList.contains(target));
-          });
+          if (target) {
+            imageGroups.forEach(group => {
+              const isActive = group.classList.contains(target);
+              group.classList.toggle('active', isActive);
+              // 将布尔值转换为字符串
+              group.setAttribute('aria-hidden', (!isActive).toString());
+            });
+          }
         });
       });
 
