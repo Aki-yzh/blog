@@ -1,0 +1,249 @@
+---
+// src/components/GunplaCard.astro
+interface Props {
+  officialImages: string[];
+  myImages: string[];
+  releasePrice: string;
+  name: string;
+  brand: string;
+  purchasePrice: string;
+  link78: string;
+  review: string;
+}
+
+const {
+  officialImages,
+  myImages,
+  releasePrice,
+  name,
+  brand,
+  purchasePrice,
+  link78,
+  review
+} = Astro.props;
+---
+
+<section class="gunpla-card" data-gunpla>
+  <!-- 图片展示区 -->
+  <div class="image-section">
+    <!-- 图片切换导航 -->
+    <div class="image-switcher">
+      <button class="tab-button active" data-target="official">官方图</button>
+      <button class="tab-button" data-target="my">实物图</button>
+    </div>
+
+    <!-- 图片滑动容器 -->
+    <div class="image-carousel">
+      <!-- 官方图滑动区 -->
+      <div class="image-group official active" aria-hidden="false">
+        {officialImages.map((img) => (
+          <img 
+            src={img}
+            alt="官方模型图"
+            class="carousel-image"
+            loading="lazy"
+          />
+        ))}
+      </div>
+
+      <!-- 实物图滑动区 -->
+      <div class="image-group my" aria-hidden="true">
+        {myImages.map((img) => (
+          <img
+            src={img}
+            alt="实物图"
+            class="carousel-image"
+            loading="lazy"
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- 信息展示区 -->
+  <div class="info-section">
+    <dl class="spec-list">
+      <div class="spec-item">
+        <dt>{name}</dt>
+      
+      </div>
+      <div class="spec-item">
+        <dt>品牌</dt>
+        <dd>{brand}</dd>
+      </div>
+      
+      <div class="spec-item">
+        <dt>万代发售价</dt>
+        <dd>{releasePrice}</dd>
+      </div>
+      <div class="spec-item">
+        <dt>购入价</dt>
+        <dd>{purchasePrice}</dd>
+        
+      </div>
+      <dd>{review}</dd>
+      <br>
+      </dl>
+    <a href={link78} target="_blank" rel="noopener" class="details-link">
+      查看详情
+    </a>
+  </div>
+</section>
+
+<style>
+  /* 基础布局 */
+  .gunpla-card {
+    position: relative;
+    display: grid;
+    gap: 2rem;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  /* 响应式布局 */
+  @media (min-width: 768px) {
+    .gunpla-card {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+    .details-link {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    background: #007acc;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+
+  .details-link:hover {
+    background: #005999;
+  }
+
+  /* 图片切换导航 */
+  .image-switcher {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .tab-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: #eee;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .tab-button.active {
+    background: #007acc;
+    color: white;
+  }
+
+  /* 图片滑动容器 */
+  .image-carousel {
+    position: relative;
+  }
+
+  .image-group {
+    display: none;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1rem;
+  }
+
+  .image-group.active {
+    display: flex;
+  }
+
+  .carousel-image {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    width: 80%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+
+  /* 信息展示区 */
+  .spec-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  dt {
+    font-weight: bold;
+    color: #333;
+  }
+
+  dd {
+    color: #666;
+  }
+</style>
+
+
+
+<style>
+  .info-section {
+    padding-top: 0.5rem;  /* 减少顶部间距 */
+    margin-top: -1rem;    /* 向上移动整个区域 */
+  }
+
+  .spec-list {
+    display: grid;
+    gap: 0.5rem;         /* 减少项目之间的间距 */
+  }
+
+  .spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem 0;  /* 减少每个项目的内部间距 */
+    border-bottom: 1px solid #eee;
+  }
+</style>
+
+
+<script>
+  // 为每个卡片组件分别添加事件监听
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('[data-gunpla]');
+    
+    cards.forEach(card => {
+      const buttons = card.querySelectorAll('.tab-button');
+      const imageGroups = card.querySelectorAll('.image-group');
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          // 只在当前卡片内切换激活状态
+          buttons.forEach(b => b.classList.remove('active'));
+          button.classList.add('active');
+          
+          // 只在当前卡片内切换显示对应图片组
+          const target = button.dataset.target;
+          imageGroups.forEach(group => {
+            group.classList.toggle('active', group.classList.contains(target));
+            group.setAttribute('aria-hidden', !group.classList.contains(target));
+          });
+        });
+      });
+
+      // 初始化当前卡片的第一个图片组的滚动位置
+      const firstGroup = card.querySelector('.image-group.active');
+      if (firstGroup) {
+        firstGroup.scrollLeft = 0;
+      }
+    });
+  });
+</script>

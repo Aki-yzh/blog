@@ -1,7 +1,7 @@
 ---
 
 import PageLayout from '@/layouts/CommonPage.astro'
-
+import GunplaCard from '@/components/GunplaCard.astro';
 
 const headings = [
   {
@@ -11,8 +11,8 @@ const headings = [
   },
   {
     depth: 2,
-    slug: 'Daban',
-    text: 'Daban'
+    slug: 'KO',
+    text: 'KO'
   }
   
 ]
@@ -21,18 +21,769 @@ const headings = [
 <PageLayout title='Gunpla' headings={headings} info='/Gunpla'>
 
 
+<h2 id='Bandai'>Bandai</h2>
+
+<div class="grid grid-cols-1 gap-6">
+  <GunplaCard
+    officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2024/12/7f5842a068c43b2da93c64c6e8584f6b-w1200h1200', 
+    'https://bbs-attachment-cdn.78dm.net/upload/2024/12/bf776358a4cbf4354e3828d56288f151-w1200h1200']}
+    myImages={['/images/wait.png']}
+    name = "RG 01 1/144 RX-78-2 元祖高达"
+    releasePrice="2,500日元"
+    brand="Bandai"
+    purchasePrice="86元"
+    link78="https://acg.78dm.net/ct/6364.html"
+    review="外形T0级别的元组，一体成型骨架和色差分色的理念很好，就是太软了，名不虚传"
+  />
+ 
+  <GunplaCard
+    officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2021/09/0cc8317924cceaf15406659b046f7a2e-w1200h1200', 
+    'https://bbs-attachment-cdn.78dm.net/upload/2021/09/a86c31b84e01a98cb8a8637617bb8c4f-w1200h1200']}
+    myImages={['/images/wait.png']}
+    name = "RG 1/144 MSN-02 基地限定 吉翁号 彩色透明版"
+    releasePrice="5,500日元"
+    brand="Bandai"
+    purchasePrice="469元"
+    link78="https://acg.78dm.net/ct/361669.html"
+    review="高贵的基地限定85算，不过吉翁号优美的内购确实得搭配透明外甲才好看，逛高达基地时脑子一热买下的，不过倒也不错。"
+  />
+
+  <GunplaCard
+    officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2023/06/0763e406e55f4d201308999d39639b03-w1200h1200', 
+    'https://bandai-a.akamaihd.net/bc/images/gundambase/20230628_rcz_main.jpg']}
+    myImages={['/images/wait.png']}
+    name = "PB HGUC 1/144 MS-06F 量产型璃子专用扎古"
+    releasePrice="2,300日元"
+    brand="Bandai"
+    purchasePrice="145元"
+    link78="https://acg.78dm.net/ct/399507.html"
+    review="都是冲着封面的与田祐希去的，换色的新生扎古闹麻了"
+  />
+
+  <GunplaCard
+    officialImages={['https://bbs-attachment-cdn.78dm.net/c2/forum/201709/29/102458zxpeez2ixl6xlxxa.jpg-w1200h1200', 
+    'https://bbs-attachment-cdn.78dm.net/c2/forum/201709/29/102430j110xxai1x1ahwct.jpg-w1200h1200']}
+    myImages={['/images/wait.png']}
+    name = "Figure-rise Mechanics 哆啦A梦*2"
+    releasePrice="2,500日元"
+    brand="Bandai"
+    purchasePrice="50+45元"
+    link78="https://acg.78dm.net/ct/118821.html"
+    review="情怀款，机械内构必入"
+  />
+
+    <GunplaCard
+    officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201905/29/173256ogiugfo6eq4uf8gs.jpg-w1200h1200', 
+    'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201905/29/173256m7kt948xoqo7qqo9.jpg-w1200h1200']}
+    myImages={['/images/wait.png']}
+    name = "Petitrits 尼禄·克劳狄乌斯 Caster"
+    releasePrice="1,400日元"
+    brand="Bandai"
+    purchasePrice="3元"
+    link78="https://acg.78dm.net/ct/331407.html"
+    review="券前23的价格很不错的豆丁魂。按发售价的话就是冤大头了"
+  />
+
+</div>
+
+
+<h2 id='KO'>KO</h2>
+
+
+<div class="grid grid-cols-1 gap-6">
+
+  <GunplaCard
+    officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/202011/12/122709uy200xozmvsy22ix.jpg-w1200h1200',
+     'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/202010/08/131033hj4tsu8hooff93so.jpg-w1200h1200',
+     'https://bbs-attachment-cdn.78dm.net/upload/2024/03/75ce013af406a6fd90240780c3f7a572-w1200h1200'
+     ]}
+    myImages={['/images/arceus.png', '/images/arceus.png']}
+    name = "PG UNLEASHED RX-78-2 元组高达"
+    releasePrice="25,000日元"
+    brand="Daban"
+    purchasePrice="325元"
+    link78="https://acg.78dm.net/ct/340537.html"
+    review="翻的很不错，PGU可以完美体验到万代设计，就是没有3D贴"
+  />
+
+  <GunplaCard
+    officialImages={['https://acg.78dm.net/ctimage/239566/699a65bc82ade746bcc55fc7a39310b0/600/2000/2',
+     'https://acg.78dm.net/ctimage/239569/5d48e5be112ef3679809a3cc4ed3b054/600/2000/2',
+     ]}
+    myImages={['/images/arceus.png', '/images/arceus.png']}
+    name = "PG 1/60 MBF-02+AQM/E+X01 嫣红强袭+空中霸王"
+    releasePrice="19,000日元"
+    brand="Daban"
+    purchasePrice="253元"
+    link78="https://acg.78dm.net/ct/7630.html"
+    review="比较划算的pg，内构细节丰富，联动丰富，万代的里程碑产品，兼备内构、联动与外设。但是优点全是万代的，组合度一般，可动优秀。"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2022/10/2ce9cbf5bc682b6e69fc8287afe463da-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/upload/2022/10/aa67dd83641a72292c91c3b043874597-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "MG  1/100 8801 MSZ-006 Z高达 Ver2.0"
+  releasePrice="5,000日元"
+  brand="Daban"
+  purchasePrice="64元"
+  link78="https://acg.78dm.net/ct/6320.html"
+  review="组合度还行，但是全装起来就松，变形机通病，从价格上看还行"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201506/29/145911sh53l8olqkhi3r43.jpg-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201506/29/150503nb3xxxkdmoc0adum.jpg-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "MB式样 1/100 8802 ZGMF- X20A 强袭自由"
+  releasePrice="25,000日元"
+  brand="Daban"
+  purchasePrice="127元"
+  link78="https://acg.78dm.net/ct/91474.html"
+  review="经典大班科目二，组合度比初版好些但还是拉垮，头部等巨缝使用分子料理，外观很不错"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201501/26/155135de23wufic12cx6t3.jpg-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201501/26/155136vqvp95r3hz39dl93.jpg-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "MB式样 1/100  8804 MBF-P01-Re2 金异端天蜜娜"
+  releasePrice="22,000日元"
+  brand="Daban"
+  purchasePrice="155元"
+  link78="https://acg.78dm.net/ct/80773.html"
+  review="组合度地狱，可动性地狱，背包过重，站尸没问题，外观好看,2018入的，目前似乎已绝版"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2025/01/d728a7dc2bcea6858471cfb3473c7f4a-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/upload/2025/01/5f7053f7a197d92bca6773dfd3320375-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "MB式样 1/100 8821 F91"
+  releasePrice="19,000日元"
+  brand="Daban"
+  purchasePrice="101元"
+  link78="https://acg.78dm.net/ct/104177.html"
+  review="本体组合度优秀，武器组合度地狱，极度需要搭配三红水贴。"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201809/28/071752pzs8ww9o9k7p9cz9.jpg-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201809/28/071751m7sqw2gzj7j77jvg.jpg-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "HIRM式样  1/100 8825 XXXG-01W 飞翼高达EW"
+  releasePrice="13,500日元"
+  brand="Daban"
+  purchasePrice="95元"
+  link78="https://acg.78dm.net/ct/129137.html"
+  review="组合度不错，HIRM无毛比掉毛好看，值得购买"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/c1/acg_20181105094509_f48a6a43a904293b62402bcb9819b210_a00001.jpg-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/c1/acg_20181105094510_6869c163a287047733ea47cf9d88471b_a00004.jpg-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "MG 1/100  老6601 MBF-P01KAI 红异端改"
+  releasePrice="5,000日元"
+  brand="Daban"
+  purchasePrice="70元"
+  link78="https://acg.78dm.net/ct/6367.html"
+  review="入坑作，2015班桃大战前入的，地狱难度，组合地狱可动地狱掉件地狱，现在只剩下个尸体，能站着就不错了"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2022/06/194329722adc2a2a0d20679857967b43-w1200h1200',
+
+    ]}
+  myImages={['/images/wait.png']}
+  name = "MG 1/100 6619 Ka版 限定版 RX-93 牛高达 中国限定配色"
+  releasePrice="5,60元"
+  brand="Daban"
+  purchasePrice="130元"
+  link78="https://acg.78dm.net/ct/373838.html"
+  review="降价入的还算不错，本体组合度优秀，武器浮游炮组合度拉垮，内构丰富"
+  />
 
 
 
 
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201808/17/073009ikad1r22qk8z79ua.jpg-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201808/17/073008v2uw4ne5fnrtfuer.jpg-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "MG 1/100 6642 RX-0  独角兽三号机菲尼克斯"
+  releasePrice="13,000日元"
+  brand="Daban"
+  purchasePrice="129元（大怨种）"
+  link78="https://acg.78dm.net/ct/128158.html"
+  review="香槟金挺好看的"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201504/28/091853bymxozzrkdxfymke.jpg-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201504/28/091856pijnwnceltjgiccn.jpg-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "MG 1/100 6651 MSN-00100 百式2.0"
+  releasePrice="6,800日元"
+  brand="Daban"
+  purchasePrice="130元"
+  link78="https://acg.78dm.net/ct/89188.html"
+  review="组合度不错"
+  />
+
+ <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201505/15/074623gp0zzyxdpevfmvxv.jpg-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201505/15/074624fdvyb9lirbabip4f.jpg-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "米加粒子炮"
+  releasePrice="2,800日元"
+  brand="Daban"
+  purchasePrice="随上附赠"
+  link78="https://acg.78dm.net/ct/91296.html"
+  review="组合度垃圾"
+  />
+
+   <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2022/10/e06b111f8586c4b8fd29530973fc5432-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/upload/2022/10/ba7e735e84fa0fbdee3fd005adc64def-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "空降背包"
+  releasePrice="1,400日元"
+  brand="Daban"
+  purchasePrice="随上附赠"
+  link78="https://acg.78dm.net/ct/11868.html"
+  review="组合度一般"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201903/08/082432qiim09ldg62g6g67.jpg-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201903/08/082436ievve1x1evunb8fx.jpg-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "MG 1/100 6653 GN-002 力天使"
+  releasePrice="4,500日元"
+  brand="Daban"
+  purchasePrice="77元"
+  link78="https://acg.78dm.net/ct/129971.html"
+  review="组合度不错，可动性不错，细节如哈罗相比万代有所阉割，但作为比较新的款式有这不错的表现"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2023/01/9285e23452b2adf4473dc8e1189d950b-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/upload/2023/01/321989f8ff626e6a3203e7330753996c-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "MGSD ZGMF- X10A 自由高达"
+  releasePrice="3,900日元"
+  brand="Daban"
+  purchasePrice="40元"
+  link78="https://acg.78dm.net/ct/382563.html"
+  review="可以体验到万代设计，腿部关节软，易掉"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2024/06/edfaf1416ea17fff7bc9e471ed9029c9-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/upload/2024/06/d4b2901f80fe5075c514fa5cffc39a0e-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "MGSD ASW-G-08 巴巴托斯高达"
+  releasePrice="3,900日元"
+  brand="Daban"
+  purchasePrice="31元"
+  link78="https://acg.78dm.net/ct/396980.html"
+  review="可以体验到万代设计，部分关节偏软"
+  />
+
+  <GunplaCard
+  officialImages={['https://acg.78dm.net/ctimage/263909/0634d13d66b347d2023e6447819245ce/600/2000/2',
+
+    'https://acg.78dm.net/ctimage/263911/2c527511fbcf5e2c719939085e9300f9/600/2000/2'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "HGUC 1/144  175 RX-0 独角兽二号机报丧女妖命运女神形态毁灭模式"
+  releasePrice="2,000日元"
+  brand="Daban"
+  purchasePrice="20元"
+  link78="https://acg.78dm.net/ct/72356.html"
+  review="组合度一般，可动一般，外观好看，站尸不错"
+  />
+  
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2024/10/a22ce5c58d362d88dcfdb383fa08740f-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/upload/2024/10/92820760ac91f8473180e3382b664125-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "HGGT 1/144 HT01 雷霆宙域 FA-78 全装甲高达"
+  releasePrice="2,700日元"
+  brand="Daban"
+  purchasePrice="32元"
+  link78="https://acg.78dm.net/ct/64838.html"
+  review="组合度良好，可动一般，配件多，性价比不错"
+  />
 
 
-to be done with Gundam display module
+    <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2024/10/a7effa9af747ad0d33fd31d58b84e323-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/upload/2024/10/b61b61aa60a674f1dd99692c653d800e-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "HGGTO MS-06S 指挥官用型扎古II 夏亚·阿兹纳布尔机"
+  releasePrice="1,800日元"
+  brand="Daban"
+  purchasePrice="3.5元"
+  link78="https://acg.78dm.net/ct/132338.html"
+  review="松，软，但是是唯一一个色正的"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201506/03/223823uppe2pgg8gm8sh2s.jpg-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201506/03/223830ux8l2hlxzdi7hjwo.jpg-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "HGGTO MS-06R-1A 高机动型扎古II 盖亚机"
+  releasePrice="2,000日元"
+  brand="Daban"
+  purchasePrice="9.74元"
+  link78="https://acg.78dm.net/ct/90168.html"
+  review="松，软，但是色正"
+  />
+
+    <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201506/03/223826mtsxi7fjjtlffj8l.jpg-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201506/03/223832l700j9x5200p3qqj.jpg-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "HGGTO MS-06R-1A 高机动型扎古II 马修机"
+  releasePrice="2,000日元"
+  brand="Daban"
+  purchasePrice="6元"
+  link78="https://acg.78dm.net/ct/90168.html"
+  review="松，软，但是色正"
+  />
+
+    <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201509/04/222630fy429w914ac49231.jpg-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201509/04/222622wvswp0s5lz06305l.jpg-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "HGGTO MS-06R-1A 高机动型扎古II 奥尔迪加机"
+  releasePrice="2,200日元"
+  brand="Daban"
+  purchasePrice="9.46元"
+  link78="https://acg.78dm.net/ct/92357.html"
+  review="松，软，但是色正"
+  />
+
+    <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201912/18/081049l3zooliu3hi3or7i.jpg-w1200h1200',
+
+    'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201912/18/081049ug9119000il07uz0.jpg-w1200h1200'
+    ]}
+  myImages={['/images/wait.png']}
+  name = "HG RX-78-2 元祖高达G40 industrial design ver."
+  releasePrice="3,000日元"
+  brand="Daban"
+  purchasePrice="20元"
+  link78="https://acg.78dm.net/ct/335619.html"
+  review="组合度没有传闻那么糟糕，可动优秀，设计不错"
+  />
+
+  <GunplaCard
+    officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2021/06/61bb58b31549538e4d76f757b587c905-w1200h1200', 
+    'https://bbs-attachment-cdn.78dm.net/upload/2021/06/b8089f2a85e30e445e31a5b037537260-w1200h1200']}
+    myImages={['/images/wait.png']}
+    name = "HGUC AMX-004 卡碧尼 新生Ver."
+    releasePrice="1,800日元"
+    brand= "JMS"
+    purchasePrice= "0.3元"
+    link78="https://acg.78dm.net/ct/93379.html"
+    review="不错的套件"
+  />
+
+  <GunplaCard
+    officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2023/07/45daea6d8104a3d69b81a61cca8302b4-w1200h1200', 
+    'https://bbs-attachment-cdn.78dm.net/upload/2023/07/d916264ee9da781c059ba9ebb4d0c15e-w1200h1200']}
+    myImages={['/images/wait.png']}
+    name = "HGTWFM MDX-0003 战骑高达"
+    releasePrice="1,900日元"
+    brand= "JMS"
+    purchasePrice= "17元"
+    link78="https://acg.78dm.net/ct/385746.html"
+    review="水口有所修改，值得入手"
+  />
+
+  <GunplaCard
+    officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2024/10/7bbf0623c019d58fc698e2f48ebdc7ac-w1200h1200', 
+    'https://bbs-attachment-cdn.78dm.net/upload/2024/10/fb7f319a4009def3d69ae94c7d7e9f5d-w1200h1200']}
+    myImages={['/images/wait.png']}
+    name = "HGGTO MS-06C-6/R6 扎古II C-6/R6型"
+    releasePrice="1,800日元"
+    brand= "JMS"
+    purchasePrice= "6.9元"
+    link78="https://acg.78dm.net/ct/132339.html"
+    review="有万代八成功力，PC件一般"
+  />
+
+  <GunplaCard
+    officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2022/09/1b79a142b11c641a0605a9bb0d7d60c7-w1200h1200']}
+    myImages={['/images/wait.png']}
+    name = "HGUC RGM-79S 吉姆 斯巴达"
+    releasePrice="2,200日元"
+    brand= "XFS"
+    purchasePrice= "11元"
+    link78="https://acg.78dm.net/ct/380167.html"
+    review="非常不错的一款产品，机设很杰出的一款量产机"
+  />
+
+  <GunplaCard
+    officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201501/27/195126jjc4ve0jez4jjs8c.jpg-w1200h1200',
+    'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201501/27/195127lrpyoru5yi5sybr7.jpg-w1200h1200']}
+    myImages={['/images/wait.png']}
+    name = "HGBF RX-93-v-2 Hi-v高达勇气式"
+    releasePrice="2,400日元"
+    brand= "XFS"
+    purchasePrice= "15元"
+    link78="https://acg.78dm.net/ct/83045.html"
+    review="组合度一般"
+  />
+
+  <GunplaCard
+    officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2024/12/4ffc85b7797ac0d679a41a27953e98c8-w1200h1200',
+    'https://bbs-attachment-cdn.78dm.net/upload/2024/12/b98a7785512e70e267d214043b56b9a4-w1200h1200']}
+    myImages={['/images/wait.png']}
+    name = "HGUC RX-124 高达TR-6 伍德沃特"
+    releasePrice="1,800日元"
+    brand= "XFS"
+    purchasePrice= "18元"
+    link78="https://acg.78dm.net/ct/121360.html"
+    review="组合度一般,腰松，体验下设计吧"
+  />
+
+  <GunplaCard
+    officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201901/18/073331rd60w5v3fw6wltv3.jpg-w1200h1200',
+    'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201901/18/073331ek2tm1szzgs2yyt5.jpg-w1200h1200']}
+    myImages={['/images/wait.png']}
+    name = "HGUC RX-124 高达TR-6 海兹尔II"
+    releasePrice="2,400日元"
+    brand= "XFS"
+    purchasePrice= "13元"
+    link78="https://acg.78dm.net/ct/132302.html"
+    review="组合度一般,腰松，干脆全收集"
+  />
+
+  <GunplaCard
+    officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2022/10/9065a375f82386b4ccda328d0eecc293-w1200h1200',
+    'https://bbs-attachment-cdn.78dm.net/upload/2022/10/5529fdfc9f9dbe7469fc6295cb712bbe-w1200h1200']}
+    myImages={['/images/wait.png']}
+    name = "HGUC ARZ-124 高达TR-6【伍德沃特】精神力女神天线"
+    releasePrice="2,400日元"
+    brand= "XFS"
+    purchasePrice= "16元"
+    link78="https://acg.78dm.net/ct/382899.html"
+    review="组合度一般,腰松，天线锐度不错，干脆全收集"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2024/12/d586d4d304eae688b38f183ca42b25ae-w1200h1200',
+  'https://bbs-attachment-cdn.78dm.net/upload/2024/12/42480bfa161fa3a76849991d612ac3c2-w1200h1200'
+  ]}
+  myImages={['/images/wait.png']}
+  name = "HGUC MS-07B-3 特装型老虎"
+  releasePrice="1,600日元"
+  brand= "XD"
+  purchasePrice= "16元"
+  link78="https://acg.78dm.net/ct/6758.html"
+  review="星动最好的一款，组合度等均在线"
+  />
+
+    <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201907/09/170726miww6a7su6iw4110.jpg-w1200h1200',
+  'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201907/09/170730eu5w1kbw1wb41zty.jpg-w1200h1200'
+  ]}
+  myImages={['/images/wait.png']}
+  name = "HGUC MS-07H-8 飞行试验型老虎 21实际真实配色"
+  releasePrice="2,500日元"
+  brand= "XD"
+  purchasePrice= "14元"
+  link78="https://acg.78dm.net/ct/332464.html"
+  review="还行，肩甲有缝"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2021/06/51d43947155f9ce76f6b06bda7497208-w1200h1200',
+  'https://bbs-attachment-cdn.78dm.net/upload/2021/06/24dc821ca67c2a3aa18258140d7e3ef4-w1200h1200'
+  ]}
+  myImages={['/images/wait.png']}
+  name = "HGUC MS-18E 京宝梵"
+  releasePrice="1,800日元"
+  brand= "XD"
+  purchasePrice= "12元"
+  link78="https://acg.78dm.net/ct/6730.html"
+  review="星动很好的一款，组合度等均在线，大腿根偏松"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2024/10/473c14a4bb19c2eb00199bf4dbc2327a-w1200h1200',
+  'https://bbs-attachment-cdn.78dm.net/upload/2024/10/743d60a3f2d40f5ce3a07883bdcd0f4a-w1200h1200'
+  ]}
+  myImages={['/images/wait.png']}
+  name = "HGGT MS-06R 高机动扎古II 精神力扎古"
+  releasePrice="2,500日元"
+  brand= "XD"
+  purchasePrice= "27元"
+  link78="https://acg.78dm.net/ct/100025.html"
+  review="组合度除了喷口都不错，量大管饱，但是喷口地狱"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201710/23/150500tx9dzdcmxuc5m53x.jpg-w1200h1200',
+  'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201710/23/150611l9odp5tgup1rk5u2.jpg-w1200h1200'
+  ]}
+  myImages={['/images/wait.png']}
+  name = "HGGTO MS-06CK 扎古半加农型"
+  releasePrice="1,700日元"
+  brand= "XD"
+  purchasePrice= "6.5元"
+  link78="https://acg.78dm.net/ct/118331.html"
+  review="本体组合度不错，镭射大炮组合度垃圾，长条贴纸难贴"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/202004/03/172533i0tbsp771tszf30z.jpg-w1200h1200',
+  'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/202004/03/172532utvgoa35g94t5tg4.jpg-w1200h1200'
+  ]}
+  myImages={['/images/wait.png']}
+  name = "HGGTO MS-06J 陆战型扎古II 白色食人魔"
+  releasePrice="2,200日元"
+  brand= "XD"
+  purchasePrice= "9.8元"
+  link78="https://acg.78dm.net/ct/342630.html"
+  review="自涂，组合度良好，比较紧实，水贴建议自购，EVO的水贴太容易碎了"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2023/03/a536693f8541437fedc6302fc36d2269-w1200h1200'
+  ]}
+  myImages={['/images/wait.png']}
+  name = "HG RGM-79 吉姆（摩洛哥战线样式）"
+  releasePrice="2,000日元"
+  brand= "XD"
+  purchasePrice= "16元"
+  link78="https://acg.78dm.net/ct/384133.html"
+  review="经典牢动组合度，勉强能入"
+  />
+  <GunplaCard
+    officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2023/11/e1dd3cbecab925de55d07a15370ed55c-w1200h1200',
+    'https://bbs-attachment-cdn.78dm.net/upload/2023/11/1602e915b5479860ee66e786b27e7444-w1200h1200'
+    ]}
+    myImages={['/images/wait.png']}
+    name = "HG RGM-79 吉姆（肩部加农装备/导弹舱装备）"
+    releasePrice="2,300日元"
+    brand= "XD"
+    purchasePrice= "0元"
+    link78="https://acg.78dm.net/ct/396994.html"
+    review="经典牢动组合度，勉强能入"
+  />
+
+  <GunplaCard
+    officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2022/08/0be77dc028657b51bf67394616187eb9-w1200h1200'
+    ]}
+    myImages={['/images/wait.png']}
+    name = "HG RGM-79 吉姆（史雷加机）"
+    releasePrice="1,900日元"
+    brand= "XD"
+    purchasePrice= "14元"
+    link78="https://acg.78dm.net/ct/379010.html"
+    review="经典牢动组合度，勉强能入"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2021/06/ca1bebe86c81cae8b6512113a9364ee6-w1200h1200',
+  'https://bbs-attachment-cdn.78dm.net/upload/2021/06/0d143df80324b1e0f055bc2ff682a0dd-w1200h1200'
+  
+  ]}
+  myImages={['/images/wait.png']}
+  name = "HGUC RX-178 高达MK-II 21世纪拟真配色"
+  releasePrice="1,700日元"
+  brand= "XD"
+  purchasePrice= "13元"
+  link78="https://acg.78dm.net/ct/357386.html"
+  review="比较软"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2022/01/9b9951aaa614a0672eae720b0353afc1-w1200h1200',
+  'https://bbs-attachment-cdn.78dm.net/upload/2022/01/7f7cd2359a2813d3b634f5989106bbe5-w1200h1200'
+  
+  ]}
+  myImages={['/images/wait.png']}
+  name = "HGCE MHF-01Ω 君王异端"
+  releasePrice="2,400日元"
+  brand= "XD"
+  purchasePrice= "17元"
+  link78="https://acg.78dm.net/ct/366780.html"
+  review="组合度纯纯的一坨狗屎，除了外观一无是处"
+  />
+
+    <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2023/07/85eeb5433311b99de4d22dea965c1eeb-w1200h1200',
+  'https://bbs-attachment-cdn.78dm.net/upload/2023/07/4df394bb59311ace2742b48d74bf79c3-w1200h1200'
+  
+  ]}
+  myImages={['/images/wait.png']}
+  name = "HG TWFM 风灵高达 彩透版"
+  releasePrice="1,300日元"
+  brand= "XD"
+  purchasePrice= "23元"
+  link78="https://acg.78dm.net/ct/399711.html"
+  review="比万代先发布还是不错了，但从现在的价格来看比较贵了"
+  />
 
 
 
 
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2023/07/5130449537bcdb65e72ea12d6f3881c8-w1200h1200',
+  'https://bbs-attachment-cdn.78dm.net/upload/2023/07/381c2fdfba91a5456b88c21618f5319e-w1200h1200'
+  
+  ]}
+  myImages={['/images/wait.png']}
+  name = "HG TOLRO-800 特洛八"
+  releasePrice="2,000日元"
+  brand= "new"
+  purchasePrice= "8.5元"
+  link78="https://acg.78dm.net/ct/396986.html"
+  review="小贵"
+  />
 
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2024/12/64463d3bdb75c36a95a79cf5e0e14d30-w1200h1200',
+  'https://bbs-attachment-cdn.78dm.net/upload/2024/12/b1354e24e73ccbff937fdbd1eee4c1d6-w1200h1200'
+  
+  ]}
+  myImages={['/images/wait.png']}
+  name = "HGUC AMS-123X-X 月高达"
+  releasePrice="3,000日元"
+  brand= "JJ"
+  purchasePrice= "20元"
+  link78="https://acg.78dm.net/ct/125141.html"
+  review="价格偏贵，其他没啥毛病"
+  />
+
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2021/02/6c8dbb13a6fab478c2deb28a18864dfc-w1200h1200',
+  'https://bbs-attachment-cdn.78dm.net/upload/2021/02/fa3af3a718b6a765ce2086adea939428-w1200h1200'
+  
+  ]}
+  myImages={['/images/wait.png']}
+  name = "HG 1/144 RX-78-2 超越全球元祖 G3配色"
+  releasePrice="2,200日元"
+  brand= "闪闪"
+  purchasePrice= "34元"
+  link78="https://acg.78dm.net/ct/348404.html"
+  review="组合度优秀，可动性优秀，假G3配色（x），堪比万代，值的入手"
+  />
+
+ <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201511/04/080627j5u5ogxcr0ld1754.jpeg-w1200h1200',
+  'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201511/04/080629xtqu3wqgqqgywcuw.jpeg-w1200h1200'
+  
+  ]}
+  myImages={['/images/wait.png']}
+  name = "MB式样 1/100  ZGMF-X42S 海涅配色命运"
+  releasePrice="17,593日元"
+  brand= "MAIGAO"
+  purchasePrice= "159元"
+  link78="https://acg.78dm.net/ct/93892.html"
+  review="几年前班桃大战时期产物，组合度优秀，可动性良好，值得入手（然而龙桃子已经凉了）"
+  />
+
+ <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2022/03/44d1c9ece4d402d9652d82b64208d14e-w1200h1200',
+  'https://bbs-attachment-cdn.78dm.net/upload/2022/03/f40eb6a9cea32f8ee5b12c2ba53db7e2-w1200h1200'
+  
+  ]}
+  myImages={['/images/wait.png']}
+  name = "Hirm式样 1/100 MBF-02 强力型红异端 + EW 猩猩臂"
+  releasePrice="16,000日元"
+  brand= "MJH+EW"
+  purchasePrice= "160+80+80元"
+  link78="https://acg.78dm.net/ct/361673.html"
+  review="EW配件包组合度优秀，MJH组合度部分良好，部分组合度拉垮，Hirm的肌肉感很适合红异端"
+  />
+
+ <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2025/01/a986778e0a336f178b6dd8264bd166bc-w1200h1200',
+  'https://bbs-attachment-cdn.78dm.net/upload/2025/01/d8ea694e527f923ecdb65eb8d34bd9cd-w1200h1200'
+  
+  ]}
+  myImages={['/images/wait.png']}
+  name = "RG EVA初号机"
+  releasePrice="4,500日元"
+  brand= "MAIGAO"
+  purchasePrice= "55元"
+  link78="https://acg.78dm.net/ct/337212.html"
+  review="性价比不错，组合度中等"
+  />
+
+ <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201910/24/082210tionq0nno17i0oz4.jpg-w1200h1200',
+  'https://bbs-attachment-cdn.78dm.net/data/attachment/forum/201910/24/082210noimtnpzhpq9d2nt.jpg-w1200h1200'
+  
+  ]}
+  myImages={['/images/wait.png']}
+  name = "Figure-rise Standard Amplified 战斗暴龙兽"
+  releasePrice="4,000日元"
+  brand= "ZY"
+  purchasePrice= "69元"
+  link78="https://acg.78dm.net/ct/331656.html"
+  review="可动拉胯，不知道怎么做到拼的时候紧把玩的时候松的，外观表现不错"
+  />
+
+  <GunplaCard
+  officialImages={['https://bbs-attachment-cdn.78dm.net/upload/2024/12/cec3bc2447646ff84ece129001f05d82-w1200h1200'
+  
+  ]}
+  myImages={['/images/wait.png']}
+  name = "HGGTO RX-78-02 元组高达 出厂配色版"
+  releasePrice="2,600日元"
+  brand= "012"
+  purchasePrice= "18元"
+  link78="https://acg.78dm.net/ct/351519.html"
+  review="构式玩意，又贵组合度又不行"
+  />
+
+</div>
 
 
 
