@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'astro/types'
 
 export interface Props extends HTMLAttributes<'div'> {
   title: string
-  authors: string[]
+  authors: string
   publication: string
   year: number
   link?: string
@@ -19,7 +19,7 @@ const { title, authors, publication, year, link, ...attrs } = Astro.props
   <a href={link} target='_blank' rel='noopener noreferrer' class='text-lg font-semibold text-foreground no-underline'>
     {title}
   </a>
-  <p class='text-sm text-muted-foreground'>{authors.join(', ')}</p>
+  <p class="text-sm text-muted-foreground" set:html={authors}></p>
   <p class='text-sm text-muted-foreground'>
     <em>{publication}</em>, {year}
   </p>
