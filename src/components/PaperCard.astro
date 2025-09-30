@@ -1,0 +1,26 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+export interface Props extends HTMLAttributes<'div'> {
+  title: string
+  authors: string[]
+  publication: string
+  year: number
+  link?: string
+}
+
+const { title, authors, publication, year, link, ...attrs } = Astro.props
+---
+
+<div
+  class='group relative flex flex-col gap-y-2 rounded-2xl border border-border bg-background p-4 transition-colors hover:bg-primary-foreground'
+  {...attrs}
+>
+  <a href={link} target='_blank' rel='noopener noreferrer' class='text-lg font-semibold text-foreground no-underline'>
+    {title}
+  </a>
+  <p class='text-sm text-muted-foreground'>{authors.join(', ')}</p>
+  <p class='text-sm text-muted-foreground'>
+    <em>{publication}</em>, {year}
+  </p>
+</div>
