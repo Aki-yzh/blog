@@ -15,7 +15,7 @@ import { getAllPosts, sortMDByDate } from '@/utils'
 import GithubCard from '@/components/GithubCard.astro'
 
 import avatar from '@/assets/images/avatar.png'
-
+import PaperCard from '@/layouts/PaperCard.astro'
 import jkfz from '@/assets/images/jkfz.svg'
 import uni from '@/assets/images/pekinguni.svg'
 
@@ -95,6 +95,26 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
         </Section>
       )
     }
+    <Section title='Publications'>
+    <div class="flex flex-col gap-y-4">
+      <PaperCard
+        title="mmrotation: Unlocking versatility of a single mmwave radar via horizontal mobility and azimuthal rotation"
+        authors="D Zhang, X Zhang, <strong>Zhehui Yin</strong>, Y Xie, H Wei, Z Chang, W Li, Daqing Zhang"
+        publication="IEEE Transactions on Mobile Computing"
+        year={2025}
+        link="#"
+      />
+      <PaperCard
+        title="Breaking the Resolution Barriers of mmWave Arrays via Null Steering for Sleep Monitoring in Multi-Person Scenarios"
+        authors="D Zhang, X Zhang, <strong>Zhehui Yin</strong>, P Zhou, H Yang, P Wang, Z Yao, J Wang, F Zhang, Daqing Zhang"
+        publication="(Ubicomp)Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies"
+        year={2025}
+        link="https://ieeexplore.ieee.org/abstract/document/10878446"
+      />
+    </div>
+
+
+    </Section>
     <Section title='Projects'>
         <GithubCard owner="Aki-yzh" repo="Mosaic-image" />
         <GithubCard owner="Aki-yzh" repo="PKU-ICS-2022" />
