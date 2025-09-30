@@ -1,5 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg">
   <defs>
+    <!-- google-scholar -->
+    <symbol viewBox="0 0 24 24" id="google-scholar">
+      <path fill="currentColor" d="M5.242 13.769L0 9.5L12 0l12 9.5l-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5s-5.548 1.749-6.758 4.269M12 10a8 8 0 0 0-8 8a8 8 0 0 0 8 8a8 8 0 0 0 8-8a8 8 0 0 0-8-8m0 2c3.309 0 6 2.691 6 6s-2.691 6-6 6s-6-2.691-6-6s2.691-6 6-6Z"></path>
+    </symbol>
     <!-- bilibili -->
     <symbol viewBox="0 0 24 24" id="ri-bilibili-line">
       <path
