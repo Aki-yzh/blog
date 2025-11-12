@@ -25,7 +25,7 @@ export const siteConfig: SiteConfig = {
   // Customize
   pageSize: 8,
 
-  walineServerUrl: 'https://astro-theme-pure-waline.arthals.ink',
+  walineServerUrl: '',
   applyFriendTip: {
     name: 'Astro Theme Pure',
     slogan: '我们所经历的每个平凡的日常，也许就是连续发生的奇迹。',
