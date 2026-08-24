@@ -4,7 +4,8 @@ import Collapse from '@/components/Collapse.astro'
 import ProjectSection from '@/components/projects/ProjectSection.astro'
 import PageLayout from '@/layouts/CommonPage.astro'
 import { Image } from 'astro:assets'
-import PaperCard from '@/components/PaperCard.astro'
+import PublicationList from '@/components/PublicationList.astro'
+import { getCollection } from 'astro:content'
 
 const headings = [
 
@@ -30,6 +31,8 @@ const headings = [
   },
 
 ]
+
+const publications = await getCollection('publications')
 ---
 
 <PageLayout title='Projects' headings={headings} info={{ slug: '/projects', hideComment: true }}>
@@ -162,27 +165,4 @@ const headings = [
  <h2 id='Scientific Projects'>Scientific Projects</h2>
  
 
-  <div class="flex flex-col gap-y-4">
-      <PaperCard
-      title="MuPose: Breaking the Scalability Barrier of mmWave Multi-User Pose Estimation in the Wild"
-      authors="Duo Zhang, <strong>Zhehui Yin</strong>, Xusheng Zhang, Junzhe Wang, Hongliu Yang, Zhiyun Yao, Zizhou Fan, Wenwei Li, Daqing Zhang"
-      publication="(Mobisys)Proceedings of the 24th Annual International Conference on Mobile Systems, Applications and Services"
-      year={2026}
-      link="https://doi.org/10.1145/3745756.3809227"
-    />
-    <PaperCard
-      title="mmrotation: Unlocking versatility of a single mmwave radar via horizontal mobility and azimuthal rotation"
-      authors="D Zhang, X Zhang, <strong>Zhehui Yin</strong>, Y Xie, H Wei, Z Chang, W Li, Daqing Zhang"
-      publication="IEEE Transactions on Mobile Computing"
-      year={2025}
-      link="https://ieeexplore.ieee.org/abstract/document/10878446"
-    />
-    <PaperCard
-      title="Breaking the Resolution Barriers of mmWave Arrays via Null Steering for Sleep Monitoring in Multi-Person Scenarios"
-      authors="D Zhang, X Zhang, <strong>Zhehui Yin</strong>, P Zhou, H Yang, P Wang, Z Yao, J Wang, F Zhang, Daqing Zhang"
-      publication="(Ubicomp)Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies"
-      year={2025}
-      link="https://dl.acm.org/doi/10.1145/3749466"
-    />
-
-  </div>
+  <PublicationList items={publications} />

@@ -1,0 +1,22 @@
+---
+import ACGCompactCardBody from './ACGCompactCardBody.astro'
+
+interface Props {
+  title: string | string[]
+  description: string | string[]
+  image: string
+  link?: string
+}
+
+const { title, description, image, link } = Astro.props
+---
+
+{
+  link ? (
+    <a href={link} target='_blank' class='no-underline'>
+      <ACGCompactCardBody title={title} description={description} image={image} />
+    </a>
+  ) : (
+    <ACGCompactCardBody title={title} description={description} image={image} />
+  )
+}

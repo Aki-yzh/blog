@@ -1,0 +1,931 @@
+{
+  "source": {
+    "path": "src/pages/ACG/index.astro (pre-migration)",
+    "bytes": 158419,
+    "sha256": "836da3c89431e28f349cec0122ab101b56a0a7f319e20f73aaed9006dc679f38"
+  },
+  "counts": {
+    "totalItems": 61,
+    "sections": {
+      "anime-featured": 2,
+      "anime-more": 7,
+      "anime-timeline": 28,
+      "comic-featured": 2,
+      "game": 22
+    },
+    "timeline": {
+      "2018": 2,
+      "2019": 2,
+      "2020": 3,
+      "2021": 6,
+      "2022": 5,
+      "2023": 5,
+      "2024": 2,
+      "2025": 3
+    },
+    "bangumiSubjects": 39,
+    "unlinkedGames": 2,
+    "wallOfFameImages": 27,
+    "uniqueLocalImages": 50
+  },
+  "items": [
+    {
+      "section": "anime-featured",
+      "order": 1,
+      "badge": "近期推荐",
+      "title": [
+        "葬送のフリーレン 第2期"
+      ],
+      "description": [
+        "圣斋藤无需多言"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/0b/24/515759_qA1Zc.jpg",
+      "link": "https://bgm.tv/subject/515759"
+    },
+    {
+      "section": "anime-featured",
+      "order": 2,
+      "badge": "最推荐",
+      "title": [
+        "機動戦士ガンダム",
+        "0080ポケットの中の戦争"
+      ],
+      "description": [
+        "刻骨铭心的反战作品"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/29/89/1015_Z2xoh.jpg",
+      "link": "https://bgm.tv/subject/1015"
+    },
+    {
+      "section": "anime-more",
+      "order": 1,
+      "title": [
+        "男子高校生の日常"
+      ],
+      "description": [
+        "男人至死是少年"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/c5/73/24790_4wdXB.jpg",
+      "link": "https://bgm.tv/subject/24790"
+    },
+    {
+      "section": "anime-more",
+      "order": 2,
+      "title": [
+        "四畳半神話大系"
+      ],
+      "description": [
+        "我什么时候也能拥有玫红色的大学生活呢"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/7f/c6/4019_f34f4.jpg",
+      "link": "https://bgm.tv/subject/4019"
+    },
+    {
+      "section": "anime-more",
+      "order": 3,
+      "title": [
+        "ピンポン THE ANIMATION"
+      ],
+      "description": [
+        "天赋与努力缺一不可"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/1e/63/93739_TZ9dS.jpg",
+      "link": "https://bgm.tv/subject/93739"
+    },
+    {
+      "section": "anime-more",
+      "order": 4,
+      "title": [
+        "けいおん！"
+      ],
+      "description": [
+        "山田尚子是神！"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/48/9d/1424_q8FMQ.jpg",
+      "link": "https://bgm.tv/subject/1424"
+    },
+    {
+      "section": "anime-more",
+      "order": 5,
+      "title": [
+        "Just Because!"
+      ],
+      "description": [
+        "青春的实感"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/cf/9d/212278_zwYLL.jpg",
+      "link": "https://bgm.tv/subject/212278"
+    },
+    {
+      "section": "anime-more",
+      "order": 6,
+      "title": [
+        "君の名は。"
+      ],
+      "description": [
+        "带女朋友看"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/20/15/160209_2UzU8.jpg",
+      "link": "https://bgm.tv/subject/160209"
+    },
+    {
+      "section": "anime-more",
+      "order": 7,
+      "title": [
+        "妄想代理人"
+      ],
+      "description": [
+        "今敏大神遗作"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/3d/8e/843_6wj9L.jpg",
+      "link": "https://bgm.tv/subject/843"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2025,
+      "order": 1,
+      "title": [
+        "かぐや様は告らせたい 大人への階段"
+      ],
+      "description": [
+        "A1伟大，无需多言"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/9b/f5/565802_PRfRL.jpg",
+      "link": "https://bgm.tv/subject/565802"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2025,
+      "order": 2,
+      "title": [
+        "劇場版 チェンソーマン レゼ篇"
+      ],
+      "description": [
+        "把龙哥踢了是对的啊，我的心已被蕾塞小姐夺走，此生或许再无悲喜"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/e0/d8/470660_uLY5M.jpg",
+      "link": "https://bgm.tv/subject/470660"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2025,
+      "order": 3,
+      "title": [
+        "わたしが恋人になれるわけないじゃん、ムリムリ！（※ムリじゃなかった!?）"
+      ],
+      "description": [
+        "虽然评分我不会给特别高，但是治好了我的百合ptsd"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/ae/03/524707_1quxk.jpg",
+      "link": "https://bgm.tv/subject/524707"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2024,
+      "order": 1,
+      "title": [
+        "魔法少女にあこがれて"
+      ],
+      "description": [
+        "枫糖总帅我们敬爱你口牙！"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/96/d1/424663_mM5GN.jpg",
+      "link": "https://bgm.tv/subject/424663"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2024,
+      "order": 2,
+      "title": [
+        "負けヒロインが多すぎる！"
+      ],
+      "description": [
+        "商业动画标杆"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/e4/dc/464376_NsZRw.jpg",
+      "link": "https://bgm.tv/subject/464376"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2023,
+      "order": 1,
+      "title": [
+        "葬送のフリーレン"
+      ],
+      "description": [
+        "节奏很温柔"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/13/c5/400602_ZI8Y9.jpg",
+      "link": "https://bgm.tv/subject/400602"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2023,
+      "order": 2,
+      "title": [
+        "僕の心のヤバイやつ"
+      ],
+      "description": [
+        "细腻"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/01/ee/394260_VMqvV.jpg",
+      "link": "https://bgm.tv/subject/394260"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2023,
+      "order": 3,
+      "title": [
+        "BanG Dream! It's MyGO!!!!!"
+      ],
+      "description": [
+        "现象级作品"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/e7/a7/428735_1v11n.jpg",
+      "link": "https://bgm.tv/subject/428735"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2023,
+      "order": 4,
+      "title": [
+        "お兄ちゃんはおしまい！"
+      ],
+      "description": [
+        "优秀的制作"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/7e/ca/378862_24TnR.jpg",
+      "link": "https://bgm.tv/subject/378862"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2023,
+      "order": 5,
+      "title": [
+        "アイドルマスター シンデレラガールズ U149"
+      ],
+      "description": [
+        "学神！想养女儿了"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/58/c1/376703_g5559.jpg",
+      "link": "https://bgm.tv/subject/376703"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2022,
+      "order": 1,
+      "title": [
+        "ぼっち・ざ・ろっく！"
+      ],
+      "description": [
+        "重振乐队荣光"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/e2/e7/328609_2EHLJ.jpg",
+      "link": "https://bgm.tv/subject/328609"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2022,
+      "order": 2,
+      "title": [
+        "Cyberpunk: Edgerunners"
+      ],
+      "description": [
+        "总有一天我会带你到月亮上的"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/39/83/309311_dJU58.jpg",
+      "link": "https://bgm.tv/subject/309311"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2022,
+      "order": 3,
+      "title": [
+        "異世界おじさん"
+      ],
+      "description": [
+        "万策尽作品，内容还是很不错，过程很难绷"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/1a/75/339326_v466V.jpg",
+      "link": "https://bgm.tv/subject/339326"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2022,
+      "order": 4,
+      "title": [
+        "であいもん"
+      ],
+      "description": [
+        "温馨日常"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/41/49/333664_d4Py9.jpg",
+      "link": "https://bgm.tv/subject/333664"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2022,
+      "order": 5,
+      "title": [
+        "劇場版 からかい上手の高木さん"
+      ],
+      "description": [
+        "还算推荐，前作更好点"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/fd/00/347888_fBpdB.jpg",
+      "link": "https://bgm.tv/subject/347888"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2021,
+      "order": 1,
+      "title": [
+        "オッドタクシー"
+      ],
+      "description": [
+        "真正做到只有动画才能表现的作品"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/65/90/325285_4688X.jpg",
+      "link": "https://bgm.tv/subject/325285"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2021,
+      "order": 2,
+      "title": [
+        "銀魂 THE FINAL"
+      ],
+      "description": [
+        "最后的银桑"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/89/5b/276641_Z3H84.jpg",
+      "link": "https://bgm.tv/subject/276641"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2021,
+      "order": 3,
+      "title": [
+        "映画大好きポンポさん"
+      ],
+      "description": [
+        "热爱是一件很美好的事"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/c7/f7/223563_FgHea.jpg",
+      "link": "https://bgm.tv/subject/223563"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2021,
+      "order": 4,
+      "title": [
+        "機動戦士ガンダム 閃光のハサウェイ"
+      ],
+      "description": [
+        "身構えているときには、死神は来ないものだ"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/c5/46/243429_l49P7.jpg",
+      "link": "https://bgm.tv/subject/243429"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2021,
+      "order": 5,
+      "title": [
+        "ウマ娘 プリティーダービー Season 2"
+      ],
+      "description": [
+        "第二季很能调动情绪"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/1c/6b/315574_7778r.jpg",
+      "link": "https://bgm.tv/subject/315574"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2021,
+      "order": 6,
+      "title": [
+        "無職転生 ～異世界行ったら本気だす～"
+      ],
+      "description": [
+        "上下两个部分，及其优秀的异世界作品"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/8b/00/277554_z999u.jpg",
+      "link": "https://bgm.tv/subject/277554"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2020,
+      "order": 1,
+      "title": [
+        "映像研には手を出すな！"
+      ],
+      "description": [
+        "经典汤浅政明式作品"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/5f/18/282433_9wDx9.jpg",
+      "link": "https://bgm.tv/subject/282433"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2020,
+      "order": 2,
+      "title": [
+        "異種族レビュアーズ"
+      ],
+      "description": [
+        "佛曰：不可说，不可说"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/dc/8a/285482_c5RRj.jpg",
+      "link": "https://bgm.tv/subject/285482"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2020,
+      "order": 3,
+      "title": [
+        "かくしごと"
+      ],
+      "description": [
+        "总之就是推荐"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/8b/91/294713_MwaxY.jpg",
+      "link": "https://bgm.tv/subject/294713"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2019,
+      "order": 1,
+      "title": [
+        "映画 この素晴らしい世界に祝福を！紅伝説"
+      ],
+      "description": [
+        "最乐的一集"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/d0/61/220631_2nNMt.jpg",
+      "link": "https://bgm.tv/subject/220631"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2019,
+      "order": 2,
+      "title": [
+        "天気の子"
+      ],
+      "description": [
+        "陪女友看"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/00/e8/269235_Dg6gZ.jpg",
+      "link": "https://bgm.tv/subject/269235"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2018,
+      "order": 1,
+      "title": [
+        "リズと青い鳥"
+      ],
+      "description": [
+        "你是我的利兹，你是我的青鸟。"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/1d/35/216371_5926R.jpg",
+      "link": "https://bgm.tv/subject/216371"
+    },
+    {
+      "section": "anime-timeline",
+      "year": 2018,
+      "order": 2,
+      "title": [
+        "ぐらんぶる"
+      ],
+      "description": [
+        "大学生活指南（bushi）"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/1f/13/235130_suy3s.jpg",
+      "link": "https://bgm.tv/subject/235130"
+    },
+    {
+      "section": "comic-featured",
+      "order": 1,
+      "badge": "近期推荐",
+      "title": [
+        "さよなら絵梨"
+      ],
+      "description": [
+        "精彩的短篇"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/7a/2d/377599_5cY50.jpg",
+      "link": "https://bgm.tv/subject/377599"
+    },
+    {
+      "section": "comic-featured",
+      "order": 2,
+      "badge": "最推荐",
+      "title": [
+        "おやすみプンプン"
+      ],
+      "description": [
+        "细腻的情感描写",
+        "极致的表现力"
+      ],
+      "image": "https://lain.bgm.tv/r/400/pic/cover/l/3c/15/36261_JvgPl.jpg",
+      "link": "https://bgm.tv/subject/36261"
+    },
+    {
+      "section": "game",
+      "order": 1,
+      "title": [
+        "泰拉瑞亚"
+      ],
+      "description": [
+        "三难度全通，boss掉落物全收集"
+      ],
+      "image": "/images/te.png",
+      "link": "https://terraria.org"
+    },
+    {
+      "section": "game",
+      "order": 2,
+      "title": [
+        "LL SIF"
+      ],
+      "description": [
+        "已停服"
+      ],
+      "image": "/images/sif.png"
+    },
+    {
+      "section": "game",
+      "order": 3,
+      "title": [
+        "闪p"
+      ],
+      "description": [
+        "THE iDOLM@STER SHINY COLORS"
+      ],
+      "image": "/images/sc.jpg",
+      "link": "https://shinycolors.enza.fun"
+    },
+    {
+      "section": "game",
+      "order": 4,
+      "title": [
+        "雀魂"
+      ],
+      "description": [
+        "团建日麻"
+      ],
+      "image": "/images/pong.png",
+      "link": "https://mahjongsoul.yo-star.com/"
+    },
+    {
+      "section": "game",
+      "order": 5,
+      "title": [
+        "宝可梦盾（含双扩展票）"
+      ],
+      "description": [
+        "第一款全通图鉴全收集的宝可梦（含铠岛雪原）"
+      ],
+      "image": "/images/shield.png",
+      "link": "https://game.portal-pokemon.com/sword_shield/sc/"
+    },
+    {
+      "section": "game",
+      "order": 6,
+      "title": [
+        "宝可梦阿尔宙斯"
+      ],
+      "description": [
+        "全通全图鉴收集（第二款宝可梦）"
+      ],
+      "image": "/images/arceus.png",
+      "link": "https://www.pokemon.co.jp/ex/legends_arceus/sc/"
+    },
+    {
+      "section": "game",
+      "order": 7,
+      "title": [
+        "星之卡比 探索发现"
+      ],
+      "description": [
+        "全通，但是全收集肝不动了..."
+      ],
+      "image": "/images/kabi.png",
+      "link": "https://www.nintendo.com.hk/switch/arzga"
+    },
+    {
+      "section": "game",
+      "order": 8,
+      "title": [
+        "SD高达：激斗同盟"
+      ],
+      "description": [
+        "三难度全通，机体全收集"
+      ],
+      "image": "/images/sdgd.png"
+    },
+    {
+      "section": "game",
+      "order": 9,
+      "title": [
+        "宝可梦紫（含双扩展票）"
+      ],
+      "description": [
+        "全通全图鉴收集（第三款宝可梦）（含圆盘假面）"
+      ],
+      "image": "/images/purple.png",
+      "link": "https://www.pokemon.co.jp/ex/sv/tc/pokemon"
+    },
+    {
+      "section": "game",
+      "order": 10,
+      "title": [
+        "宝可梦 晶灿钻石"
+      ],
+      "description": [
+        "三周目全通全收集,太肝比较难的一款（第四款宝可梦）"
+      ],
+      "image": "/images/diamond.png",
+      "link": "https://www.pokemon.co.jp/ex/bdsp/sc/"
+    },
+    {
+      "section": "game",
+      "order": 11,
+      "title": [
+        "宝可梦 去伊"
+      ],
+      "description": [
+        "伊布可爱！全通全收集，大师训练家这种阴间玩意不会有人打吧？（第五款宝可梦）"
+      ],
+      "image": "/images/eve.png",
+      "link": "https://pokemonletsgo.pokemon.com/en-us/"
+    },
+    {
+      "section": "game",
+      "order": 12,
+      "title": [
+        "星之卡比 新星同盟"
+      ],
+      "description": [
+        "好玩！全通进度100%，但是拼图全收集太肝了"
+      ],
+      "image": "/images/sa.png",
+      "link": "https://www.nintendo.com/hk/switch/kirby_star_allies/pc/"
+    },
+    {
+      "section": "game",
+      "order": 13,
+      "title": [
+        "星之卡比 wii豪华版"
+      ],
+      "description": [
+        "100%达成！小游戏好玩！主线一般（扩展任务还有5个但是不计入进度，太非人类了）"
+      ],
+      "image": "/images/wi.png",
+      "link": "https://www.nintendo.com/tw/switch/a2jya"
+    },
+    {
+      "section": "game",
+      "order": 14,
+      "title": [
+        "星之卡比 镜之大迷宫"
+      ],
+      "description": [
+        "好玩！当年第一次玩的卡比"
+      ],
+      "image": "/images/mirror.png",
+      "link": "https://wiki.biligame.com/kirby/%E6%98%9F%E4%B9%8B%E5%8D%A1%E6%AF%94_%E9%95%9C%E4%B9%8B%E5%A4%A7%E8%BF%B7%E5%AE%AB"
+    },
+    {
+      "section": "game",
+      "order": 15,
+      "title": [
+        "宝可梦 黑"
+      ],
+      "description": [
+        "全通全收集，剧情很不错，第六款宝可梦"
+      ],
+      "image": "/images/black.png",
+      "link": "https://www.pokemon.co.jp/series/bw/"
+    },
+    {
+      "section": "game",
+      "order": 16,
+      "title": [
+        "宝可梦 灵魂之银"
+      ],
+      "description": [
+        "全通全收集，两个地区十六个道馆很有意思，第七款宝可梦"
+      ],
+      "image": "/images/silver.png",
+      "link": "https://www.pokemon.com/us/pokemon-video-games/pokemon-heartgold-and-soulsilver-versions"
+    },
+    {
+      "section": "game",
+      "order": 17,
+      "title": [
+        "宝可梦 Y"
+      ],
+      "description": [
+        "全通全收集，新增学习装置是真的等级碾压，剧情不太完整，就当预习az了，第八款宝可梦"
+      ],
+      "image": "/images/y.png",
+      "link": "https://www.pokemon.com/us/pokemon-video-games/pokemon-x-and-pokemon-y"
+    },
+    {
+      "section": "game",
+      "order": 18,
+      "title": [
+        "宝可梦 终极红宝石"
+      ],
+      "description": [
+        "全通全收集，图鉴太多了好多前代的，只能靠金叔叔，难怪之后取消全国图鉴，第九款宝可梦"
+      ],
+      "image": "/images/or.png",
+      "link": "https://www.pokemon.co.jp/ex/oras/?a001=msign"
+    },
+    {
+      "section": "game",
+      "order": 19,
+      "title": [
+        "宝可梦 日"
+      ],
+      "description": [
+        "全通全收集，第一款官方中文，取消全国图鉴好评，莉莉艾躲雨好评，第十款宝可梦"
+      ],
+      "image": "/images/sun.png",
+      "link": "http://www.pokemon-sunmoon-cn.com/sc/"
+    },
+    {
+      "section": "game",
+      "order": 20,
+      "title": [
+        "宝可梦 白2"
+      ],
+      "description": [
+        "全通全收集，和黑白剧情是连着的，但是道馆等有较大改动，和其他扩展票相比可以算新作，好评，第十一款宝可梦"
+      ],
+      "image": "/images/w2.png",
+      "link": "https://www.pokemon.co.jp/ex/b2w2/"
+    },
+    {
+      "section": "game",
+      "order": 21,
+      "title": [
+        "宝可梦 传说ZA"
+      ],
+      "description": [
+        "全通全收集(含扩展票)，和xy是连着的，宝可梦生态好评，登峰战和异次元调查点数差评，第十二款宝可梦"
+      ],
+      "image": "/images/ZA.png",
+      "link": "https://www.pokemon.co.jp/ex/legends_z-a/sc/"
+    },
+    {
+      "section": "game",
+      "order": 22,
+      "title": [
+        "街霸6"
+      ],
+      "description": [
+        "陪朋友线下solo的"
+      ],
+      "image": "/images/SF.png",
+      "link": "https://www.streetfighter.com/6/zh-hans"
+    }
+  ],
+  "wallOfFame": {
+    "title": "Wall of Fame",
+    "images": [
+      {
+        "src": "/images/p11.png",
+        "alt": "Image 14"
+      },
+      {
+        "src": "/images/p9.png",
+        "alt": "Image 15"
+      },
+      {
+        "src": "/images/p10.png",
+        "alt": "Image 16"
+      },
+      {
+        "src": "/images/p1.png",
+        "alt": "Image 1"
+      },
+      {
+        "src": "/images/p2.png",
+        "alt": "Image 2"
+      },
+      {
+        "src": "/images/p3.png",
+        "alt": "Image 3"
+      },
+      {
+        "src": "/images/p4.png",
+        "alt": "Image 4"
+      },
+      {
+        "src": "/images/kbsa.png",
+        "alt": "Image 5"
+      },
+      {
+        "src": "/images/wii.png",
+        "alt": "Image 6"
+      },
+      {
+        "src": "/images/p5.png",
+        "alt": "Image 7"
+      },
+      {
+        "src": "/images/p6.png",
+        "alt": "Image 8"
+      },
+      {
+        "src": "/images/wii1.png",
+        "alt": "Image 9"
+      },
+      {
+        "src": "/images/wii2.png",
+        "alt": "Image 10"
+      },
+      {
+        "src": "/images/wii3.png",
+        "alt": "Image 11"
+      },
+      {
+        "src": "/images/p7.png",
+        "alt": "Image 12"
+      },
+      {
+        "src": "/images/p8.png",
+        "alt": "Image 13"
+      },
+      {
+        "src": "/images/p12.png",
+        "alt": "Image 17"
+      },
+      {
+        "src": "/images/p13.png",
+        "alt": "Image 18"
+      },
+      {
+        "src": "/images/p14.png",
+        "alt": "Image 19"
+      },
+      {
+        "src": "/images/p15.png",
+        "alt": "Image 20"
+      },
+      {
+        "src": "/images/p16.png",
+        "alt": "Image 21"
+      },
+      {
+        "src": "/images/p17.png",
+        "alt": "Image 22"
+      },
+      {
+        "src": "/images/p18.png",
+        "alt": "Image 23"
+      },
+      {
+        "src": "/images/p19.png",
+        "alt": "Image 24"
+      },
+      {
+        "src": "/images/p20.png",
+        "alt": "Image 25"
+      },
+      {
+        "src": "/images/p21.png",
+        "alt": "Image 26"
+      },
+      {
+        "src": "/images/p22.png",
+        "alt": "Image 27"
+      }
+    ],
+    "note": [
+      "日月，传阿,ZA没有奖状就没放，通关存档在github仓库里"
+    ],
+    "archive": {
+      "href": "https://github.com/Aki-yzh/Switch",
+      "image": "/images/github.png"
+    }
+  },
+  "pageSettings": {
+    "seeMore": {
+      "title": "See More in banggumi",
+      "href": "https://bgm.tv/anime/list/aki_yzh/collect?orderby=rate"
+    },
+    "detail": {
+      "href": "https://bgm.tv/anime/list/aki_yzh/collect",
+      "iframeSrc": "https://bgm.tv/anime/list/aki_yzh/collect"
+    },
+    "recentActivity": {
+      "href": " ",
+      "image": "http://bgm.tv/chart/img/762491"
+    }
+  }
+}

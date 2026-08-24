@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "groups": [
+    {
+      "depth": 2,
+      "id": "Bandai",
+      "text": "Bandai",
+      "tocText": "Bandai",
+      "key": "Bandai",
+      "parent": null,
+      "order": 1
+    },
+    {
+      "depth": 3,
+      "id": "MG",
+      "text": "MG",
+      "tocText": "MG",
+      "key": "Bandai/MG",
+      "parent": "Bandai",
+      "order": 2
+    },
+    {
+      "depth": 3,
+      "id": "RG",
+      "text": "RG",
+      "tocText": "RG",
+      "key": "Bandai/RG",
+      "parent": "Bandai",
+      "order": 3
+    },
+    {
+      "depth": 3,
+      "id": "PB",
+      "text": "PB",
+      "tocText": "PB",
+      "key": "Bandai/PB",
+      "parent": "Bandai",
+      "order": 4
+    },
+    {
+      "depth": 3,
+      "id": "HG",
+      "text": "HG",
+      "tocText": "HG",
+      "key": "Bandai/HG",
+      "parent": "Bandai",
+      "order": 5
+    },
+    {
+      "depth": 3,
+      "id": "OTH",
+      "text": "OTH",
+      "tocText": "OTH",
+      "key": "Bandai/OTH",
+      "parent": "Bandai",
+      "order": 6
+    },
+    {
+      "depth": 2,
+      "id": "KO",
+      "text": "KO",
+      "tocText": "KO",
+      "key": "KO",
+      "parent": null,
+      "order": 7
+    },
+    {
+      "depth": 3,
+      "id": "Daban",
+      "text": "Daban",
+      "tocText": "Daban",
+      "key": "KO/Daban",
+      "parent": "KO",
+      "order": 8
+    },
+    {
+      "depth": 4,
+      "id": "PG",
+      "text": "PG",
+      "tocText": "PG",
+      "key": "KO/Daban/PG",
+      "parent": "KO/Daban",
+      "order": 9
+    },
+    {
+      "depth": 4,
+      "id": "88MB",
+      "text": "88MB",
+      "tocText": "88MB",
+      "key": "KO/Daban/88MB",
+      "parent": "KO/Daban",
+      "order": 10
+    },
+    {
+      "depth": 4,
+      "id": "66MG",
+      "text": "66MG",
+      "tocText": "66MG",
+      "key": "KO/Daban/66MG",
+      "parent": "KO/Daban",
+      "order": 11
+    },
+    {
+      "depth": 4,
+      "id": "MGSD",
+      "text": "MGSD&&RG",
+      "tocText": "MGSD",
+      "key": "KO/Daban/MGSD",
+      "parent": "KO/Daban",
+      "order": 12
+    },
+    {
+      "depth": 4,
+      "id": "GGHG",
+      "text": "HG",
+      "tocText": "HG",
+      "key": "KO/Daban/GGHG",
+      "parent": "KO/Daban",
+      "order": 13
+    },
+    {
+      "depth": 3,
+      "id": "JMS",
+      "text": "JMS",
+      "tocText": "JMS",
+      "key": "KO/JMS",
+      "parent": "KO",
+      "order": 14
+    },
+    {
+      "depth": 3,
+      "id": "XFS",
+      "text": "XFS",
+      "tocText": "XFS",
+      "key": "KO/XFS",
+      "parent": "KO",
+      "order": 15
+    },
+    {
+      "depth": 3,
+      "id": "XD",
+      "text": "XD",
+      "tocText": "XD",
+      "key": "KO/XD",
+      "parent": "KO",
+      "order": 16
+    },
+    {
+      "depth": 3,
+      "id": "kOTH",
+      "text": "OTH",
+      "tocText": "OTH",
+      "key": "KO/kOTH",
+      "parent": "KO",
+      "order": 17
+    }
+  ]
+}

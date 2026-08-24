@@ -1,0 +1,79 @@
+---
+import Collapse from '@/components/Collapse.astro'
+import ACGCardArrow from './ACGCardArrow.astro'
+import ACGTextLines from './ACGTextLines.astro'
+
+interface Props {
+  title: string
+  images: Array<{
+    src: string
+    alt: string
+  }>
+  note: string | string[]
+  archive: {
+    href: string
+    image: string
+  }
+}
+
+const { title, images, note, archive } = Astro.props
+---
+
+<Collapse title={title} class='text-M font-serif'>
+  <div class='mb-4 grid grid-cols-2 gap-4'>
+    {
+      images.map((image) => (
+        <div class='aspect-h-1 aspect-w-2'>
+          <img src={image.src} alt={image.alt} class='h-full w-full rounded-lg object-cover' />
+        </div>
+      ))
+    }
+
+    <div class='aspect-h-1 aspect-w-2 relative'>
+      <div class='flex flex-col gap-y-2'>
+        <p class='text-l my-9 line-clamp-6 text-muted-foreground sm:line-clamp-2'>
+          <ACGTextLines value={note} />
+        </p>
+      </div>
+      <div class='flex h-full w-full items-end justify-end'>
+        <a href={archive.href} target='_blank' class='no-underline'>
+          <div
+            class='group relative h-full overflow-hidden rounded-2xl border border-border bg-background px-4 py-2 transition-colors hover:bg-primary-foreground sm:py-3'
+          >
+            <div class='relative z-10 flex h-full items-center gap-3'>
+              <div class='relative h-16 w-16 min-w-16 overflow-hidden rounded-full'>
+                <img
+                  src={archive.image}
+                  class='my-0 bg-white'
+                  alt='avatar'
+                  loading='lazy'
+                  width='80'
+                  height='80'
+                  decoding='async'
+                />
+                <div class='absolute start-0 top-0 h-full w-full'>
+                  <div
+                    class='flex h-full w-full items-center justify-center rounded-full bg-foreground opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-50'
+                  >
+                    <ACGCardArrow />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <img
+              src={archive.image}
+              class='absolute -start-2 top-0 z-0 my-0 h-full w-2/3 bg-white object-cover opacity-15'
+              alt='avatar bg'
+              loading='lazy'
+              style='mask-image:linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);ms-mask-image:-ms-linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);-webkit-mask-image:-webkit-linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%)'
+              width='80'
+              height='80'
+              decoding='async'
+            />
+          </div>
+        </a>
+      </div>
+    </div>
+    <br />
+  </div>
+</Collapse>

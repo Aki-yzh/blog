@@ -1,0 +1,48 @@
+---
+import ACGCardArrow from './ACGCardArrow.astro'
+import ACGTextLines from './ACGTextLines.astro'
+
+interface Props {
+  badge: string
+  title: string | string[]
+  description: string | string[]
+  image: string
+  link: string
+}
+
+const { badge, title, description, image, link } = Astro.props
+---
+
+<a href={link} class='no-underline'>
+  <div
+    class='group relative h-[220px] overflow-hidden rounded-2xl border border-gray-300 bg-background transition-colors hover:bg-gray-50'
+  >
+    <div class='relative z-10 flex h-full items-center gap-8 px-4'>
+      <div class='relative h-auto w-36 min-w-36 overflow-hidden rounded-lg'>
+        <img src={image} alt='Anime Image' class='h-[200px] w-full object-fill' loading='lazy' />
+        <div
+          class='absolute inset-0 flex items-center justify-center rounded-lg bg-foreground opacity-0 transition-opacity duration-300 group-hover:opacity-50'
+        >
+          <ACGCardArrow />
+        </div>
+      </div>
+      <div class='flex flex-col gap-y-2'>
+        <p class='my-0 text-lg font-bold'>{badge}</p>
+        <p
+          class='my-0 text-base font-bold tracking-wide'
+          style="font-family: 'Hiragino Kaku Gothic Pro', 'Yu Gothic', sans-serif;"
+        >
+          <ACGTextLines value={title} />
+        </p>
+        <p class='my-0 text-sm text-gray-600'><ACGTextLines value={description} /></p>
+      </div>
+    </div>
+    <img
+      src={image}
+      class='absolute -start-2 top-0 z-0 my-0 h-full w-2/3 object-cover opacity-15'
+      alt='background'
+      loading='lazy'
+      style='mask-image:linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);-webkit-mask-image:-webkit-linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%)'
+    />
+  </div>
+</a>

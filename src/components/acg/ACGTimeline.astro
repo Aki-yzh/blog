@@ -1,0 +1,87 @@
+---
+import ACGCompactCard from './ACGCompactCard.astro'
+
+interface TimelineItem {
+  year: number
+  order: number
+  title: string | string[]
+  description: string | string[]
+  image: string
+  link: string
+}
+
+interface Props {
+  items: TimelineItem[]
+}
+
+const { items } = Astro.props
+const sortedItems = [...items].sort(
+  (left, right) => right.year - left.year || left.order - right.order
+)
+const years = [...new Set(sortedItems.map((item) => item.year))]
+
+for (const year of years) {
+  const yearItems = sortedItems.filter((item) => item.year === year)
+  const orders = new Set(yearItems.map((item) => item.order))
+  if (orders.size !== yearItems.length) {
+    throw new Error(`ACG timeline ${year} contains duplicate order values`)
+  }
+}
+
+const legacyGroupClasses: Record<number, string> = {
+  2025: 'group5',
+  2024: 'group1',
+  2023: 'group2',
+  2022: 'group3',
+  2021: 'group4',
+  2020: 'group5',
+  2019: 'group6',
+  2018: 'group7'
+}
+
+function listItemClass(year: number, index: number) {
+  const groupClass = legacyGroupClasses[year] ?? `group${index + 1}`
+  const marginClass = year === 2023 ? 'mb-29' : 'mb-1'
+  return `${groupClass} relative flex list-none gap-2 rounded-full ps-0 sm:gap-4 ${marginClass}`
+}
+
+function gridClass(count: number) {
+  if (count >= 5) {
+    return 'animate grid gap-3.5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 grid-rows-2'
+  }
+  if (count === 3) {
+    return 'animate grid gap-3.5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3'
+  }
+  return 'animate grid gap-3.5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-2'
+}
+---
+
+<div>
+  <ul class='ps-0 sm:ps-2'>
+    {
+      years.map((year, index) => {
+        const yearItems = sortedItems.filter((item) => item.year === year)
+        return (
+          <li class={listItemClass(year, index)}>
+            <span class='z-10 my-2 ms-2 h-3 w-3 min-w-3 rounded-full border-2 border-muted-foreground transition-transform group-hover:scale-125' />
+            <span
+              class='absolute start-[12px] top-[20px] w-1 bg-border'
+              style='height: calc(100%);'
+            />
+            <samp class='my-1 min-w-[80px] text-right text-sm sm:min-w-[90px]'>{year}</samp>
+            <div class={gridClass(yearItems.length)}>
+              {yearItems.map((item) => (
+                <ACGCompactCard
+                  title={item.title}
+                  description={item.description}
+                  image={item.image}
+                  link={item.link}
+                />
+              ))}
+            </div>
+          </li>
+        )
+      })
+    }
+  </ul>
+</div>

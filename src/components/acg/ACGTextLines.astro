@@ -1,0 +1,17 @@
+---
+interface Props {
+  value: string | string[]
+}
+
+const { value } = Astro.props
+const lines = Array.isArray(value) ? value : [value]
+---
+
+{
+  lines.map((line, index) => (
+    <Fragment>
+      {index > 0 && <br />}
+      {line}
+    </Fragment>
+  ))
+}

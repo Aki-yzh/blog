@@ -1,0 +1,134 @@
+{
+  "bangumi": {
+    "seeMore": {
+      "title": "See More in banggumi",
+      "href": "https://bgm.tv/anime/list/aki_yzh/collect?orderby=rate"
+    },
+    "detail": {
+      "href": "https://bgm.tv/anime/list/aki_yzh/collect",
+      "iframeSrc": "https://bgm.tv/anime/list/aki_yzh/collect"
+    },
+    "recentActivity": {
+      "href": " ",
+      "image": "http://bgm.tv/chart/img/762491"
+    }
+  },
+  "wallOfFame": {
+    "title": "Wall of Fame",
+    "images": [
+      {
+        "src": "/images/p11.png",
+        "alt": "Image 14"
+      },
+      {
+        "src": "/images/p9.png",
+        "alt": "Image 15"
+      },
+      {
+        "src": "/images/p10.png",
+        "alt": "Image 16"
+      },
+      {
+        "src": "/images/p1.png",
+        "alt": "Image 1"
+      },
+      {
+        "src": "/images/p2.png",
+        "alt": "Image 2"
+      },
+      {
+        "src": "/images/p3.png",
+        "alt": "Image 3"
+      },
+      {
+        "src": "/images/p4.png",
+        "alt": "Image 4"
+      },
+      {
+        "src": "/images/kbsa.png",
+        "alt": "Image 5"
+      },
+      {
+        "src": "/images/wii.png",
+        "alt": "Image 6"
+      },
+      {
+        "src": "/images/p5.png",
+        "alt": "Image 7"
+      },
+      {
+        "src": "/images/p6.png",
+        "alt": "Image 8"
+      },
+      {
+        "src": "/images/wii1.png",
+        "alt": "Image 9"
+      },
+      {
+        "src": "/images/wii2.png",
+        "alt": "Image 10"
+      },
+      {
+        "src": "/images/wii3.png",
+        "alt": "Image 11"
+      },
+      {
+        "src": "/images/p7.png",
+        "alt": "Image 12"
+      },
+      {
+        "src": "/images/p8.png",
+        "alt": "Image 13"
+      },
+      {
+        "src": "/images/p12.png",
+        "alt": "Image 17"
+      },
+      {
+        "src": "/images/p13.png",
+        "alt": "Image 18"
+      },
+      {
+        "src": "/images/p14.png",
+        "alt": "Image 19"
+      },
+      {
+        "src": "/images/p15.png",
+        "alt": "Image 20"
+      },
+      {
+        "src": "/images/p16.png",
+        "alt": "Image 21"
+      },
+      {
+        "src": "/images/p17.png",
+        "alt": "Image 22"
+      },
+      {
+        "src": "/images/p18.png",
+        "alt": "Image 23"
+      },
+      {
+        "src": "/images/p19.png",
+        "alt": "Image 24"
+      },
+      {
+        "src": "/images/p20.png",
+        "alt": "Image 25"
+      },
+      {
+        "src": "/images/p21.png",
+        "alt": "Image 26"
+      },
+      {
+        "src": "/images/p22.png",
+        "alt": "Image 27"
+      }
+    ],
+    "note": "日月，传阿,ZA没有奖状就没放，通关存档在github仓库里",
+    "archive": {
+      "href": "https://github.com/Aki-yzh/Switch",
+      "image": "/images/github.png"
+    }
+  }
+}

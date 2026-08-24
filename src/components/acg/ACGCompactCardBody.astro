@@ -1,0 +1,53 @@
+---
+import ACGCardArrow from './ACGCardArrow.astro'
+import ACGTextLines from './ACGTextLines.astro'
+
+interface Props {
+  title: string | string[]
+  description: string | string[]
+  image: string
+}
+
+const { title, description, image } = Astro.props
+---
+
+<div
+  class='group relative h-full overflow-hidden rounded-2xl border border-border bg-background px-4 py-2 transition-colors hover:bg-primary-foreground sm:py-3'
+>
+  <div class='relative z-10 flex h-full items-center gap-3'>
+    <div class='relative h-16 w-16 min-w-16 overflow-hidden rounded-full'>
+      <img
+        src={image}
+        class='my-0 bg-white'
+        alt='avatar'
+        loading='lazy'
+        width='80'
+        height='80'
+        decoding='async'
+      />
+      <div class='absolute start-0 top-0 h-full w-full'>
+        <div
+          class='flex h-full w-full items-center justify-center rounded-full bg-foreground opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-50'
+        >
+          <ACGCardArrow />
+        </div>
+      </div>
+    </div>
+    <div class='flex flex-col gap-y-2'>
+      <p class='my-0 line-clamp-1 text-sm'><ACGTextLines value={title} /></p>
+      <p class='my-0 line-clamp-1 text-xs text-muted-foreground sm:line-clamp-2'>
+        <ACGTextLines value={description} />
+      </p>
+    </div>
+  </div>
+  <img
+    src={image}
+    class='absolute -start-2 top-0 z-0 my-0 h-full w-2/3 bg-white object-cover opacity-15'
+    alt='avatar bg'
+    loading='lazy'
+    style='mask-image:linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);ms-mask-image:-ms-linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);-webkit-mask-image:-webkit-linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%)'
+    width='80'
+    height='80'
+    decoding='async'
+  />
+</div>

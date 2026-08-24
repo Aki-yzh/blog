@@ -1,0 +1,98 @@
+---
+import GunplaCard from '@/components/GunplaCard.astro'
+
+interface GunplaItem {
+  order: number
+  group: string
+  officialImages: string[]
+  myImages: string[]
+  name: string
+  releasePrice: string
+  brand: string
+  purchasePrice: string
+  link78: string
+  review: string
+}
+
+interface GunplaGroup {
+  depth: number
+  id: string
+  text: string
+  tocText: string
+  key: string
+  parent: string | null
+  order: number
+}
+
+interface Props {
+  items: GunplaItem[]
+  groups: GunplaGroup[]
+}
+
+const { items, groups } = Astro.props
+const sortedGroups = [...groups].sort((left, right) => left.order - right.order)
+const sortedItems = [...items].sort((left, right) => left.order - right.order)
+const groupKeys = new Set(sortedGroups.map((group) => group.key))
+const groupOrders = new Set(sortedGroups.map((group) => group.order))
+
+if (groupKeys.size !== sortedGroups.length) {
+  throw new Error('Gunpla group manifest contains duplicate keys')
+}
+
+if (groupOrders.size !== sortedGroups.length) {
+  throw new Error('Gunpla group manifest contains duplicate order values')
+}
+
+const itemOrders = new Set(sortedItems.map((item) => item.order))
+if (itemOrders.size !== sortedItems.length) {
+  throw new Error('Gunpla entries contain duplicate order values')
+}
+
+for (const item of sortedItems) {
+  if (!groupKeys.has(item.group)) {
+    throw new Error(`Gunpla entry #${item.order} references unknown group ${item.group}`)
+  }
+}
+
+const itemsByGroup = new Map<string, GunplaItem[]>()
+for (const item of sortedItems) {
+  const groupItems = itemsByGroup.get(item.group) ?? []
+  groupItems.push(item)
+  itemsByGroup.set(item.group, groupItems)
+}
+---
+
+{
+  sortedGroups.map((group) => {
+    const groupItems = itemsByGroup.get(group.key) ?? []
+
+    return (
+      <Fragment>
+        {group.depth === 2 ? (
+          <h2 id={group.id}>{group.text}</h2>
+        ) : group.depth === 3 ? (
+          <h3 id={group.id}>{group.text}</h3>
+        ) : group.depth === 4 ? (
+          <h4 id={group.id}>{group.text}</h4>
+        ) : null}
+
+        {groupItems.length > 0 && (
+          <div class='grid grid-cols-1 gap-6'>
+            {groupItems.map((item) => (
+              <GunplaCard
+                officialImages={item.officialImages}
+                myImages={item.myImages}
+                name={item.name}
+                releasePrice={item.releasePrice}
+                brand={item.brand}
+                purchasePrice={item.purchasePrice}
+                link78={item.link78}
+                review={item.review}
+              />
+            ))}
+          </div>
+        )}
+      </Fragment>
+    )
+  })
+}

@@ -77,3 +77,8 @@ old_blog
 ignore.*
 /scripts/*.sh
 bunfig.toml
+
+# Codex workspace artifacts
+/.codex/
+/.agents/
+/.codex-tmp/

@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+import PaperCard from '@/components/PaperCard.astro'
+
+interface Props {
+  items: CollectionEntry<'publications'>[]
+}
+
+const { items } = Astro.props
+const sortedItems = [...items].sort((left, right) => left.data.order - right.data.order)
+const itemOrders = new Set(sortedItems.map((item) => item.data.order))
+
+if (itemOrders.size !== sortedItems.length) {
+  throw new Error('Publication entries contain duplicate order values')
+}
+---
+
+<div class='flex flex-col gap-y-4'>
+  {
+    sortedItems.map(({ data: { title, authors, publication, year, link } }) => (
+      <PaperCard
+        title={title}
+        authors={authors}
+        publication={publication}
+        year={year}
+        link={link}
+      />
+    ))
+  }
+</div>

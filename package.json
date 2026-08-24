@@ -8,6 +8,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "content:new": "bun scripts/new-content.mjs",
+    "content:check": "bun scripts/check-content.mjs && bun node_modules/astro/astro.js check",
     "lint": "prettier --write  \"**/*.{js,jsx,ts,tsx,md,mdx,svelte,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,svelte,astro}\""
   },
   "engines": {
