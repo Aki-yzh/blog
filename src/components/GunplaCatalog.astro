@@ -1,5 +1,5 @@
 ---
-import GunplaCard from '@/components/GunplaCard.astro'
+import GunplaGroupPanel from '@/components/GunplaGroupPanel.astro'
 
 interface GunplaItem {
   order: number
@@ -64,6 +64,10 @@ const brands = [...new Set(sortedItems.map((item) => item.brand))].sort()
 const leafGroups = sortedGroups.filter(
   (group) => !sortedGroups.some((child) => child.parent === group.key)
 )
+const topGroups = sortedGroups.filter((group) => group.parent === null)
+const childrenOf = (key: string) => sortedGroups.filter((group) => group.parent === key)
+const itemCountUnder = (key: string) =>
+  sortedItems.filter((item) => item.group === key || item.group.startsWith(`${key}/`)).length
 ---
 
 <section class='catalog-tools not-prose' aria-label='模型筛选'>
@@ -103,62 +107,49 @@ const leafGroups = sortedGroups.filter(
 <p id='gunpla-empty' hidden>没有找到符合条件的模型，试试其他关键词或清空筛选。</p>
 <div id='gunpla-catalog'>
   {
-    sortedGroups.map((group) => {
-      const groupItems = itemsByGroup.get(group.key) ?? []
-      const isLeaf = leafGroups.includes(group)
+    topGroups.map((topGroup) => (
+      <section class='collection-branch' data-catalog-branch>
+        <h2 id={topGroup.id}>{topGroup.text}</h2>
+        <div class:list={['collection-groups', { 'ko-brands': topGroup.key === 'KO' }]}>
+          {childrenOf(topGroup.key).map((group) => {
+            const childGroups = childrenOf(group.key)
+            const isLeaf = childGroups.length === 0
 
-      return (
-        <section data-catalog-section data-group-key={group.key}>
-          {!isLeaf &&
-            (group.depth === 2 ? (
-              <h2 id={group.id}>{group.text}</h2>
-            ) : group.depth === 3 ? (
-              <h3 id={group.id}>{group.text}</h3>
-            ) : group.depth === 4 ? (
-              <h4 id={group.id}>{group.text}</h4>
-            ) : null)}
+            if (isLeaf) {
+              return (
+                <GunplaGroupPanel
+                  group={group}
+                  items={itemsByGroup.get(group.key) ?? []}
+                  variant={topGroup.key === 'KO' ? 'brand' : 'line'}
+                  open={group === leafGroups[0]}
+                />
+              )
+            }
 
-          {isLeaf && (
-            <details class='catalog-group not-prose' id={group.id} open={group === leafGroups[0]}>
-              <summary>
-                <span>
-                  {group.text}
-                  <small>{group.parent}</small>
-                </span>
-                <span class='group-count'>{groupItems.length} 台</span>
-              </summary>
-              <div class='group-items'>
-                {groupItems.map((item) => (
-                  <div
-                    data-catalog-item
-                    data-brand={item.brand}
-                    data-search={`${item.name} ${item.brand} ${item.review} ${item.group}`
-                      .normalize('NFKC')
-                      .toLowerCase()}
-                  >
-                    <GunplaCard
-                      order={item.order}
-                      group={item.group}
-                      officialImages={item.officialImages}
-                      myImages={item.myImages}
-                      name={item.name}
-                      releasePrice={item.releasePrice}
-                      brand={item.brand}
-                      purchasePrice={item.purchasePrice}
-                      link78={item.link78}
-                      review={item.review}
+            return (
+              <details class='brand-cluster not-prose' id={group.id} data-catalog-branch>
+                <summary class='brand-summary'>
+                  <span>
+                    {group.text}
+                    <small>KO 品牌 · {childGroups.length} 条产品线</small>
+                  </span>
+                  <span class='group-count'>{itemCountUnder(group.key)} 台</span>
+                </summary>
+                <div class='brand-products'>
+                  {childGroups.map((child) => (
+                    <GunplaGroupPanel
+                      group={child}
+                      items={itemsByGroup.get(child.key) ?? []}
+                      variant='line'
                     />
-                  </div>
-                ))}
-              </div>
-              <button type='button' class='show-more' hidden>
-                显示更多
-              </button>
-            </details>
-          )}
-        </section>
-      )
-    })
+                  ))}
+                </div>
+              </details>
+            )
+          })}
+        </div>
+      </section>
+    ))
   }
 </div>
 
@@ -238,7 +229,8 @@ const leafGroups = sortedGroups.filter(
   button:hover {
     text-decoration: underline;
   }
-  .catalog-group {
+  .collection-groups :global(.catalog-group),
+  .brand-cluster {
     margin: 0.75rem 0;
     border: 1px solid hsl(var(--border));
     border-radius: 1rem;
@@ -246,7 +238,7 @@ const leafGroups = sortedGroups.filter(
     color: hsl(var(--foreground));
     scroll-margin-top: 5rem;
   }
-  summary {
+  .collection-groups :global(summary) {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -255,45 +247,45 @@ const leafGroups = sortedGroups.filter(
     list-style: none;
     background: linear-gradient(90deg, hsl(var(--card)), hsl(var(--secondary) / 0.35));
   }
-  summary::-webkit-details-marker {
+  .collection-groups :global(summary::-webkit-details-marker) {
     display: none;
   }
-  summary::before {
+  .collection-groups :global(summary::before) {
     content: '›';
     font-size: 1.3rem;
     transition: transform 0.15s;
   }
-  details[open] > summary::before {
+  .collection-groups :global(details[open] > summary::before) {
     transform: rotate(90deg);
   }
-  details[open] > summary {
+  .collection-groups :global(details[open] > summary) {
     border-bottom: 1px solid hsl(var(--border));
   }
-  summary > span:first-of-type {
+  .collection-groups :global(summary > span:first-of-type) {
     flex: 1;
     font-weight: 600;
   }
-  summary small {
+  .collection-groups :global(summary small) {
     display: block;
     margin-top: 0.15rem;
     font-size: 0.7rem;
     font-weight: 400;
     color: hsl(var(--muted-foreground));
   }
-  .group-count {
+  .collection-groups :global(.group-count) {
     padding: 0.28rem 0.56rem;
     border-radius: 2rem;
     background: hsl(var(--primary) / 0.08);
     color: hsl(var(--primary));
     font-size: 0.68rem;
   }
-  .group-items {
+  .collection-groups :global(.group-items) {
     display: grid;
     gap: 1rem;
     padding: 1rem;
     background: hsl(var(--secondary) / 0.18);
   }
-  .show-more {
+  .collection-groups :global(.show-more) {
     display: block;
     margin: 0 auto 1rem;
     padding: 0.5rem 1rem;
@@ -304,7 +296,12 @@ const leafGroups = sortedGroups.filter(
   [hidden] {
     display: none !important;
   }
-  #gunpla-catalog > section > :is(h2, h3, h4) {
+  .collection-branch[hidden],
+  .brand-cluster[hidden],
+  .collection-groups :global([hidden]) {
+    display: none !important;
+  }
+  .collection-branch > h2 {
     display: flex;
     align-items: center;
     gap: 0.8rem;
@@ -314,18 +311,44 @@ const leafGroups = sortedGroups.filter(
     font-weight: 700;
     letter-spacing: 0.08em;
   }
-  #gunpla-catalog > section > :is(h2, h3, h4)::after {
+  .collection-branch > h2::after {
     height: 1px;
     flex: 1;
     background: linear-gradient(90deg, hsl(var(--primary) / 0.4), transparent);
     content: '';
   }
-  :is(input, select, button, summary):focus-visible {
+  .ko-brands > :global(.brand-group),
+  .ko-brands > .brand-cluster {
+    margin-block: 0.85rem;
+  }
+  .ko-brands > :global(.brand-group > summary),
+  .brand-cluster > .brand-summary {
+    min-height: 4.5rem;
+    background: linear-gradient(90deg, hsl(var(--card)), hsl(var(--primary) / 0.065));
+  }
+  .ko-brands > :global(.brand-group > summary > span:first-of-type),
+  .brand-cluster > .brand-summary > span:first-of-type {
+    font-size: 1rem;
+    letter-spacing: 0.035em;
+  }
+  .brand-products {
+    display: grid;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem 1rem 1.6rem;
+    background: hsl(var(--secondary) / 0.18);
+    border-left: 2px solid hsl(var(--primary) / 0.35);
+  }
+  .brand-products :global(.catalog-group) {
+    margin: 0;
+    background: hsl(var(--background));
+  }
+  :is(input, select, button):focus-visible,
+  .collection-groups :global(summary:focus-visible) {
     outline: 2px solid hsl(var(--primary));
     outline-offset: 3px;
   }
   @media (prefers-reduced-motion: reduce) {
-    summary::before {
+    .collection-groups :global(summary::before) {
       transition: none;
     }
   }
@@ -338,19 +361,20 @@ const leafGroups = sortedGroups.filter(
     const brand = document.querySelector<HTMLSelectElement>('#gunpla-brand')!
     const group = document.querySelector<HTMLSelectElement>('#gunpla-group')!
     const result = document.querySelector<HTMLElement>('#gunpla-results')!
-    const sections = [...catalog.querySelectorAll<HTMLElement>('[data-catalog-section]')]
-    const groups = [...catalog.querySelectorAll<HTMLDetailsElement>('details')]
-    const limits = new Map(groups.map((element) => [element, 6]))
+    const sections = [
+      ...catalog.querySelectorAll<HTMLDetailsElement>('details[data-catalog-section]')
+    ]
+    const allDetails = [...catalog.querySelectorAll<HTMLDetailsElement>('details')]
+    const branches = [...catalog.querySelectorAll<HTMLElement>('[data-catalog-branch]')].reverse()
+    const limits = new Map(sections.map((element) => [element, 6]))
     let savedOpen: boolean[] | null = null
     const render = () => {
       const query = search.value.trim().normalize('NFKC').toLowerCase()
       const terms = query.split(/\s+/).filter(Boolean)
       const filtering = !!(query || brand.value || group.value)
-      if (filtering && !savedOpen) savedOpen = groups.map((element) => element.open)
+      if (filtering && !savedOpen) savedOpen = allDetails.map((element) => element.open)
       let count = 0
       for (const section of sections) {
-        const details = section.querySelector<HTMLDetailsElement>('details')
-        if (!details) continue
         const cards = [...section.querySelectorAll<HTMLElement>('[data-catalog-item]')]
         const matching = cards.filter(
           (card) =>
@@ -358,7 +382,7 @@ const leafGroups = sortedGroups.filter(
             (!group.value || section.dataset.groupKey === group.value) &&
             terms.every((term) => card.dataset.search!.includes(term))
         )
-        const visible = new Set(matching.slice(0, limits.get(details)!))
+        const visible = new Set(matching.slice(0, limits.get(section)!))
         cards.forEach((card) => {
           card.hidden = !visible.has(card)
         })
@@ -369,23 +393,21 @@ const leafGroups = sortedGroups.filter(
         const more = section.querySelector<HTMLButtonElement>('.show-more')!
         more.hidden = visible.size === matching.length
         more.textContent = `再显示 ${Math.min(6, matching.length - visible.size)} 台（还有 ${matching.length - visible.size} 台）`
-        if (filtering && matching.length) details.open = true
+        if (filtering && matching.length) {
+          section.open = true
+          let ancestor = section.parentElement?.closest<HTMLDetailsElement>('details') ?? null
+          while (ancestor) {
+            ancestor.open = true
+            ancestor = ancestor.parentElement?.closest<HTMLDetailsElement>('details') ?? null
+          }
+        }
         count += matching.length
       }
-      sections
-        .filter((section) => !section.querySelector('details'))
-        .forEach((section) => {
-          section.hidden =
-            filtering &&
-            !sections.some(
-              (child) =>
-                child.dataset.groupKey!.startsWith(`${section.dataset.groupKey}/`) &&
-                child.querySelector('details') &&
-                !child.hidden
-            )
-        })
+      branches.forEach((branch) => {
+        branch.hidden = filtering && !branch.querySelector('[data-catalog-section]:not([hidden])')
+      })
       if (!filtering && savedOpen) {
-        groups.forEach((element, i) => {
+        allDetails.forEach((element, i) => {
           element.open = savedOpen![i]
         })
         savedOpen = null
@@ -394,7 +416,7 @@ const leafGroups = sortedGroups.filter(
       document.querySelector<HTMLElement>('#gunpla-empty')!.hidden = count !== 0
     }
     const filter = () => {
-      groups.forEach((element) => limits.set(element, 6))
+      sections.forEach((element) => limits.set(element, 6))
       render()
     }
     search.addEventListener('input', filter)
@@ -407,16 +429,16 @@ const leafGroups = sortedGroups.filter(
       filter()
     })
     document.querySelector('#gunpla-expand')!.addEventListener('click', () =>
-      groups.forEach((element) => {
+      allDetails.forEach((element) => {
         element.open = true
       })
     )
     document.querySelector('#gunpla-collapse')!.addEventListener('click', () =>
-      groups.forEach((element) => {
+      allDetails.forEach((element) => {
         element.open = false
       })
     )
-    groups.forEach((element) =>
+    sections.forEach((element) =>
       element.querySelector('.show-more')!.addEventListener('click', () => {
         limits.set(element, limits.get(element)! + 6)
         render()
@@ -437,7 +459,14 @@ const leafGroups = sortedGroups.filter(
         group.value = ''
         filter()
       }
-      if (target instanceof HTMLDetailsElement) target.open = true
+      let details =
+        target instanceof HTMLDetailsElement
+          ? target
+          : target.closest<HTMLDetailsElement>('details')
+      while (details) {
+        details.open = true
+        details = details.parentElement?.closest<HTMLDetailsElement>('details') ?? null
+      }
       target.scrollIntoView({ block: 'start' })
     }
     render()

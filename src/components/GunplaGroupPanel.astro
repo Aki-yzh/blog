@@ -1,0 +1,75 @@
+---
+import GunplaCard from '@/components/GunplaCard.astro'
+
+interface GunplaItem {
+  order: number
+  group: string
+  officialImages: string[]
+  myImages: string[]
+  name: string
+  releasePrice: string
+  brand: string
+  purchasePrice: string
+  link78: string
+  review: string
+}
+
+interface GunplaGroup {
+  id: string
+  text: string
+  key: string
+  parent: string | null
+}
+
+interface Props {
+  group: GunplaGroup
+  items: GunplaItem[]
+  variant?: 'brand' | 'line'
+  open?: boolean
+}
+
+const { group, items, variant = 'line', open = false } = Astro.props
+---
+
+<details
+  class:list={['catalog-group', { 'brand-group': variant === 'brand' }]}
+  id={group.id}
+  data-catalog-section
+  data-group-key={group.key}
+  open={open}
+>
+  <summary>
+    <span>
+      {group.text}
+      <small>{variant === 'brand' ? 'KO 品牌' : group.parent}</small>
+    </span>
+    <span class='group-count'>{items.length} 台</span>
+  </summary>
+  <div class='group-items'>
+    {
+      items.map((item) => (
+        <div
+          data-catalog-item
+          data-brand={item.brand}
+          data-search={`${item.name} ${item.brand} ${item.review} ${item.group}`
+            .normalize('NFKC')
+            .toLowerCase()}
+        >
+          <GunplaCard
+            order={item.order}
+            group={item.group}
+            officialImages={item.officialImages}
+            myImages={item.myImages}
+            name={item.name}
+            releasePrice={item.releasePrice}
+            brand={item.brand}
+            purchasePrice={item.purchasePrice}
+            link78={item.link78}
+            review={item.review}
+          />
+        </div>
+      ))
+    }
+  </div>
+  <button type='button' class='show-more' hidden>显示更多</button>
+</details>
