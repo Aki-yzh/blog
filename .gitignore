@@ -82,3 +82,6 @@ bunfig.toml
 /.codex/
 /.agents/
 /.codex-tmp/
+
+# Local content editor backups (never deployed or committed)
+/.content-admin/

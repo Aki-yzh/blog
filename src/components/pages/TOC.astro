@@ -42,19 +42,23 @@ const toc = generateToc(headings)
     headings: HTMLElement[] = []
     tocLinks: TOCLink[] = []
     headingProgress: Record<string, HeadingProgress> = {}
+    updateTimer?: number
 
     constructor() {
       super()
 
-      // Initialize the headings and tocLinks
-      this.headings = Array.from(
-        document.querySelectorAll('article h2, article h3, article h4, article h5, article h6')
-      )
       this.tocLinks = Array.from(this.querySelectorAll('a[href^="#"]')).map((link) => ({
         element: link as HTMLAnchorElement,
         progressBar: link.previousElementSibling as HTMLElement,
         slug: (link.getAttribute('href') || '').substring(1)
       }))
+      const seen = new Set<string>()
+      this.headings = this.tocLinks.flatMap(({ slug }) => {
+        const target = document.getElementById(slug)
+        if (!target || seen.has(slug)) return []
+        seen.add(slug)
+        return [target]
+      })
     }
 
     updatePositionAndStyle = () => {
@@ -76,24 +80,21 @@ const toc = generateToc(headings)
       })
 
       this.tocLinks.forEach(({ element: el, progressBar: bar, slug }, i) => {
-        const { inView, progress } = this.headingProgress[slug]
-        if (this.headingProgress[slug]) {
-          el.classList.toggle('highlight', inView)
-          el.classList.toggle('highlight-bg-translucent', inView)
-          el.classList.toggle(
-            'rounded-t-2xl',
-            inView && (i == 0 || !this.headingProgress[this.tocLinks[i - 1]?.slug].inView)
-          )
-          el.classList.toggle(
-            'rounded-b-2xl',
-            inView &&
-              (i == this.tocLinks.length - 1 ||
-                !this.headingProgress[this.tocLinks[i + 1]?.slug].inView)
-          )
-          bar.classList.toggle('readed', !inView && progress == 1)
-          bar.classList.toggle('highlight-bg', inView)
-          bar.style.setProperty('height', `${progress * 90}%`)
-        }
+        const current = this.headingProgress[slug]
+        if (!current) return
+        const { inView, progress } = current
+        const previous = this.headingProgress[this.tocLinks[i - 1]?.slug]
+        const next = this.headingProgress[this.tocLinks[i + 1]?.slug]
+        el.classList.toggle('highlight', inView)
+        el.classList.toggle('highlight-bg-translucent', inView)
+        el.classList.toggle('rounded-t-2xl', inView && (i === 0 || !previous?.inView))
+        el.classList.toggle(
+          'rounded-b-2xl',
+          inView && (i === this.tocLinks.length - 1 || !next?.inView)
+        )
+        bar.classList.toggle('readed', !inView && progress === 1)
+        bar.classList.toggle('highlight-bg', inView)
+        bar.style.setProperty('height', `${progress * 90}%`)
       })
     }
 
@@ -105,18 +106,23 @@ const toc = generateToc(headings)
           // Push the history to add the hash at the end of the URL
           const directHeading = this.headings.find((heading) => heading.id === link.slug)
           if (directHeading) {
-            // Push the history to add the hash at the end of the URL
-            history.pushState(null, directHeading.textContent || "", this.getAttribute("href"));
-            directHeading.scrollIntoView({ behavior: 'smooth' });
+            history.pushState(null, directHeading.textContent || '', `#${link.slug}`)
+            window.dispatchEvent(new HashChangeEvent('hashchange'))
+            directHeading.scrollIntoView({ behavior: 'smooth' })
           } else {
-            console.warn(`No heading found for slug: ${link.slug}`);
+            console.warn(`No heading found for slug: ${link.slug}`)
           }
         })
       })
 
       // Initial first and listen to scroll event
-      setInterval(this.updatePositionAndStyle, 100)
+      this.updateTimer = window.setInterval(this.updatePositionAndStyle, 100)
       window.addEventListener('scroll', this.updatePositionAndStyle)
+    }
+
+    disconnectedCallback() {
+      if (this.updateTimer) window.clearInterval(this.updateTimer)
+      window.removeEventListener('scroll', this.updatePositionAndStyle)
     }
   }
 

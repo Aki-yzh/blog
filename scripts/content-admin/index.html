@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Aki 内容管理</title>
+    <link rel="stylesheet" href="/admin/style.css" />
+    <script src="/admin/app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <span class="eyebrow">LOCAL STUDIO</span>
+        <h1>Aki 内容管理</h1>
+      </div>
+      <div class="top-actions">
+        <span class="local-dot">仅本地</span
+        ><a
+          id="site-preview"
+          class="quiet"
+          href="http://127.0.0.1:4321/gunpla"
+          target="_blank"
+          rel="noopener"
+          >打开网页预览 ↗</a
+        ><button id="reload" class="quiet">重新载入</button>
+      </div>
+    </header>
+    <main>
+      <nav class="tabs" aria-label="内容类型">
+        <button data-kind="gunpla" aria-current="page">
+          Gunpla <span id="count-gunpla">0</span>
+        </button>
+        <button data-kind="acg">ACG <span id="count-acg">0</span></button>
+        <button data-kind="publications">论文 <span id="count-publications">0</span></button>
+      </nav>
+      <section class="workspace">
+        <aside class="library">
+          <div class="library-head">
+            <div>
+              <span class="eyebrow">LIBRARY</span>
+              <h2 id="library-title">Gunpla</h2>
+            </div>
+            <button id="new-entry" class="primary">＋ 新增</button>
+          </div>
+          <label class="search"
+            ><span>搜索</span><input id="entry-search" type="search" placeholder="名称、标题或分组"
+          /></label>
+          <div id="entry-list" class="entry-list" role="listbox" aria-label="内容条目"></div>
+        </aside>
+        <section class="editor">
+          <div id="welcome" class="welcome">
+            <span class="eyebrow">CONTENT STUDIO</span>
+            <h2>选择一条内容开始编辑</h2>
+            <p>也可以点击“新增”。保存前会展示修改摘要；编辑已有条目时，旧文件会自动备份。</p>
+          </div>
+          <form id="content-form" hidden>
+            <div class="editor-head">
+              <div>
+                <span class="eyebrow" id="form-mode">EDIT ENTRY</span>
+                <h2 id="form-title"></h2>
+                <code id="file-id"></code>
+              </div>
+              <button id="clone-entry" type="button" class="quiet">复制为新条目</button>
+            </div>
+            <div id="form-fields" class="fields"></div>
+            <section class="preview-pane" aria-labelledby="preview-title">
+              <span class="eyebrow">LIVE PREVIEW</span>
+              <h3 id="preview-title">内容预览</h3>
+              <div id="preview" class="preview"></div>
+            </section>
+            <footer class="form-footer">
+              <p>保存只修改本地 JSON，不会自动提交或发布。</p>
+              <div>
+                <button id="cancel-edit" type="button" class="quiet">撤销本次编辑</button
+                ><button id="review-save" type="submit" class="primary">检查并保存</button>
+              </div>
+            </footer>
+          </form>
+        </section>
+      </section>
+    </main>
+    <dialog id="confirm-dialog">
+      <form method="dialog">
+        <span class="eyebrow">REVIEW CHANGES</span>
+        <h2>确认本次修改</h2>
+        <p id="change-summary"></p>
+        <ul id="change-list"></ul>
+        <div class="dialog-actions">
+          <button value="cancel" class="quiet">返回检查</button
+          ><button value="confirm" class="primary">确认保存</button>
+        </div>
+      </form>
+    </dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

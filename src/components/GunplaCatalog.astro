@@ -60,39 +60,363 @@ for (const item of sortedItems) {
   groupItems.push(item)
   itemsByGroup.set(item.group, groupItems)
 }
+const brands = [...new Set(sortedItems.map((item) => item.brand))].sort()
+const leafGroups = sortedGroups.filter(
+  (group) => !sortedGroups.some((child) => child.parent === group.key)
+)
 ---
 
-{
-  sortedGroups.map((group) => {
-    const groupItems = itemsByGroup.get(group.key) ?? []
+<section class='catalog-tools not-prose' aria-label='模型筛选'>
+  <div class='catalog-intro'>
+    <span>COLLECTION</span><strong>{items.length} 台模型 · {leafGroups.length} 个分组</strong>
+  </div>
+  <p>按名称、品牌或简评查找，展开分组查看收藏。</p>
+  <div class='catalog-filters'>
+    <label class='search-field'
+      >搜索<input id='gunpla-search' type='search' placeholder='例如：巴巴托斯、扎古…' /></label
+    >
+    <label
+      >品牌<select id='gunpla-brand'
+        ><option value=''>全部品牌</option>{
+          brands.map((brand) => <option value={brand}>{brand}</option>)
+        }</select
+      ></label
+    >
+    <label
+      >分组<select id='gunpla-group'
+        ><option value=''>全部分组</option>{
+          leafGroups.map((group) => <option value={group.key}>{group.key}</option>)
+        }</select
+      ></label
+    >
+  </div>
+  <div class='catalog-actions'>
+    <span id='gunpla-results' role='status' aria-live='polite'>共 {items.length} 台模型</span>
+    <div>
+      <button type='button' id='gunpla-reset'>清空筛选</button><button
+        type='button'
+        id='gunpla-expand'>展开全部</button
+      ><button type='button' id='gunpla-collapse'>收起全部</button>
+    </div>
+  </div>
+</section>
+<p id='gunpla-empty' hidden>没有找到符合条件的模型，试试其他关键词或清空筛选。</p>
+<div id='gunpla-catalog'>
+  {
+    sortedGroups.map((group) => {
+      const groupItems = itemsByGroup.get(group.key) ?? []
+      const isLeaf = leafGroups.includes(group)
 
-    return (
-      <Fragment>
-        {group.depth === 2 ? (
-          <h2 id={group.id}>{group.text}</h2>
-        ) : group.depth === 3 ? (
-          <h3 id={group.id}>{group.text}</h3>
-        ) : group.depth === 4 ? (
-          <h4 id={group.id}>{group.text}</h4>
-        ) : null}
+      return (
+        <section data-catalog-section data-group-key={group.key}>
+          {!isLeaf &&
+            (group.depth === 2 ? (
+              <h2 id={group.id}>{group.text}</h2>
+            ) : group.depth === 3 ? (
+              <h3 id={group.id}>{group.text}</h3>
+            ) : group.depth === 4 ? (
+              <h4 id={group.id}>{group.text}</h4>
+            ) : null)}
 
-        {groupItems.length > 0 && (
-          <div class='grid grid-cols-1 gap-6'>
-            {groupItems.map((item) => (
-              <GunplaCard
-                officialImages={item.officialImages}
-                myImages={item.myImages}
-                name={item.name}
-                releasePrice={item.releasePrice}
-                brand={item.brand}
-                purchasePrice={item.purchasePrice}
-                link78={item.link78}
-                review={item.review}
-              />
-            ))}
-          </div>
-        )}
-      </Fragment>
+          {isLeaf && (
+            <details class='catalog-group not-prose' id={group.id} open={group === leafGroups[0]}>
+              <summary>
+                <span>
+                  {group.text}
+                  <small>{group.parent}</small>
+                </span>
+                <span class='group-count'>{groupItems.length} 台</span>
+              </summary>
+              <div class='group-items'>
+                {groupItems.map((item) => (
+                  <div
+                    data-catalog-item
+                    data-brand={item.brand}
+                    data-search={`${item.name} ${item.brand} ${item.review} ${item.group}`
+                      .normalize('NFKC')
+                      .toLowerCase()}
+                  >
+                    <GunplaCard
+                      officialImages={item.officialImages}
+                      myImages={item.myImages}
+                      name={item.name}
+                      releasePrice={item.releasePrice}
+                      brand={item.brand}
+                      purchasePrice={item.purchasePrice}
+                      link78={item.link78}
+                      review={item.review}
+                    />
+                  </div>
+                ))}
+              </div>
+              <button type='button' class='show-more' hidden>
+                显示更多
+              </button>
+            </details>
+          )}
+        </section>
+      )
+    })
+  }
+</div>
+
+<style>
+  .catalog-tools {
+    padding: 1.25rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: 1rem;
+    background: hsl(var(--card));
+    color: hsl(var(--foreground));
+  }
+  .catalog-intro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .catalog-intro span {
+    color: hsl(var(--primary));
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+  }
+  .catalog-intro strong {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .catalog-tools p {
+    margin: 0.6rem 0 1rem;
+    font-size: 0.85rem;
+    color: hsl(var(--muted-foreground));
+  }
+  .catalog-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .catalog-filters label {
+    flex: 1 1 130px;
+    display: grid;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    min-width: 0;
+  }
+  .catalog-filters .search-field {
+    flex-basis: 100%;
+  }
+  .catalog-filters input,
+  .catalog-filters select {
+    width: 100%;
+    min-width: 0;
+    padding: 0.65rem 0.7rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.5rem;
+    background: hsl(var(--background));
+    color: inherit;
+    font: inherit;
+  }
+  .catalog-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+  }
+  .catalog-actions > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  button {
+    cursor: pointer;
+    color: hsl(var(--primary));
+  }
+  button:hover {
+    text-decoration: underline;
+  }
+  .catalog-group {
+    margin: 0.75rem 0;
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.85rem;
+    overflow: hidden;
+    color: hsl(var(--foreground));
+    scroll-margin-top: 5rem;
+  }
+  summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    list-style: none;
+    background: hsl(var(--card));
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::before {
+    content: '›';
+    font-size: 1.3rem;
+    transition: transform 0.15s;
+  }
+  details[open] > summary::before {
+    transform: rotate(90deg);
+  }
+  summary > span:first-of-type {
+    flex: 1;
+    font-weight: 600;
+  }
+  summary small {
+    display: block;
+    margin-top: 0.15rem;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: hsl(var(--muted-foreground));
+  }
+  .group-count {
+    font-size: 0.75rem;
+    color: hsl(var(--muted-foreground));
+  }
+  .group-items {
+    display: grid;
+    gap: 1rem;
+    padding: 0.6rem;
+  }
+  .show-more {
+    display: block;
+    margin: 0 auto 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(var(--border));
+    font-size: 0.8rem;
+  }
+  [hidden] {
+    display: none !important;
+  }
+  :is(input, select, button, summary):focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    summary::before {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const catalog = document.querySelector<HTMLElement>('#gunpla-catalog')
+  if (catalog) {
+    const search = document.querySelector<HTMLInputElement>('#gunpla-search')!
+    const brand = document.querySelector<HTMLSelectElement>('#gunpla-brand')!
+    const group = document.querySelector<HTMLSelectElement>('#gunpla-group')!
+    const result = document.querySelector<HTMLElement>('#gunpla-results')!
+    const sections = [...catalog.querySelectorAll<HTMLElement>('[data-catalog-section]')]
+    const groups = [...catalog.querySelectorAll<HTMLDetailsElement>('details')]
+    const limits = new Map(groups.map((element) => [element, 6]))
+    let savedOpen: boolean[] | null = null
+    const render = () => {
+      const query = search.value.trim().normalize('NFKC').toLowerCase()
+      const terms = query.split(/\s+/).filter(Boolean)
+      const filtering = !!(query || brand.value || group.value)
+      if (filtering && !savedOpen) savedOpen = groups.map((element) => element.open)
+      let count = 0
+      for (const section of sections) {
+        const details = section.querySelector<HTMLDetailsElement>('details')
+        if (!details) continue
+        const cards = [...section.querySelectorAll<HTMLElement>('[data-catalog-item]')]
+        const matching = cards.filter(
+          (card) =>
+            (!brand.value || card.dataset.brand === brand.value) &&
+            (!group.value || section.dataset.groupKey === group.value) &&
+            terms.every((term) => card.dataset.search!.includes(term))
+        )
+        const visible = new Set(matching.slice(0, limits.get(details)!))
+        cards.forEach((card) => {
+          card.hidden = !visible.has(card)
+        })
+        section.hidden = matching.length === 0 && filtering
+        section.querySelector('.group-count')!.textContent = filtering
+          ? `${matching.length} / ${cards.length} 台`
+          : `${cards.length} 台`
+        const more = section.querySelector<HTMLButtonElement>('.show-more')!
+        more.hidden = visible.size === matching.length
+        more.textContent = `再显示 ${Math.min(6, matching.length - visible.size)} 台（还有 ${matching.length - visible.size} 台）`
+        if (filtering && matching.length) details.open = true
+        count += matching.length
+      }
+      sections
+        .filter((section) => !section.querySelector('details'))
+        .forEach((section) => {
+          section.hidden =
+            filtering &&
+            !sections.some(
+              (child) =>
+                child.dataset.groupKey!.startsWith(`${section.dataset.groupKey}/`) &&
+                child.querySelector('details') &&
+                !child.hidden
+            )
+        })
+      if (!filtering && savedOpen) {
+        groups.forEach((element, i) => {
+          element.open = savedOpen![i]
+        })
+        savedOpen = null
+      }
+      result.textContent = filtering ? `找到 ${count} 台模型` : `共 ${count} 台模型`
+      document.querySelector<HTMLElement>('#gunpla-empty')!.hidden = count !== 0
+    }
+    const filter = () => {
+      groups.forEach((element) => limits.set(element, 6))
+      render()
+    }
+    search.addEventListener('input', filter)
+    brand.addEventListener('change', filter)
+    group.addEventListener('change', filter)
+    document.querySelector('#gunpla-reset')!.addEventListener('click', () => {
+      search.value = ''
+      brand.value = ''
+      group.value = ''
+      filter()
+    })
+    document.querySelector('#gunpla-expand')!.addEventListener('click', () =>
+      groups.forEach((element) => {
+        element.open = true
+      })
     )
-  })
-}
+    document.querySelector('#gunpla-collapse')!.addEventListener('click', () =>
+      groups.forEach((element) => {
+        element.open = false
+      })
+    )
+    groups.forEach((element) =>
+      element.querySelector('.show-more')!.addEventListener('click', () => {
+        limits.set(element, limits.get(element)! + 6)
+        render()
+      })
+    )
+    const revealAnchor = () => {
+      let id: string
+      try {
+        id = decodeURIComponent(location.hash.slice(1))
+      } catch {
+        return
+      }
+      const target = id && document.getElementById(id)
+      if (!target || !catalog.contains(target)) return
+      if (target.closest<HTMLElement>('[data-catalog-section]')?.hidden) {
+        search.value = ''
+        brand.value = ''
+        group.value = ''
+        filter()
+      }
+      if (target instanceof HTMLDetailsElement) target.open = true
+      target.scrollIntoView({ block: 'start' })
+    }
+    render()
+    revealAnchor()
+    window.addEventListener('hashchange', revealAnchor)
+  }
+</script>

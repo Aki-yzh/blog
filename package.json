@@ -9,7 +9,10 @@
     "preview": "astro preview",
     "astro": "astro",
     "content:new": "bun scripts/new-content.mjs",
-    "content:check": "bun scripts/check-content.mjs && bun node_modules/astro/astro.js check",
+    "content:manage": "bun scripts/manage-content.mjs",
+    "content:studio": "bun scripts/manage-content.mjs --preview",
+    "content:test": "bun test scripts/content-admin/store.test.mjs scripts/content-admin/server.test.mjs",
+    "content:check": "bun scripts/check-content.mjs && node node_modules/astro/astro.js check",
     "lint": "prettier --write  \"**/*.{js,jsx,ts,tsx,md,mdx,svelte,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,svelte,astro}\""
   },
   "engines": {
