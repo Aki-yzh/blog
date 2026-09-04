@@ -137,6 +137,8 @@ const leafGroups = sortedGroups.filter(
                       .toLowerCase()}
                   >
                     <GunplaCard
+                      order={item.order}
+                      group={item.group}
                       officialImages={item.officialImages}
                       myImages={item.myImages}
                       name={item.name}
@@ -165,7 +167,7 @@ const leafGroups = sortedGroups.filter(
     padding: 1.25rem;
     border: 1px solid hsl(var(--border));
     border-radius: 1rem;
-    background: hsl(var(--card));
+    background: linear-gradient(135deg, hsl(var(--card)), hsl(var(--secondary) / 0.38));
     color: hsl(var(--foreground));
   }
   .catalog-intro {
@@ -239,7 +241,7 @@ const leafGroups = sortedGroups.filter(
   .catalog-group {
     margin: 0.75rem 0;
     border: 1px solid hsl(var(--border));
-    border-radius: 0.85rem;
+    border-radius: 1rem;
     overflow: hidden;
     color: hsl(var(--foreground));
     scroll-margin-top: 5rem;
@@ -248,10 +250,10 @@ const leafGroups = sortedGroups.filter(
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 1rem;
+    padding: 1rem 1.1rem;
     cursor: pointer;
     list-style: none;
-    background: hsl(var(--card));
+    background: linear-gradient(90deg, hsl(var(--card)), hsl(var(--secondary) / 0.35));
   }
   summary::-webkit-details-marker {
     display: none;
@@ -263,6 +265,9 @@ const leafGroups = sortedGroups.filter(
   }
   details[open] > summary::before {
     transform: rotate(90deg);
+  }
+  details[open] > summary {
+    border-bottom: 1px solid hsl(var(--border));
   }
   summary > span:first-of-type {
     flex: 1;
@@ -276,13 +281,17 @@ const leafGroups = sortedGroups.filter(
     color: hsl(var(--muted-foreground));
   }
   .group-count {
-    font-size: 0.75rem;
-    color: hsl(var(--muted-foreground));
+    padding: 0.28rem 0.56rem;
+    border-radius: 2rem;
+    background: hsl(var(--primary) / 0.08);
+    color: hsl(var(--primary));
+    font-size: 0.68rem;
   }
   .group-items {
     display: grid;
     gap: 1rem;
-    padding: 0.6rem;
+    padding: 1rem;
+    background: hsl(var(--secondary) / 0.18);
   }
   .show-more {
     display: block;
@@ -294,6 +303,22 @@ const leafGroups = sortedGroups.filter(
   }
   [hidden] {
     display: none !important;
+  }
+  #gunpla-catalog > section > :is(h2, h3, h4) {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 2.25rem 0 0.85rem;
+    color: hsl(var(--foreground));
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  #gunpla-catalog > section > :is(h2, h3, h4)::after {
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(90deg, hsl(var(--primary) / 0.4), transparent);
+    content: '';
   }
   :is(input, select, button, summary):focus-visible {
     outline: 2px solid hsl(var(--primary));
