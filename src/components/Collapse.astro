@@ -16,8 +16,10 @@ const { class: className, title, ...props } = Astro.props
     )}
     {...props}
   >
-    <div
-      class='group/highlight expand-title sticky top-0 z-20 flex cursor-pointer justify-between py-2 group-[.expanded]/expand:bg-primary-foreground sm:py-3'
+    <button
+      type='button'
+      aria-expanded='false'
+      class='group/highlight expand-title sticky top-0 z-20 flex w-full cursor-pointer justify-between border-0 bg-transparent py-2 text-left text-inherit group-[.expanded]/expand:bg-primary-foreground sm:py-3'
     >
       <p class='m-0 transition-colors group-hover/highlight:text-primary'>{title}</p>
       <div class='expand-button'>
@@ -45,7 +47,7 @@ const { class: className, title, ...props } = Astro.props
           ></polyline>
         </svg>
       </div>
-    </div>
+    </button>
     <div
       class='expand-conetent grid opacity-0 transition-all duration-300 ease-in-out group-[.expanded]/expand:mb-3 group-[.expanded]/expand:opacity-100 sm:group-[.expanded]/expand:mb-4'
     >
@@ -63,10 +65,17 @@ const { class: className, title, ...props } = Astro.props
     }
 
     connectedCallback() {
-      const expandTitle = this.querySelector('.expand-title')
-      // const expandable = this.querySelector('.expandable')
+      const expandTitle = this.querySelector<HTMLButtonElement>('.expand-title')
       expandTitle?.addEventListener('click', () => {
         this.classList.toggle('expanded')
+        const expanded = this.classList.contains('expanded')
+        expandTitle.setAttribute('aria-expanded', String(expanded))
+        if (expanded) {
+          this.querySelectorAll<HTMLIFrameElement>('iframe[data-src]').forEach((frame) => {
+            frame.src = frame.dataset.src!
+            frame.removeAttribute('data-src')
+          })
+        }
       })
     }
   }

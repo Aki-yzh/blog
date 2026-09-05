@@ -37,6 +37,13 @@ if (new Set(placementKeys).size !== placementKeys.length) {
 if (acgPage.bangumi.detail.href !== acgPage.bangumi.detail.iframeSrc) {
   throw new Error('ACG Detail link and iframe must use the same URL')
 }
+const recentActivityHref =
+  acgPage.bangumi.recentActivity.href.trim() ||
+  acgPage.bangumi.detail.href.replace(/\/(?:anime|book)\/list\/([^/]+).*$/, '/user/$1')
+const recentActivityImage = acgPage.bangumi.recentActivity.image.replace(
+  /^http:\/\//,
+  'https://'
+)
 
 const headings = [
   {
@@ -74,7 +81,7 @@ const headings = [
     &nbsp;&nbsp;<a href='#timeline'>timeline</a>为从18年开始每年最推荐的几部当年番
   </p>
 
-  <div class='animate grid w-full grid-cols-2 gap-2'>
+  <div class='animate grid w-full grid-cols-1 gap-2 sm:grid-cols-2'>
     {
       animeFeatured.map((item) => (
         <ACGFeaturedCard
@@ -123,7 +130,7 @@ const headings = [
     &nbsp;&nbsp;这里就推荐两部，一部是所有的最推荐，一部是近期最推荐
   </p>
 
-  <div class='animate grid w-full grid-cols-2 gap-2'>
+  <div class='animate grid w-full grid-cols-1 gap-2 sm:grid-cols-2'>
     {
       comicFeatured.map((item) => (
         <ACGFeaturedCard
@@ -170,23 +177,32 @@ const headings = [
   <Collapse title='详细信息'>
     <div style='width: 100%; height: 120vh; position: relative; overflow-x: hidden;'>
       <iframe
+        title='Bangumi 动画与漫画收藏详情'
+        loading='lazy'
         width='100%'
         height='100%'
         style='border:none; position: absolute; top: 0; left: 0;'
-        src={acgPage.bangumi.detail.iframeSrc}></iframe>
+        data-src={acgPage.bangumi.detail.iframeSrc}></iframe>
     </div>
   </Collapse>
 </PageLayout>
 
 <div
-  class='fixed bottom-[25%] right-[6.5%] z-10 flex translate-y-1/2 transform flex-col items-start'
+  class='fixed bottom-[25%] right-[3%] z-10 hidden max-w-[320px] translate-y-1/2 transform flex-col items-start min-[1800px]:flex'
 >
   <p class='rounded-lg text-gray-500'>Recent Activities:</p>
   <br />
-  <a href={acgPage.bangumi.recentActivity.href} class='relative flex items-center justify-center'>
+  <a
+    href={recentActivityHref}
+    target='_blank'
+    rel='noopener noreferrer'
+    class='relative flex items-center justify-center'
+  >
     <img
-      src={acgPage.bangumi.recentActivity.image}
+      src={recentActivityImage}
       alt='AKI 的个人主页'
+      loading='lazy'
+      decoding='async'
       class='rounded-lg object-cover'
       style='z-index: 1;'
     />

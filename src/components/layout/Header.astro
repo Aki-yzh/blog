@@ -59,9 +59,11 @@ import { siteConfig, menuLinks } from '@/site-config'
         <div class='flex gap-x-4 transition-all group-[.not-top]:me-1.5 group-[.not-top]:gap-x-2'>
           <button
             id='toggleDarkMode'
+            type='button'
+            aria-pressed='false'
             class='group/dark rounded-md border p-1.5 transition-all hover:bg-border sm:group-[.not-top]:rounded-xl'
           >
-            <span class='sr-only'>Dark Theme</span>
+            <span class='sr-only' data-theme-label>切换到深色主题</span>
             <svg class='size-5 transition-all group-hover/dark:text-primary dark:hidden'>
               <use href='/icons/header.svg#mingcute-sun-line'></use>
             </svg>
@@ -71,6 +73,8 @@ import { siteConfig, menuLinks } from '@/site-config'
           </button>
           <button
             id='toggleMenu'
+            type='button'
+            aria-expanded='false'
             class='rounded-md border p-1.5 transition-all hover:bg-border sm:hidden sm:group-[.not-top]:rounded-xl'
           >
             <span class='sr-only'>Menu</span>
@@ -103,20 +107,32 @@ import { siteConfig, menuLinks } from '@/site-config'
 
       // Dark Mode
       function getCurrentTheme() {
-        return localStorage.getItem('theme')
+        return document.documentElement.classList.contains('dark') ? 'dark' : 'light'
       }
-      const toggleDarkModeButton = this.querySelector('#toggleDarkMode')
+      const toggleDarkModeButton = this.querySelector<HTMLButtonElement>('#toggleDarkMode')
+      const syncThemeButton = () => {
+        if (!toggleDarkModeButton) return
+        const isDark = getCurrentTheme() === 'dark'
+        const label = isDark ? '切换到浅色主题' : '切换到深色主题'
+        toggleDarkModeButton.setAttribute('aria-pressed', String(isDark))
+        toggleDarkModeButton.setAttribute('aria-label', label)
+        const screenReaderLabel = toggleDarkModeButton.querySelector('[data-theme-label]')
+        if (screenReaderLabel) screenReaderLabel.textContent = label
+      }
+      syncThemeButton()
       toggleDarkModeButton?.addEventListener('click', () => {
         const toggleDarkModeEvent = new CustomEvent('theme-change', {
           detail: { theme: getCurrentTheme() === 'light' ? 'dark' : 'light' }
         })
         document.dispatchEvent(toggleDarkModeEvent)
+        syncThemeButton()
       })
 
       // Menu
-      const toggleMenuButton = this.querySelector('#toggleMenu')
+      const toggleMenuButton = this.querySelector<HTMLButtonElement>('#toggleMenu')
       toggleMenuButton?.addEventListener('click', () => {
         this.classList.toggle('expanded')
+        toggleMenuButton.setAttribute('aria-expanded', String(this.classList.contains('expanded')))
       })
     }
   }

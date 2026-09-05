@@ -7,6 +7,7 @@ import { createAdminServer } from './content-admin/server.mjs'
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const port = Number(process.env.CONTENT_ADMIN_PORT || 4322)
 const withPreview = process.argv.includes('--preview')
+const nodeExecutable = process.env.NODE_BINARY || 'node'
 if (!Number.isInteger(port) || port < 1024 || port > 65535)
   throw new Error('CONTENT_ADMIN_PORT 必须在 1024–65535 之间')
 const server = createAdminServer(root)
@@ -40,7 +41,7 @@ server.listen(port, '127.0.0.1', () => {
   }
 
   preview = spawn(
-    process.execPath,
+    nodeExecutable,
     [resolve(root, 'node_modules/astro/astro.js'), 'dev', '--host', '127.0.0.1', '--port', '4321'],
     {
       cwd: root,

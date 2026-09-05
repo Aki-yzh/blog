@@ -13,7 +13,7 @@ const { title, description, image, link } = Astro.props
 
 {
   link ? (
-    <a href={link} target='_blank' class='no-underline'>
+    <a href={link} target='_blank' rel='noopener noreferrer' class='no-underline'>
       <ACGCompactCardBody title={title} description={description} image={image} />
     </a>
   ) : (

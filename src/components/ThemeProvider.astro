@@ -20,6 +20,15 @@
     if (save) localStorage.setItem('theme', theme)
     document.documentElement.classList.toggle('dark', theme === 'dark')
 
+    const isDark = theme === 'dark'
+    const label = isDark ? '切换到浅色主题' : '切换到深色主题'
+    document.querySelectorAll('#toggleDarkMode').forEach((button) => {
+      button.setAttribute('aria-pressed', String(isDark))
+      button.setAttribute('aria-label', label)
+      const screenReaderLabel = button.querySelector('[data-theme-label]')
+      if (screenReaderLabel) screenReaderLabel.textContent = label
+    })
+
     // Set window theme-color
     const metaColor = theme === 'dark' ? '#0B0B10' : '#FCFCFD'
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', metaColor)
@@ -34,12 +43,11 @@
   // Listen for theme-change custom event
   document.addEventListener('theme-change', (e) => {
     const theme = e.detail.theme
-    localStorage.setItem('theme', theme)
-    setTheme(e.detail.theme, true)
+    setTheme(theme, true)
   })
 
   // Listen for prefers-color-scheme change
   lightModePref.addEventListener('change', (e) => {
-    setTheme(e.matches ? 'light' : 'dark')
+    if (!localStorage.getItem('theme')) setTheme(e.matches ? 'light' : 'dark')
   })
 </script>

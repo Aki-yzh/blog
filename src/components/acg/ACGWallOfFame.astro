@@ -36,7 +36,7 @@ const { title, images, note, archive } = Astro.props
         </p>
       </div>
       <div class='flex h-full w-full items-end justify-end'>
-        <a href={archive.href} target='_blank' class='no-underline'>
+        <a href={archive.href} target='_blank' rel='noopener noreferrer' class='no-underline'>
           <div
             class='group relative h-full overflow-hidden rounded-2xl border border-border bg-background px-4 py-2 transition-colors hover:bg-primary-foreground sm:py-3'
           >

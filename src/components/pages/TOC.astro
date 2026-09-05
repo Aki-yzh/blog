@@ -42,7 +42,7 @@ const toc = generateToc(headings)
     headings: HTMLElement[] = []
     tocLinks: TOCLink[] = []
     headingProgress: Record<string, HeadingProgress> = {}
-    updateTimer?: number
+    updateFrame?: number
 
     constructor() {
       super()
@@ -71,7 +71,7 @@ const toc = generateToc(headings)
       this.headings.forEach((el, index) => {
         const nextHeadingTop = this.headings[index + 1]?.offsetTop || postOffset
         const range = [el.offsetTop - pageOffset, nextHeadingTop - pageOffset - el.offsetHeight]
-        const progress = (windowHeight - range[0]) / (range[1] - range[0])
+        const progress = (windowHeight - range[0]) / Math.max(1, range[1] - range[0])
 
         this.headingProgress[el.id] = {
           inView: range[0] < windowHeight && range[1] > 0,
@@ -98,6 +98,14 @@ const toc = generateToc(headings)
       })
     }
 
+    scheduleUpdate = () => {
+      if (this.updateFrame !== undefined) return
+      this.updateFrame = window.requestAnimationFrame(() => {
+        this.updateFrame = undefined
+        this.updatePositionAndStyle()
+      })
+    }
+
     connectedCallback() {
       // Smooth scroll
       this.tocLinks.forEach((link) => {
@@ -108,21 +116,27 @@ const toc = generateToc(headings)
           if (directHeading) {
             history.pushState(null, directHeading.textContent || '', `#${link.slug}`)
             window.dispatchEvent(new HashChangeEvent('hashchange'))
-            directHeading.scrollIntoView({ behavior: 'smooth' })
+            directHeading.scrollIntoView({
+              behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+                ? 'auto'
+                : 'smooth'
+            })
           } else {
             console.warn(`No heading found for slug: ${link.slug}`)
           }
         })
       })
 
-      // Initial first and listen to scroll event
-      this.updateTimer = window.setInterval(this.updatePositionAndStyle, 100)
-      window.addEventListener('scroll', this.updatePositionAndStyle)
+      // Update only when layout or scroll position changes, and at most once per frame.
+      this.scheduleUpdate()
+      window.addEventListener('scroll', this.scheduleUpdate, { passive: true })
+      window.addEventListener('resize', this.scheduleUpdate)
     }
 
     disconnectedCallback() {
-      if (this.updateTimer) window.clearInterval(this.updateTimer)
-      window.removeEventListener('scroll', this.updatePositionAndStyle)
+      if (this.updateFrame !== undefined) window.cancelAnimationFrame(this.updateFrame)
+      window.removeEventListener('scroll', this.scheduleUpdate)
+      window.removeEventListener('resize', this.scheduleUpdate)
     }
   }
 

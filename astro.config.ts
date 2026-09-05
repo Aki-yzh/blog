@@ -9,7 +9,6 @@ import vercel from '@astrojs/vercel/serverless'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
-import playformCompress from '@playform/compress'
 import icon from 'astro-icon'
 // Markdown
 import rehypeExternalLinks from 'rehype-external-links'
@@ -28,11 +27,7 @@ export default defineConfig({
   trailingSlash: 'never',
   output: 'server',
   // if you want deploy on vercel
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true
-    }
-  }),
+  adapter: vercel(),
   // ---
   // if you want deploy locally
   // adapter: node({
@@ -44,19 +39,12 @@ export default defineConfig({
     }),
     sitemap(),
     mdx(),
-    icon(),
-    playformCompress({
-      SVG: false
-    })
+    icon()
   ],
   // root: './my-project-directory',
 
   // Prefetch Options
   prefetch: true,
-  // Server Options
-  server: {
-    host: true
-  },
   // Markdown Options
   markdown: {
     remarkPlugins: [
@@ -73,7 +61,7 @@ export default defineConfig({
         rehypeExternalLinks,
         {
           target: '_blank',
-          rel: ['nofollow, noopener, noreferrer']
+          rel: ['nofollow', 'noopener', 'noreferrer']
         }
       ]
     ],

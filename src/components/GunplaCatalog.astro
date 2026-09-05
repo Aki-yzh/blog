@@ -64,6 +64,16 @@ const brands = [...new Set(sortedItems.map((item) => item.brand))].sort()
 const leafGroups = sortedGroups.filter(
   (group) => !sortedGroups.some((child) => child.parent === group.key)
 )
+const groupByKey = new Map(sortedGroups.map((group) => [group.key, group]))
+const displayGroupPath = (group: GunplaGroup) => {
+  const labels = [group.text]
+  let parent = group.parent ? groupByKey.get(group.parent) : undefined
+  while (parent) {
+    labels.unshift(parent.text)
+    parent = parent.parent ? groupByKey.get(parent.parent) : undefined
+  }
+  return labels.join('/')
+}
 const topGroups = sortedGroups.filter((group) => group.parent === null)
 const childrenOf = (key: string) => sortedGroups.filter((group) => group.parent === key)
 const itemCountUnder = (key: string) =>
@@ -89,7 +99,7 @@ const itemCountUnder = (key: string) =>
     <label
       >分组<select id='gunpla-group'
         ><option value=''>全部分组</option>{
-          leafGroups.map((group) => <option value={group.key}>{group.key}</option>)
+          leafGroups.map((group) => <option value={group.key}>{displayGroupPath(group)}</option>)
         }</select
       ></label
     >
@@ -286,12 +296,26 @@ const itemCountUnder = (key: string) =>
     background: hsl(var(--secondary) / 0.18);
   }
   .collection-groups :global(.show-more) {
-    display: block;
-    margin: 0 auto 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
+    display: flex;
+    width: calc(100% - 2rem);
+    align-items: center;
+    justify-content: center;
+    margin: 0 1rem 1rem;
+    padding: 0.72rem 1rem;
+    border-radius: 0.65rem;
     border: 1px solid hsl(var(--border));
-    font-size: 0.8rem;
+    background: hsl(var(--card));
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease;
+  }
+  .collection-groups :global(.show-more:hover) {
+    border-color: hsl(var(--primary) / 0.45);
+    background: hsl(var(--primary) / 0.06);
+    text-decoration: none;
   }
   [hidden] {
     display: none !important;
@@ -392,7 +416,10 @@ const itemCountUnder = (key: string) =>
           : `${cards.length} 台`
         const more = section.querySelector<HTMLButtonElement>('.show-more')!
         more.hidden = visible.size === matching.length
-        more.textContent = `再显示 ${Math.min(6, matching.length - visible.size)} 台（还有 ${matching.length - visible.size} 台）`
+        const remaining = matching.length - visible.size
+        const nextBatch = Math.min(6, remaining)
+        more.textContent = remaining <= 6 ? `显示剩余 ${remaining} 台` : `显示更多 · 还有 ${remaining} 台`
+        more.setAttribute('aria-label', `再显示 ${nextBatch} 台模型，还有 ${remaining} 台未显示`)
         if (filtering && matching.length) {
           section.open = true
           let ancestor = section.parentElement?.closest<HTMLDetailsElement>('details') ?? null

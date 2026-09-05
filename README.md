@@ -36,8 +36,9 @@ Install dependencies:
 cd astro-theme-pure
 bun install
 ```
+
 > [!NOTE]
-> For Bun, if the installation is slow, it is recommended to use a mirror configuration by creating  `bunfig.toml` under the project root directory:
+> For Bun, if the installation is slow, it is recommended to use a mirror configuration by creating `bunfig.toml` under the project root directory:
 >
 > ```toml
 > [install]
@@ -53,6 +54,19 @@ bun dev
 # For Windows, Bun has not yet implemented background tasks. So for Bun, use the following command instead:
 # bun start
 ```
+
+## Managing Gunpla, ACG, and publications
+
+The content is stored as individual JSON entries, so routine updates do not require editing Astro
+page code. Start the local content studio and site preview together with:
+
+```shell
+bun run content:studio
+```
+
+Open `http://127.0.0.1:4322/admin/content`. You can search, create, clone, preview, and upload images
+there; ordering and filenames are suggested automatically. See [CONTENT.md](./CONTENT.md) for the
+safe editing workflow and the command-line alternative.
 
 Or build (you may need to use node.js SSR firstly):
 

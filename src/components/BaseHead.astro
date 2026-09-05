@@ -12,7 +12,6 @@ const titleSeparator = '•'
 const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const socialImageURL = new URL(ogImage ? ogImage : '/images/social-card.png', Astro.url).href
-const { walineServerUrl } = siteConfig
 ---
 
 <meta charset='utf-8' />
@@ -114,6 +113,13 @@ const { walineServerUrl } = siteConfig
 
 {/* Vercel speed insights */}
 {isProd && <SpeedInsights />}
+
+{/* Vercel Web Analytics. Direct injection avoids the legacy adapter's slow build hook. */}
+{
+  isProd && (
+    <script is:inline defer src='/_vercel/insights/script.js' data-sdkn='astro' />
+  )
+}
 
 {/* user script */}
 {

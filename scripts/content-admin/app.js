@@ -19,6 +19,18 @@ const sections = [
 ]
 const previewPaths = { gunpla: '/gunpla', acg: '/ACG', publications: '/projects' }
 const sectionLabel = (value) => sections.find(([key]) => key === value)?.[1] || value
+const groupLabel = (key) => {
+  const groupsByKey = new Map(state.groups.map((group) => [group.key, group]))
+  const labels = []
+  const visited = new Set()
+  let group = groupsByKey.get(key)
+  while (group && !visited.has(group.key)) {
+    visited.add(group.key)
+    labels.unshift(group.text)
+    group = group.parent ? groupsByKey.get(group.parent) : null
+  }
+  return labels.length ? labels.join('/') : key
+}
 const titleOf = (entry) => {
   const data = entry.data
   const value = data.name || data.title || '未命名'
@@ -26,7 +38,7 @@ const titleOf = (entry) => {
 }
 const metaOf = (entry) =>
   entry.kind === 'gunpla'
-    ? entry.data.group + ' · ' + entry.data.brand
+    ? groupLabel(entry.data.group) + ' · ' + entry.data.brand
     : entry.kind === 'acg'
       ? sectionLabel(entry.data.section) + (entry.data.year ? ' · ' + entry.data.year : '')
       : entry.data.publication + ' · ' + entry.data.year
@@ -197,7 +209,7 @@ function renderFields() {
       key: 'group',
       label: '分组',
       type: 'select',
-      options: leafGroups().map((group) => [group.key, group.key])
+      options: leafGroups().map((group) => [group.key, groupLabel(group.key)])
     })
     add({ key: 'brand', label: '品牌' })
     add({ key: 'name', label: '模型名称', wide: true })
