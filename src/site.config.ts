@@ -6,13 +6,13 @@ export const siteConfig: SiteConfig = {
   // Meta property used to construct the meta title property, found in src/components/BaseHead.astro L:11
   title: 'Akiのink',
   // Meta property used to generate your sitemap and canonical URLs in your final build
-  site: 'https://aki-yzh.github.io',
+  site: 'https://www.aki-yzh.cn',
   // Meta property used as the default description meta property
   description: '我们所经历的每个平凡的日常，也许就是连续发生的奇迹',
   // HTML lang property, found in src/layouts/Base.astro L:18
-  lang: 'zh-CN, en-US',
+  lang: 'zh-CN',
   // Meta property, found in src/components/BaseHead.astro L:42
-  ogLocale: 'en_US',
+  ogLocale: 'zh_CN',
   // Date.prototype.toLocaleDateString() parameters, found in src/utils/date.ts.
   date: {
     locale: 'en-US',
@@ -25,7 +25,7 @@ export const siteConfig: SiteConfig = {
   // Customize
   pageSize: 8,
 
-  walineServerUrl: 'waline.aki-yzh.cn',
+  walineServerUrl: 'https://waline.aki-yzh.cn',
   applyFriendTip: {
     name: 'Astro Theme Pure',
     slogan: '我们所经历的每个平凡的日常，也许就是连续发生的奇迹。',

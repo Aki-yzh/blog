@@ -11,7 +11,7 @@ const { articleDate, description, ogImage, title } = Astro.props
 const titleSeparator = '•'
 const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
-const socialImageURL = new URL(ogImage ? ogImage : '/images/social-card.png', Astro.url).href
+const socialImageURL = new URL(ogImage ? ogImage : '/images/social-card.png', Astro.site).href
 ---
 
 <meta charset='utf-8' />
@@ -44,16 +44,18 @@ const socialImageURL = new URL(ogImage ? ogImage : '/images/social-card.png', As
 <meta content={siteConfig.author} name='author' />
 
 {/* Theme Color */}
-<meta content='' name='theme-color' />
+<meta content='#f8fafc' name='theme-color' media='(prefers-color-scheme: light)' />
+<meta content='#101214' name='theme-color' media='(prefers-color-scheme: dark)' />
 
 {/* Open Graph / Facebook */}
 <meta content={articleDate ? 'article' : 'website'} property='og:type' />
-<meta content={title} property='og:title' />
+<meta content={siteTitle} property='og:title' />
 <meta content={description} property='og:description' />
 <meta content={canonicalURL} property='og:url' />
 <meta content={siteConfig.title} property='og:site_name' />
 <meta content={siteConfig.ogLocale} property='og:locale' />
 <meta content={socialImageURL} property='og:image' />
+<meta content={`${title} · ${siteConfig.title}`} property='og:image:alt' />
 <meta content='1200' property='og:image:width' />
 <meta content='630' property='og:image:height' />
 {
@@ -68,12 +70,10 @@ const socialImageURL = new URL(ogImage ? ogImage : '/images/social-card.png', As
 {/* Twitter */}
 <meta content='summary_large_image' property='twitter:card' />
 <meta content={canonicalURL} property='twitter:url' />
-<meta content={title} property='twitter:title' />
+<meta content={siteTitle} property='twitter:title' />
 <meta content={description} property='twitter:description' />
 <meta content={socialImageURL} property='twitter:image' />
-
-{/* Telegram */}
-<meta name='telegram:channel' content='@cworld0_cn' />
+<meta content={`${title} · ${siteConfig.title}`} property='twitter:image:alt' />
 
 {/* Sitemap */}
 <link href='/sitemap-index.xml' rel='sitemap' />
@@ -83,7 +83,7 @@ const socialImageURL = new URL(ogImage ? ogImage : '/images/social-card.png', As
   rel='alternate'
   type='application/rss+xml'
   title={siteConfig.title}
-  href={`${Astro.site}rss.xml`}
+  href={new URL('rss.xml', Astro.site).href}
 />
 
 <meta content={Astro.generator} name='generator' />
@@ -118,16 +118,5 @@ const socialImageURL = new URL(ogImage ? ogImage : '/images/social-card.png', As
 {
   isProd && (
     <script is:inline defer src='/_vercel/insights/script.js' data-sdkn='astro' />
-  )
-}
-
-{/* user script */}
-{
-  isProd && (
-    <script>
-      console.log( '%c Astro Theme Pure %c https://github.com/cworld1/astro-theme-pure/',
-      'color:#fff;background:linear-gradient(90deg,#448bff,#44e9ff);padding:5px 0;',
-      'color:#000;background:linear-gradient(90deg,#44e9ff,#ffffff);padding:5px 10px 5px 0px;' )
-    </script>
   )
 }

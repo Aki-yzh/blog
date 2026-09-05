@@ -5,8 +5,8 @@ const { class: className } = Astro.props
 ---
 
 <comment-component>
-  <div id='waline' class={cn('not-prose', className)}>
-    Comment seems to stuck. Try to refresh?✨
+  <div id='waline' class={cn('not-prose', className)} role='status' aria-live='polite'>
+    <span class='comment-loading'><span aria-hidden='true'></span>评论加载中…</span>
   </div>
 </comment-component>
 
@@ -21,26 +21,32 @@ const { class: className } = Astro.props
     }
 
     connectedCallback() {
-      init({
-        el: '#waline',
-        serverURL: siteConfig.walineServerUrl,
-        emoji: [
-          'https://cdn.cbd.int/@waline/emojis@1.2.0/bmoji',
-          'https://cdn.cbd.int/@waline/emojis@1.2.0/weibo'
-        ],
-        reaction: ['/images/comment-like.png'],
-        pageview: true,
-        comment: true,
-        locale: {
-          reaction0: 'Like',
-          placeholder: 'Welcome to comment. (Email to receive replies. Login is unnecessary)'
-        },
-        imageUploader: false
-      })
+      try {
+        init({
+          el: this.querySelector('#waline') as HTMLElement,
+          serverURL: siteConfig.walineServerUrl,
+          emoji: [
+            'https://cdn.cbd.int/@waline/emojis@1.2.0/bmoji',
+            'https://cdn.cbd.int/@waline/emojis@1.2.0/weibo'
+          ],
+          reaction: ['/images/comment-like.png'],
+          pageview: true,
+          comment: true,
+          locale: {
+            reaction0: 'Like',
+            placeholder: 'Welcome to comment. (Email to receive replies. Login is unnecessary)'
+          },
+          imageUploader: false
+        })
+      } catch (error) {
+        console.error('Unable to initialize comments.', error)
+        const container = this.querySelector('#waline')
+        if (container) container.textContent = '评论暂时无法加载，请稍后刷新。'
+      }
     }
   }
 
-  customElements.define('comment-component', Comment)
+  if (!customElements.get('comment-component')) customElements.define('comment-component', Comment)
 </script>
 
 <style>
@@ -90,6 +96,27 @@ const { class: className } = Astro.props
     --waline-box-shadow: none;
   }
 
+  .comment-loading {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: hsl(var(--muted-foreground));
+    font-size: 0.8rem;
+  }
+  .comment-loading > span {
+    width: 0.75rem;
+    height: 0.75rem;
+    border: 1px solid hsl(var(--border));
+    border-top-color: hsl(var(--primary));
+    border-radius: 50%;
+    animation: comment-spin 0.8s linear infinite;
+  }
+  @keyframes comment-spin {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
   /* reaction buttons */
   #waline :global(.wl-reaction-title) {
     display: none !important;
@@ -101,7 +128,6 @@ const { class: className } = Astro.props
   #waline :global(blockquote) {
     position: relative;
     border-inline-start: 4px solid transparent !important;
-    background:;
   }
   #waline :global(blockquote)::before {
     content: '';

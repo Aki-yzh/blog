@@ -46,15 +46,18 @@ const publications = await getCollection('publications')
 
 <PageLayout title='About' headings={headings} info='/about'>
 
- <h2 id='about'>Aki</h2>
-  <p>CS PHD Candidate / Jolo / Otaku</p>
-  <p>   
-        PKU EECS21 毕业、CS PHD 25在读的一只落魄鼠鼠<br>
+ <section class='about-profile not-prose' aria-labelledby='about'>
+  <p class='profile-kicker'>PERSONAL PROFILE · BEIJING</p>
+  <h2 id='about'>Aki</h2>
+  <p class='profile-role'>CS PhD Candidate / Jolo / Otaku</p>
+  <p class='profile-bio'>
+        PKU EECS21 毕业、CS PhD 25在读的一只落魄鼠鼠<br>
         阿宅一只，看的动漫还算多<br>
         半个胶佬，因为钱包空空所以玩的国产翻模更多一点<br>
         目前在做普适计算的相关研究
   </p>
-  <p> Motto: 身構えているときには、死神は来ないものだ . <Spoiler>做好准备的时候，死神是不会来的。</Spoiler></p>
+  <p class='profile-motto'>Motto: 身構えているときには、死神は来ないものだ。<Spoiler>做好准备的时候，死神是不会来的。</Spoiler></p>
+ </section>
   
   <h2 id='Pub'>Publications</h2>
  
@@ -63,20 +66,20 @@ const publications = await getCollection('publications')
 
   <!-- tools -->
   <h2 id='tools'>Tools</h2>
-  <p>Current support tools as follow:</p>
+  <p>A compact snapshot of the tools I use every day.</p>
   <ToolSection
     class='mb-5'
     title='Productivity'
     tools={[
       {
         name: 'Safari',
-        description: 'Broswer',
+        description: 'Browser',
         href: 'https://www.apple.com/safari/',
         iconPath: 'safari'
       },
       {
         name: 'Chrome',
-        description: 'Broswer',
+        description: 'Browser',
         href: 'https://www.google.com/chrome/',
         iconPath: 'chrome'
       },
@@ -87,7 +90,7 @@ const publications = await getCollection('publications')
         iconPath: 'illustrator'
       },
       {
-        name: 'Foxin',
+        name: 'Foxit',
         description: 'PDF Viewer and Editor',
         href: 'https://www.foxitsoftware.cn/foxitoffice/',
         iconPath: 'firefox'
@@ -106,8 +109,8 @@ const publications = await getCollection('publications')
     title='Development'
     tools={[
       {
-        name: 'claude',
-        description: 'ai coding',
+        name: 'Claude',
+        description: 'AI coding',
         href: 'https://claude.com/',
         iconPath: 'claude-color'
       },
@@ -124,7 +127,7 @@ const publications = await getCollection('publications')
         iconPath: 'qt'
       },
       {
-        name: 'Matlab',
+        name: 'MATLAB',
         description: 'IDE',
         href: 'https://ww2.mathworks.cn/',
         iconPath: 'aftereffects'
@@ -151,19 +154,19 @@ const publications = await getCollection('publications')
       },
       {
         name: 'Raspberry Pi OS',
-        description: 'Linux in RaspberryPi',
+        description: 'Linux on Raspberry Pi',
         href: 'https://www.raspberrypi.com/software/',
         iconPath: 'archlinux'
       },
       {
-        name: 'MacOS Sonoma',
+        name: 'macOS Sonoma',
         description: 'MacBook Pro',
         href: 'https://www.apple.com/macos/',
         iconPath: 'apple'
       },
       {
         name: 'Windows 11',
-        description: 'Desktop@dom',
+        description: 'Desktop setup',
         href: 'https://news.microsoft.com/windows11-general-availability/',
         iconPath: 'windows11'
       }
@@ -188,16 +191,16 @@ const publications = await getCollection('publications')
       {
         date: '2025-08-20',
         content:
-          '<a href="https://cs.pku.edu.cn"target="_blank">School of Computer Science, Peking University</a>'
+          '<a href="https://cs.pku.edu.cn" target="_blank" rel="noopener noreferrer">School of Computer Science, Peking University</a>'
       },
       {
         date: '2021-08-26',
         content:
-          '<a href="https://eecs.pku.edu.cn"target="_blank">The School of Electronics Engineering and Computer Science, Peking University</a>'
+          '<a href="https://eecs.pku.edu.cn" target="_blank" rel="noopener noreferrer">The School of Electronics Engineering and Computer Science, Peking University</a>'
       },
       {
         date: '2018-09-01',
-        content: '<a href="https://www.jkfz.cn"target="_blank">Jiangxi University of Technology High School</a>'
+        content: '<a href="https://www.jkfz.cn" target="_blank" rel="noopener noreferrer">Jiangxi University of Technology High School</a>'
       }
     ]}
   />
@@ -237,3 +240,68 @@ const publications = await getCollection('publications')
   </ul>
   <Comment slot='bottom' />
 </PageLayout>
+
+<style>
+  :global(#Pub),
+  :global(#tools),
+  :global(#social-networks),
+  :global(#Education),
+  :global(#about-blog) {
+    scroll-margin-top: 5rem;
+  }
+  .about-profile {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding: 1.35rem 1.45rem 1.4rem;
+    overflow: hidden;
+    border: 1px solid hsl(var(--border));
+    border-radius: 1.1rem;
+    background: linear-gradient(135deg, hsl(var(--card)), hsl(var(--secondary) / 0.34));
+  }
+  .about-profile::after {
+    position: absolute;
+    right: -0.05em;
+    bottom: -0.28em;
+    color: hsl(var(--foreground) / 0.025);
+    content: 'A';
+    font-size: 10rem;
+    font-weight: 750;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .profile-kicker {
+    margin: 0 0 0.55rem;
+    color: hsl(var(--primary));
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+  }
+  .about-profile h2 {
+    margin: 0;
+    font-size: clamp(1.7rem, 4vw, 2.25rem);
+    line-height: 1.2;
+  }
+  .profile-role {
+    margin: 0.4rem 0 0.9rem;
+    color: hsl(var(--muted-foreground));
+    font-size: 0.85rem;
+    letter-spacing: 0.015em;
+  }
+  .profile-bio {
+    position: relative;
+    z-index: 1;
+    max-width: 34rem;
+    margin: 0;
+    color: hsl(var(--foreground) / 0.78);
+    line-height: 1.85;
+  }
+  .profile-motto {
+    position: relative;
+    z-index: 1;
+    margin: 1rem 0 0;
+    padding-top: 0.85rem;
+    border-top: 1px solid hsl(var(--border));
+    color: hsl(var(--muted-foreground));
+    font-size: 0.78rem;
+  }
+</style>

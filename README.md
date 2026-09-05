@@ -1,94 +1,64 @@
-# Astro Theme Pure
+# Akiのink
 
-[English](./README.md) | [简体中文](./README-zh-CN.md)
+Aki 的个人网站，包含博客、研究成果、项目、ACG 记录与 Gunpla 收藏。
 
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/t/cworld1/astro-theme-pure?label=commits&style=flat-square)](https://github.com/cworld1/astro-theme-pure/commits)
-[![GitHub stars](https://img.shields.io/github/stars/cworld1/astro-theme-pure?style=flat-square)](https://github.com/cworld1/astro-theme-pure/stargazers)
-[![vercel status](https://img.shields.io/website?down_message=offline&label=vercel&logo=vercel&style=flat-square&up_message=online&url=https%3A%2F%2Fastro-theme-pure.vercel.app)](#)
-[![GitHub license](https://img.shields.io/github/license/cworld1/astro-theme-pure?style=flat-square)](https://github.com/cworld1/astro-theme-pure/blob/main/LICENSE)
-
-A simple, clean but powerful blog theme build by astro.
-
-![image](https://github.com/user-attachments/assets/7eb17ddf-fd5f-42f3-a337-675a21ba7a27)
-
-## Introduction / Deployment
-
-[Demo](https://astro-theme-pure.vercel.app/) | [Showcase](https://github.com/cworld1/astro-theme-pure/issues/10)
-
-For more information, please visit the [CWorld Site](https://cworld0.com/blog/theme-resume) and [Deployment Instructions](https://astro-theme-pure.vercel.app/blog/customize).
+- 正式站点：[www.aki-yzh.cn](https://www.aki-yzh.cn/)
+- 技术栈：Astro、Tailwind CSS、Waline、Vercel
+- 内容格式：Markdown/MDX 博客，以及结构化 JSON 收藏数据
 
 ## Local development
 
-Environment requirements:
-
-- [Nodejs](https://nodejs.org/): 18.0.0+
-- [Bun](https://bun.sh/): 1.0.0+
-
-Clone the repository:
+环境要求：Node.js 20、Bun 1.x。
 
 ```shell
-git clone https://github.com/cworld1/astro-theme-pure.git
-```
-
-Install dependencies:
-
-```shell
-cd astro-theme-pure
 bun install
+bun run start
 ```
 
-> [!NOTE]
-> For Bun, if the installation is slow, it is recommended to use a mirror configuration by creating `bunfig.toml` under the project root directory:
->
-> ```toml
-> [install]
-> registry = "<npm mirror site>"
-> ```
->
-> For details about other PM mirror configs, you may need to see their official documents.
+默认预览地址为 `http://127.0.0.1:4321/`。
 
-Start the development server:
+## Managing content
 
-```shell
-bun dev
-# For Windows, Bun has not yet implemented background tasks. So for Bun, use the following command instead:
-# bun start
-```
-
-## Managing Gunpla, ACG, and publications
-
-The content is stored as individual JSON entries, so routine updates do not require editing Astro
-page code. Start the local content studio and site preview together with:
+Gunpla、ACG 和论文均通过结构化内容文件管理，日常更新不需要修改 Astro 页面代码。
 
 ```shell
 bun run content:studio
 ```
 
-Open `http://127.0.0.1:4322/admin/content`. You can search, create, clone, preview, and upload images
-there; ordering and filenames are suggested automatically. See [CONTENT.md](./CONTENT.md) for the
-safe editing workflow and the command-line alternative.
+命令会同时启动：
 
-Or build (you may need to use node.js SSR firstly):
+- 内容后台：`http://127.0.0.1:4322/admin/content`
+- 网站预览：`http://127.0.0.1:4321/`
+
+内容后台支持搜索、新建、克隆、实时预览、自动建议排序与文件名，以及本地图片上传。完整的安全编辑流程参见 [CONTENT.md](./CONTENT.md)。
+
+## Validation
 
 ```shell
+bun run content:check
+bun run content:test
 bun run build
 ```
 
-Preview:
+- `content:check`：验证内容结构、排序、分组和 Astro 类型。
+- `content:test`：验证内容后台的读取、备份、并发修改保护和图片上传安全。
+- `build`：执行生产构建。
+
+## Deployment and backups
+
+`main` 分支由 Vercel 部署到正式域名。重要改造前使用带日期的 Git Tag 保存稳定恢复点，并将 Tag 推送到 GitHub：
 
 ```shell
-bun preview
+git tag -a backup-YYYY-MM-DD-description -m "Backup before change"
+git push origin backup-YYYY-MM-DD-description
 ```
 
-## Contributions
+本轮优化前的恢复点为 `backup-2026-09-05-pre-optimization`。
 
-To spend more time coding and less time fiddling with whitespace, this project uses code conventions and styles to encourage consistency. Code with a consistent style is easier (and less error-prone!) to review, maintain, and understand.
+## Credits
 
-## Thanks
-
-- [Astro Cactus](https://github.com/chrismwilliams/astro-theme-cactus)
-- [Astro Resume](https://github.com/srleom/astro-theme-resume)
+网站基于 [Astro Theme Pure](https://github.com/cworld1/astro-theme-pure) 深度定制。
 
 ## License
 
-This project is licensed under the Apache 2.0 License.
+This project is licensed under the Apache License 2.0.

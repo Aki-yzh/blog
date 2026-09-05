@@ -1,6 +1,13 @@
 ---
 import { cn } from '@/utils'
-import { Icon } from 'astro-icon/components'
+
+const iconUrls = import.meta.glob('../../icons/*.svg', {
+  eager: true,
+  query: '?url',
+  import: 'default'
+}) as Record<string, string>
+
+const iconUrlFor = (name: string) => iconUrls[`../../icons/${name}.svg`]
 
 interface Props {
   class?: string
@@ -18,7 +25,7 @@ const { class: className, title, tools, ...props } = Astro.props
 <div
   class={cn(
     className,
-    'flex flex-col rounded-xl border border-border py-3 px-3 gap-y-3 sm:gap-y-4'
+    'not-prose flex flex-col gap-y-3 rounded-xl border border-border px-3 py-3 sm:gap-y-4'
   )}
   {...props}
 >
@@ -31,10 +38,18 @@ const { class: className, title, tools, ...props } = Astro.props
           href={tool.href}
           id={tool.name}
           target='_blank'
+          rel='noopener noreferrer'
         >
           <div class='relative flex flex-row items-center gap-x-4 px-2 py-1.5 transition-all'>
             <div class='absolute -inset-0 z-10 rounded-lg border border-border bg-muted opacity-0 transition-all group-hover:opacity-50' />
-            <Icon name={tool.iconPath} class='z-20 h-10 w-10 rounded-lg bg-muted p-2' />
+            <img
+              src={iconUrlFor(tool.iconPath)}
+              alt=''
+              aria-hidden='true'
+              class='z-20 h-10 w-10 rounded-lg bg-muted p-2'
+              loading='lazy'
+              decoding='async'
+            />
             <div class='z-20 flex flex-col'>
               <div class='font-medium'>{tool.name}</div>
               <div class='font-normal text-muted-foreground'>{tool.description}</div>
