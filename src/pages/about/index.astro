@@ -47,16 +47,19 @@ const publications = await getCollection('publications')
 <PageLayout title='About' headings={headings} info='/about'>
 
  <section class='about-profile not-prose' aria-labelledby='about'>
-  <p class='profile-kicker'>PERSONAL PROFILE · BEIJING</p>
-  <h2 id='about'>Aki</h2>
-  <p class='profile-role'>CS PhD Candidate / Jolo / Otaku</p>
+  <div class='profile-identity'>
+   <p class='profile-kicker'>ABOUT · BEIJING</p>
+   <h2 id='about'>Aki</h2>
+   <p class='profile-role'>CS PhD Candidate</p>
+   <p class='profile-side'>Jolo / Otaku</p>
+  </div>
   <p class='profile-bio'>
         PKU EECS21 毕业、CS PhD 25在读的一只落魄鼠鼠<br>
         阿宅一只，看的动漫还算多<br>
         半个胶佬，因为钱包空空所以玩的国产翻模更多一点<br>
         目前在做普适计算的相关研究
   </p>
-  <p class='profile-motto'>Motto: 身構えているときには、死神は来ないものだ。<Spoiler>做好准备的时候，死神是不会来的。</Spoiler></p>
+  <p class='profile-motto'><span>MOTTO</span><span>身構えているときには、死神は来ないものだ。</span><Spoiler>做好准备的时候，死神是不会来的。</Spoiler></p>
  </section>
   
   <h2 id='Pub'>Publications</h2>
@@ -250,58 +253,102 @@ const publications = await getCollection('publications')
     scroll-margin-top: 5rem;
   }
   .about-profile {
-    position: relative;
+    display: grid;
+    grid-template-areas:
+      'identity bio'
+      'motto motto';
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+    gap: 1.75rem 2.25rem;
     margin-bottom: 2.5rem;
-    padding: 1.35rem 1.45rem 1.4rem;
-    overflow: hidden;
-    border: 1px solid hsl(var(--border));
-    border-radius: 1.1rem;
-    background: linear-gradient(135deg, hsl(var(--card)), hsl(var(--secondary) / 0.34));
+    padding: 1.75rem 0 1.15rem;
+    border-top: 2px solid hsl(var(--primary));
+    border-bottom: 1px solid hsl(var(--border));
   }
-  .about-profile::after {
-    position: absolute;
-    right: -0.05em;
-    bottom: -0.28em;
-    color: hsl(var(--foreground) / 0.025);
-    content: 'A';
-    font-size: 10rem;
-    font-weight: 750;
-    line-height: 1;
-    pointer-events: none;
+  .profile-identity {
+    grid-area: identity;
+    padding-right: 2rem;
+    border-right: 1px solid hsl(var(--border));
   }
   .profile-kicker {
-    margin: 0 0 0.55rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 0 0 0.7rem;
     color: hsl(var(--primary));
     font-size: 0.62rem;
     font-weight: 700;
     letter-spacing: 0.14em;
   }
+  .profile-kicker::before {
+    width: 1.8rem;
+    height: 1px;
+    background: currentColor;
+    content: '';
+  }
   .about-profile h2 {
     margin: 0;
-    font-size: clamp(1.7rem, 4vw, 2.25rem);
-    line-height: 1.2;
+    font-size: clamp(2.3rem, 5vw, 3.25rem);
+    font-weight: 500;
+    letter-spacing: -0.045em;
+    line-height: 1.05;
   }
   .profile-role {
-    margin: 0.4rem 0 0.9rem;
-    color: hsl(var(--muted-foreground));
+    margin: 0.65rem 0 0;
+    color: hsl(var(--foreground) / 0.82);
     font-size: 0.85rem;
-    letter-spacing: 0.015em;
+    font-weight: 520;
+  }
+  .profile-side {
+    margin: 0.2rem 0 0;
+    color: hsl(var(--muted-foreground));
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
   }
   .profile-bio {
-    position: relative;
-    z-index: 1;
-    max-width: 34rem;
+    grid-area: bio;
+    align-self: center;
     margin: 0;
-    color: hsl(var(--foreground) / 0.78);
-    line-height: 1.85;
+    color: hsl(var(--foreground) / 0.82);
+    font-size: 0.96rem;
+    line-height: 1.9;
   }
   .profile-motto {
-    position: relative;
-    z-index: 1;
-    margin: 1rem 0 0;
-    padding-top: 0.85rem;
+    display: flex;
+    grid-area: motto;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0;
+    padding-top: 1rem;
     border-top: 1px solid hsl(var(--border));
     color: hsl(var(--muted-foreground));
     font-size: 0.78rem;
+  }
+  .profile-motto > span:first-child {
+    flex: none;
+    color: hsl(var(--primary));
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+  }
+  @media (max-width: 639px) {
+    .about-profile {
+      grid-template-areas:
+        'identity'
+        'bio'
+        'motto';
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.2rem;
+      padding-top: 1.35rem;
+    }
+    .profile-identity {
+      padding: 0 0 1.1rem;
+      border-right: 0;
+      border-bottom: 1px solid hsl(var(--border));
+    }
+    .profile-motto {
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.7rem;
+    }
   }
 </style>

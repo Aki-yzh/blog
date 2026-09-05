@@ -1,7 +1,9 @@
-import { defineCollection, z } from 'astro:content'
+import { defineCollection } from 'astro:content'
+import { glob } from 'astro/loaders'
+import { z } from 'astro/zod'
 
-import { createContentSchemas } from '../content-schemas.mjs'
-import gunplaGroupsManifest from '../data/gunpla-groups.json'
+import { createContentSchemas } from './content-schemas.mjs'
+import gunplaGroupsManifest from './data/gunpla-groups.json'
 
 function removeDupsAndLowerCase(array: string[]) {
   if (!array.length) return array
@@ -11,7 +13,7 @@ function removeDupsAndLowerCase(array: string[]) {
 }
 
 const post = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/post' }),
   schema: ({ image }) =>
     z.object({
       title: z.string().max(60),
@@ -39,8 +41,17 @@ const post = defineCollection({
 })
 
 const schemas = createContentSchemas(gunplaGroupsManifest.groups)
-const publications = defineCollection({ type: 'data', schema: schemas.publications })
-const gunpla = defineCollection({ type: 'data', schema: schemas.gunpla })
-const acg = defineCollection({ type: 'data', schema: schemas.acg })
+const publications = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/publications' }),
+  schema: schemas.publications
+})
+const gunpla = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/gunpla' }),
+  schema: schemas.gunpla
+})
+const acg = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/acg' }),
+  schema: schemas.acg
+})
 
 export const collections = { post, publications, gunpla, acg }

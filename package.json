@@ -12,23 +12,23 @@
     "content:manage": "bun scripts/manage-content.mjs",
     "content:studio": "bun scripts/manage-content.mjs --preview",
     "content:test": "bun test scripts/content-admin/store.test.mjs scripts/content-admin/server.test.mjs",
-    "content:check": "bun scripts/check-content.mjs && node node_modules/astro/astro.js check",
+    "content:check": "bun scripts/check-content.mjs && bun node_modules/astro/astro.js check",
     "lint": "prettier --write  \"**/*.{js,jsx,ts,tsx,md,mdx,svelte,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,svelte,astro}\""
   },
   "engines": {
-    "node": "20.x"
+    "node": "22.x"
   },
   "dependencies": {
-    "@astrojs/check": "0.9.4",
-    "@astrojs/mdx": "3.1.9",
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/mdx": "^4.0.0",
     "@astrojs/node": "8.3.4",
     "@astrojs/rss": "4.0.9",
     "@astrojs/sitemap": "3.2.1",
-    "@astrojs/tailwind": "5.1.2",
-    "@astrojs/vercel": "7.8.2",
+    "@astrojs/tailwind": "^6.0.0",
+    "@astrojs/vercel": "^8.0.0",
     "@vercel/speed-insights": "^1.0.11",
     "@waline/client": "^3.2.1",
-    "astro": "4.16.10",
+    "astro": "^5.0.0",
     "astro-icon": "^1.1.0",
     "clsx": "^2.1.1",
     "dompurify": "^3.1.5",

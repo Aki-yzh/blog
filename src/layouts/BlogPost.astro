@@ -1,5 +1,5 @@
 ---
-import type { CollectionEntry } from 'astro:content'
+import { render, type CollectionEntry } from 'astro:content'
 
 import PageLayout from '@/layouts/BaseLayout.astro'
 import TOC from '@/components/pages/TOC.astro'
@@ -28,7 +28,7 @@ const socialImage =
       : coverImage.src.src
     : '/images/social-card.png')
 const articleDate = updatedDate?.toISOString() ?? publishDate.toISOString()
-const { headings } = await post.render()
+const { headings } = await render(post)
 const primaryColor = post.data.coverImage?.color ?? 'hsl(var(--primary) / var(--tw-text-opacity))'
 ---
 

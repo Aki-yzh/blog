@@ -35,8 +35,6 @@ const initGitHubCard = async (
       const [, owner, repo] = match
       try {
         const data = await fetchGitHubApi(`https://api.github.com/repos/${owner}/${repo}`)
-        // sleep 1 second to avoid rate limit
-        await new Promise((resolve) => setTimeout(resolve, 1000))
         const languagePart = data.language ? `<span class="flex items-center text-gray-700 dark:text-gray-400">
               <span class="mr-2 inline-block h-3 w-3 rounded-full bg-gray-700 dark:bg-slate-100"
               ></span>

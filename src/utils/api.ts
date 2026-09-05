@@ -1,5 +1,7 @@
 import { DOMParser } from 'xmldom'
 
+const API_TIMEOUT_MS = 5000
+
 interface GitHubRepoInfo {
   name: string
   description: string
@@ -12,7 +14,7 @@ interface GitHubRepoInfo {
 }
 
 async function fetchGitHubApi(url: string): Promise<GitHubRepoInfo> {
-  const response = await fetch(url)
+  const response = await fetch(url, { signal: AbortSignal.timeout(API_TIMEOUT_MS) })
   if (!response.ok) {
     throw new Error(`GitHub API request failed: ${response.statusText}`)
   }
@@ -27,7 +29,9 @@ interface ArxivArticleInfo {
 }
 
 async function fetchArxivApi(id: string): Promise<ArxivArticleInfo> {
-  const response = await fetch(`https://export.arxiv.org/api/query?id_list=${id}`)
+  const response = await fetch(`https://export.arxiv.org/api/query?id_list=${id}`, {
+    signal: AbortSignal.timeout(API_TIMEOUT_MS)
+  })
   if (!response.ok) {
     throw new Error(
       `Arxiv API request failed: ${response.statusText}, https://export.arxiv.org/api/query?id_list=${id}`

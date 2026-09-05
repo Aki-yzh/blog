@@ -1,6 +1,6 @@
 ---
 import type { HTMLTag, Polymorphic } from 'astro/types'
-import type { CollectionEntry } from 'astro:content'
+import { render, type CollectionEntry } from 'astro:content'
 import { Image } from 'astro:assets'
 
 import FormattedDate from '../FormattedDate.astro'
@@ -15,13 +15,14 @@ type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
 
 const {
   as: Tag = 'div',
-  post: { data, slug, render },
+  post,
   detailed = false,
   class: className
 } = Astro.props
+const { data, id } = post
 const postDate = data.updatedDate ?? data.publishDate
 
-const { remarkPluginFrontmatter } = await render()
+const { remarkPluginFrontmatter } = await render(post)
 ---
 
 <li
@@ -37,7 +38,7 @@ const { remarkPluginFrontmatter } = await render()
       !detailed && 'sm:flex-row',
       detailed && data.coverImage && 'max-md:pt-24'
     )}
-    href={`/blog/${slug}`}
+    href={`/blog/${id}`}
     data-astro-prefetch
   >
     {

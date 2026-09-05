@@ -17,7 +17,7 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>(
 )
 
 const renderContent = async (post: CollectionEntry<'post'>, site: URL) => {
-  const html = htmlParser.parse(parser.render(post.body))
+  const html = htmlParser.parse(parser.render(post.body ?? ''))
 
   for (const img of html.querySelectorAll('img')) {
     const src = img.getAttribute('src')!
@@ -26,7 +26,7 @@ const renderContent = async (post: CollectionEntry<'post'>, site: URL) => {
       // Images starting with `/images/` is the public dir
       img.setAttribute('src', `${site}${src.replace('/', '')}`)
     } else {
-      const imagePathPrefix = `/src/content/post/${post.slug}/${src.replace('./', '')}`
+      const imagePathPrefix = `/src/content/post/${post.id}/${src.replace('./', '')}`
       // Call the dynamic import and return the module
       const imagePath = await imagesGlob[imagePathPrefix]?.()?.then((res) => res.default)
       if (imagePath) {
@@ -60,7 +60,7 @@ const GET = async (context: AstroGlobal) => {
     items: await Promise.all(
       allPostsByDate.map(async (post) => ({
         pubDate: post.data.publishDate,
-        link: `/blog/${post.slug}`,
+        link: `/blog/${post.id}`,
         customData: `
                 <h:img src="${typeof post.data.coverImage?.src === 'string' ? post.data.coverImage?.src : post.data.coverImage?.src.src}" />
                 <enclosure url="${typeof post.data.coverImage?.src === 'string' ? post.data.coverImage?.src : post.data.coverImage?.src.src}" />

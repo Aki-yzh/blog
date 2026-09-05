@@ -15,14 +15,14 @@ const { collection } = content
 const items = (await getCollection(collection))
   .filter((post) => !post.data.draft)
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
-const index = items.findIndex((x) => x.slug === content.slug)
+const index = items.findIndex((x) => x.id === content.id)
 const prev = items[(index - 1 + items.length) % items.length]
 const next = items[(index + 1) % items.length]
 ---
 
 <div class={cn('grid grid-cols-1 gap-2 sm:gap-4 sm:grid-cols-2', className)}>
   <a
-    href={`/blog/${prev.slug}`}
+    href={`/blog/${prev.id}`}
     class='group flex items-center gap-3 rounded-lg border border-transparent px-4 py-2 no-underline transition-colors duration-300 hover:bg-primary-foreground sm:py-4'
   >
     <svg
@@ -56,7 +56,7 @@ const next = items[(index + 1) % items.length]
     </div>
   </a>
   <a
-    href={`/blog/${next.slug}`}
+    href={`/blog/${next.id}`}
     class='group flex items-center gap-3 rounded-lg border border-transparent px-4 py-2 text-right no-underline transition-colors duration-300 hover:bg-primary-foreground sm:py-4 justify-end'
   >
     <div class='flex grow flex-col gap-0.5 sm:gap-1.5 max-w-[80%]'>

@@ -1,5 +1,5 @@
 ---
-import type { CollectionEntry } from 'astro:content'
+import { render, type CollectionEntry } from 'astro:content'
 import FormattedDate from '@/components/FormattedDate.astro'
 import PageInfo from '@/components/pages/PageInfo.astro'
 import { Image } from 'astro:assets'
@@ -8,11 +8,10 @@ interface Props {
   content: CollectionEntry<'post'>
 }
 
-const {
-  content: { slug, data, render }
-} = Astro.props
+const { content } = Astro.props
+const { id, data } = content
 
-const { remarkPluginFrontmatter } = await render()
+const { remarkPluginFrontmatter } = await render(content)
 
 const dateTimeOptions: Intl.DateTimeFormatOptions = {
   month: 'short'
@@ -116,7 +115,7 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 
   <div class='mt-3 italic'>
     <blockquote class='text-sm text-muted-foreground'><q>{data.description}</q></blockquote>
-    {!data.draft && <PageInfo class='mt-1' path={`/blog/${slug}`} />}
+    {!data.draft && <PageInfo class='mt-1' path={`/blog/${id}`} />}
   </div>
 </div>
 
