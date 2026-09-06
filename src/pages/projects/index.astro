@@ -2,7 +2,6 @@
 import Collapse from '@/components/Collapse.astro'
 import ProjectSection from '@/components/projects/ProjectSection.astro'
 import PageLayout from '@/layouts/CommonPage.astro'
-import { Image } from 'astro:assets'
 import PublicationList from '@/components/PublicationList.astro'
 import { getCollection } from 'astro:content'
 
@@ -37,12 +36,13 @@ const publications = await getCollection('publications')
 <PageLayout title='Projects' headings={headings} info={{ slug: '/projects', hideComment: true }}>
   <p>Github Activities:</p>
   <p>
-    <Image
+    <img
       src='https://ghchart.rshah.org/659eb9/Aki-yzh'
       alt='github activities'
-      inferSize
       loading='eager'
       decoding='async'
+      width='663'
+      height='104'
     />
   </p>
 
@@ -83,7 +83,7 @@ const publications = await getCollection('publications')
       ]}
     />
   </Collapse>
-<h2 id ='gitbooks'>Gitbooks<h2>
+<h2 id='gitbooks'>Gitbooks</h2>
           <a href="https://koi.aki-yzh.cn" target="_blank" class="no-underline">
             <div class="group relative h-full overflow-hidden rounded-2xl border border-border bg-background px-4 py-2 transition-colors hover:bg-primary-foreground sm:py-3">
                 <div class="relative z-10 flex h-full items-center gap-3">
@@ -165,3 +165,4 @@ const publications = await getCollection('publications')
  
 
   <PublicationList items={publications} />
+</PageLayout>
