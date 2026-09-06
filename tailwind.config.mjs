@@ -1,4 +1,5 @@
-import { fontFamily } from 'tailwindcss/defaultTheme'
+import defaultTheme from 'tailwindcss/defaultTheme'
+import typography from '@tailwindcss/typography'
 
 const typographyConfig = {
   DEFAULT: {
@@ -29,10 +30,7 @@ const config = {
   darkMode: ['class'],
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   safelist: ['dark'],
-  corePlugins: {
-    aspectRatio: false
-  },
-  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/aspect-ratio')],
+  plugins: [typography],
 
   theme: {
     container: {
@@ -84,7 +82,7 @@ const config = {
         sm: 'calc(var(--radius) - 4px)'
       },
       fontFamily: {
-        sans: ['Satoshi', ...fontFamily.sans]
+        sans: ['Satoshi', ...defaultTheme.fontFamily.sans]
       },
       typography: typographyConfig
     }

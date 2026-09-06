@@ -7,8 +7,9 @@ import vercel from '@astrojs/vercel'
 // import node from '@astrojs/node'
 // Integrations
 import mdx from '@astrojs/mdx'
+import { unified } from '@astrojs/markdown-remark'
 import sitemap from '@astrojs/sitemap'
-import tailwind from '@astrojs/tailwind'
+import tailwindcss from '@tailwindcss/vite'
 import icon from 'astro-icon'
 // Markdown
 import rehypeExternalLinks from 'rehype-external-links'
@@ -33,43 +34,41 @@ export default defineConfig({
   // adapter: node({
   //   mode: 'standalone'
   // }),
-  integrations: [
-    tailwind({
-      applyBaseStyles: false
-    }),
-    sitemap(),
-    mdx(),
-    icon()
-  ],
+  integrations: [sitemap(), mdx(), icon()],
+  vite: {
+    plugins: [tailwindcss()]
+  },
   // root: './my-project-directory',
 
   // Prefetch Options
   prefetch: true,
   // Markdown Options
   markdown: {
-    remarkPlugins: [
-      remarkUnwrapImages,
-      remarkMath,
-      remarkReadingTime,
-      remarkAlert,
-      remarkGithubCards,
-      remarkArxivCards
-    ],
-    rehypePlugins: [
-      [rehypeKatex, {}],
-      [
-        rehypeExternalLinks,
-        {
-          target: '_blank',
-          rel: ['nofollow', 'noopener', 'noreferrer']
+    processor: unified({
+      remarkPlugins: [
+        remarkUnwrapImages,
+        remarkMath,
+        remarkReadingTime,
+        remarkAlert,
+        remarkGithubCards,
+        remarkArxivCards
+      ],
+      rehypePlugins: [
+        [rehypeKatex, {}],
+        [
+          rehypeExternalLinks,
+          {
+            target: '_blank',
+            rel: ['nofollow', 'noopener', 'noreferrer']
+          }
+        ]
+      ],
+      remarkRehype: {
+        footnoteLabelProperties: {
+          className: ['']
         }
-      ]
-    ],
-    remarkRehype: {
-      footnoteLabelProperties: {
-        className: ['']
       }
-    },
+    }),
     shikiConfig: {
       themes: {
         dark: 'github-dark',
