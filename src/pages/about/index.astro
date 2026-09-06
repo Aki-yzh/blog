@@ -46,21 +46,17 @@ const publications = await getCollection('publications')
 
 <PageLayout title='About' headings={headings} info='/about'>
 
- <section class='about-profile not-prose' aria-labelledby='about'>
-  <div class='profile-identity'>
-   <p class='profile-kicker'>ABOUT · BEIJING</p>
-   <h2 id='about'>Aki</h2>
-   <p class='profile-role'>CS PhD Candidate</p>
-   <p class='profile-side'>Jolo / Otaku</p>
-  </div>
-  <p class='profile-bio'>
+  <section class='about-intro not-prose' aria-labelledby='about'>
+    <h2 id='about'>Aki</h2>
+    <p class='about-role'>CS PhD Candidate · Jolo · Otaku</p>
+    <p class='about-bio'>
         PKU EECS21 毕业、CS PhD 25在读的一只落魄鼠鼠<br>
         阿宅一只，看的动漫还算多<br>
         半个胶佬，因为钱包空空所以玩的国产翻模更多一点<br>
         目前在做普适计算的相关研究
-  </p>
-  <p class='profile-motto'><span>MOTTO</span><span>身構えているときには、死神は来ないものだ。</span><Spoiler>做好准备的时候，死神是不会来的。</Spoiler></p>
- </section>
+    </p>
+    <p class='about-motto'>身構えているときには、死神は来ないものだ。 <Spoiler>做好准备的时候，死神是不会来的。</Spoiler></p>
+  </section>
   
   <h2 id='Pub'>Publications</h2>
  
@@ -252,103 +248,34 @@ const publications = await getCollection('publications')
   :global(#about-blog) {
     scroll-margin-top: 5rem;
   }
-  .about-profile {
-    display: grid;
-    grid-template-areas:
-      'identity bio'
-      'motto motto';
-    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
-    gap: 1.75rem 2.25rem;
-    margin-bottom: 2.5rem;
-    padding: 1.75rem 0 1.15rem;
-    border-top: 2px solid hsl(var(--primary));
-    border-bottom: 1px solid hsl(var(--border));
+  .about-intro {
+    margin-bottom: 2.75rem;
   }
-  .profile-identity {
-    grid-area: identity;
-    padding-right: 2rem;
-    border-right: 1px solid hsl(var(--border));
-  }
-  .profile-kicker {
-    display: flex;
-    align-items: center;
-    gap: 0.65rem;
-    margin: 0 0 0.7rem;
-    color: hsl(var(--primary));
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-  }
-  .profile-kicker::before {
-    width: 1.8rem;
-    height: 1px;
-    background: currentColor;
-    content: '';
-  }
-  .about-profile h2 {
+  .about-intro h2 {
     margin: 0;
-    font-size: clamp(2.3rem, 5vw, 3.25rem);
-    font-weight: 500;
-    letter-spacing: -0.045em;
-    line-height: 1.05;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
   }
-  .profile-role {
-    margin: 0.65rem 0 0;
-    color: hsl(var(--foreground) / 0.82);
-    font-size: 0.85rem;
-    font-weight: 520;
-  }
-  .profile-side {
-    margin: 0.2rem 0 0;
+  .about-role {
+    margin: 0.45rem 0 0;
     color: hsl(var(--muted-foreground));
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
+    font-size: 0.95rem;
   }
-  .profile-bio {
-    grid-area: bio;
-    align-self: center;
-    margin: 0;
+  .about-bio {
+    margin: 1.4rem 0 0;
     color: hsl(var(--foreground) / 0.82);
-    font-size: 0.96rem;
-    line-height: 1.9;
+    font-size: 1rem;
+    line-height: 1.85;
   }
-  .profile-motto {
-    display: flex;
-    grid-area: motto;
-    align-items: center;
-    gap: 0.8rem;
-    margin: 0;
-    padding-top: 1rem;
-    border-top: 1px solid hsl(var(--border));
+  .about-motto {
+    margin: 1.25rem 0 0;
+    padding-left: 1rem;
+    border-left: 2px solid hsl(var(--primary) / 0.75);
     color: hsl(var(--muted-foreground));
-    font-size: 0.78rem;
-  }
-  .profile-motto > span:first-child {
-    flex: none;
-    color: hsl(var(--primary));
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-  }
-  @media (max-width: 639px) {
-    .about-profile {
-      grid-template-areas:
-        'identity'
-        'bio'
-        'motto';
-      grid-template-columns: minmax(0, 1fr);
-      gap: 1.2rem;
-      padding-top: 1.35rem;
-    }
-    .profile-identity {
-      padding: 0 0 1.1rem;
-      border-right: 0;
-      border-bottom: 1px solid hsl(var(--border));
-    }
-    .profile-motto {
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 0.5rem 0.7rem;
-    }
+    font-size: 0.86rem;
+    font-style: italic;
+    line-height: 1.7;
   }
 </style>
