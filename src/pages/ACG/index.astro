@@ -81,7 +81,7 @@ const headings = [
     &nbsp;&nbsp;<a href='#timeline'>timeline</a>为从18年开始每年最推荐的几部当年番
   </p>
 
-  <div class='animate grid w-full grid-cols-1 gap-2 sm:grid-cols-2'>
+  <div class='animate grid w-full grid-cols-1 gap-2 md:grid-cols-2'>
     {
       animeFeatured.map((item) => (
         <ACGFeaturedCard
@@ -96,7 +96,7 @@ const headings = [
   </div>
 
   <Collapse title='Want more?'>
-    <div class='animate grid grid-rows-4 gap-3.5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-2'>
+    <div class='animate grid grid-rows-4 gap-3.5 md:grid-cols-2 md:gap-4'>
       {
         animeMore.map((item) => (
           <ACGCompactCard
@@ -130,7 +130,7 @@ const headings = [
     &nbsp;&nbsp;这里就推荐两部，一部是所有的最推荐，一部是近期最推荐
   </p>
 
-  <div class='animate grid w-full grid-cols-1 gap-2 sm:grid-cols-2'>
+  <div class='animate grid w-full grid-cols-1 gap-2 md:grid-cols-2'>
     {
       comicFeatured.map((item) => (
         <ACGFeaturedCard
@@ -145,7 +145,7 @@ const headings = [
   </div>
 
   <h2 id='Game'>Game</h2>
-  <div class='animate grid gap-3.5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-2'>
+  <div class='animate grid gap-3.5 md:grid-cols-2 md:gap-4'>
     {
       games.map((item) => (
         <ACGCompactCard

@@ -41,18 +41,17 @@ const legacyGroupClasses: Record<number, string> = {
 
 function listItemClass(year: number, index: number) {
   const groupClass = legacyGroupClasses[year] ?? `group${index + 1}`
-  const marginClass = year === 2023 ? 'mb-29' : 'mb-1'
-  return `${groupClass} relative flex list-none gap-2 rounded-full ps-0 sm:gap-4 ${marginClass}`
+  return `${groupClass} relative mb-1 flex list-none gap-2 rounded-full ps-0 sm:gap-4`
 }
 
 function gridClass(count: number) {
   if (count >= 5) {
-    return 'animate grid gap-3.5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 grid-rows-2'
+    return 'animate grid gap-3.5 md:grid-cols-2 md:gap-4 lg:grid-cols-3 grid-rows-2'
   }
   if (count === 3) {
-    return 'animate grid gap-3.5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3'
+    return 'animate grid gap-3.5 md:grid-cols-2 md:gap-4 lg:grid-cols-3'
   }
-  return 'animate grid gap-3.5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-2'
+  return 'animate grid gap-3.5 md:grid-cols-2 md:gap-4'
 }
 ---
 

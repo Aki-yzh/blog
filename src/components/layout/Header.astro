@@ -11,7 +11,7 @@ import { siteConfig, menuLinks } from '@/site-config'
       aria-label='global'
     >
       <div
-        class='absolute -left-4 -top-8 -z-10 box-content hidden h-20 w-[calc(100%+2rem)] !duration-0 max-sm:group-[.expanded]:block max-sm:group-[.expanded.not-top]:hidden max-sm:group-[.expanded]:bg-white dark:max-sm:group-[.expanded]:bg-primary-foreground'
+        class='absolute -left-4 -top-8 -z-10 box-content hidden h-20 w-[calc(100%+2rem)] !duration-0 max-md:group-[.expanded]:block max-md:group-[.expanded.not-top]:hidden max-md:group-[.expanded]:bg-white dark:max-md:group-[.expanded]:bg-primary-foreground'
       >
       </div>
       <a
@@ -24,27 +24,26 @@ import { siteConfig, menuLinks } from '@/site-config'
       <div class='flex gap-x-4 sm:gap-x-6'>
         <div
           id='headerExpandConetent'
-          class='end-0 start-0 top-12 z-20 grid transition-all duration-300 group-[.not-top]:rounded-xl group-[.expanded]:opacity-100 dark:group-[.expanded.not-top]:bg-primary-foreground max-md:border-b max-sm:absolute max-sm:pb-4 max-sm:pt-0 max-sm:opacity-0 max-sm:group-[.not-top]:border max-sm:group-[.expanded]:bg-background max-sm:group-[.not-top]:px-4 max-sm:group-[.not-top]:pb-2 max-sm:group-[.not-top]:pt-2 sm:grid-rows-1 sm:border-0'
+          class='end-0 start-0 top-12 z-20 grid transition-all duration-300 group-[.not-top]:rounded-xl group-[.expanded]:opacity-100 dark:group-[.expanded.not-top]:bg-primary-foreground max-md:absolute max-md:border-b max-md:pb-4 max-md:pt-0 max-md:opacity-0 max-md:group-[.not-top]:border max-md:group-[.expanded]:bg-background max-md:group-[.not-top]:px-4 max-md:group-[.not-top]:pb-2 max-md:group-[.not-top]:pt-2 md:grid-rows-1 md:border-0'
         >
           <div
-            class='absolute -left-4 top-0 -z-10 box-content hidden h-full w-[calc(100%+2rem)] bg-white max-md:border-b max-sm:group-[.expanded]:block max-sm:group-[.expanded.not-top]:hidden dark:max-sm:group-[.expanded]:bg-primary-foreground'
+            class='absolute -left-4 top-0 -z-10 box-content hidden h-full w-[calc(100%+2rem)] bg-white max-md:border-b max-md:group-[.expanded]:block max-md:group-[.expanded.not-top]:hidden dark:max-md:group-[.expanded]:bg-primary-foreground'
           >
           </div>
           <div
-            class='flex flex-col items-center justify-center gap-x-5 gap-y-2 overflow-hidden transition-colors sm:flex-row sm:gap-x-7'
+            class='flex flex-col items-center justify-center gap-x-5 gap-y-2 overflow-hidden transition-colors md:flex-row md:gap-x-7'
           >
             {
               menuLinks.map((item) => (
                 <a
                   href={item.link}
-                  class='w-full flex-none grow py-2 text-right text-[1.05rem] font-medium hover:text-primary sm:w-fit'
-                  aria-label='Nav Menu Item'
+                  class='w-full flex-none grow py-2 text-right text-[1.05rem] font-medium hover:text-primary md:w-fit'
                 >
                   {item.label}
                 </a>
               ))
             }
-            <div class='flex w-full grow flex-row justify-end gap-x-1 sm:w-fit sm:gap-x-5'>
+            <div class='flex w-full grow flex-row justify-end gap-x-1 md:w-fit md:gap-x-5'>
               <a class='px-1 py-2' href='/search' title='Search'>
                 <span class='sr-only'>Search</span>
                 <svg class='size-5'>
@@ -75,7 +74,7 @@ import { siteConfig, menuLinks } from '@/site-config'
             id='toggleMenu'
             type='button'
             aria-expanded='false'
-            class='rounded-md border p-1.5 transition-all hover:bg-border sm:hidden sm:group-[.not-top]:rounded-xl'
+            class='rounded-md border p-1.5 transition-all hover:bg-border md:hidden md:group-[.not-top]:rounded-xl'
           >
             <span class='sr-only'>Menu</span>
             <svg class='size-5'>
@@ -90,20 +89,32 @@ import { siteConfig, menuLinks } from '@/site-config'
 
 <script>
   class Header extends HTMLElement {
-    constructor() {
-      super()
+    private previousScrollY = 0
+    private readonly mobileMenu = window.matchMedia('(max-width: 767px)')
+
+    private readonly onScroll = () => {
+      const currentScrollY = window.scrollY
+      this.classList.toggle('not-top', currentScrollY > 20)
+      this.dataset.show = (currentScrollY < 350 || currentScrollY < this.previousScrollY).toString()
+      this.previousScrollY = currentScrollY
+    }
+
+    private readonly syncMenu = () => {
+      const toggleMenuButton = this.querySelector<HTMLButtonElement>('#toggleMenu')
+      const menu = this.querySelector<HTMLElement>('#headerExpandConetent')
+      if (!this.mobileMenu.matches) this.classList.remove('expanded')
+      const expanded = this.mobileMenu.matches && this.classList.contains('expanded')
+      toggleMenuButton?.setAttribute('aria-expanded', String(expanded))
+      menu?.toggleAttribute('inert', this.mobileMenu.matches && !expanded)
+      menu?.setAttribute('aria-hidden', String(this.mobileMenu.matches && !expanded))
     }
 
     connectedCallback() {
-      // Header
-      let preScrollY = window.scrollY
-      this.classList.toggle('not-top', preScrollY > 20)
-
-      window.addEventListener('scroll', () => {
-        this.classList.toggle('not-top', window.scrollY > 20)
-        this.dataset.show = (window.scrollY < 350 || window.scrollY < preScrollY).toString()
-        preScrollY = window.scrollY
-      })
+      this.previousScrollY = window.scrollY
+      this.onScroll()
+      window.addEventListener('scroll', this.onScroll, { passive: true })
+      this.mobileMenu.addEventListener('change', this.syncMenu)
+      this.syncMenu()
 
       // Dark Mode
       function getCurrentTheme() {
@@ -132,8 +143,13 @@ import { siteConfig, menuLinks } from '@/site-config'
       const toggleMenuButton = this.querySelector<HTMLButtonElement>('#toggleMenu')
       toggleMenuButton?.addEventListener('click', () => {
         this.classList.toggle('expanded')
-        toggleMenuButton.setAttribute('aria-expanded', String(this.classList.contains('expanded')))
+        this.syncMenu()
       })
+    }
+
+    disconnectedCallback() {
+      window.removeEventListener('scroll', this.onScroll)
+      this.mobileMenu.removeEventListener('change', this.syncMenu)
     }
   }
   customElements.define('header-component', Header)
@@ -158,7 +174,7 @@ import { siteConfig, menuLinks } from '@/site-config'
   }
 
   /* header menu */
-  @media (max-width: 640px) {
+  @media (max-width: 767px) {
     #headerExpandConetent {
       grid-template-rows: 0fr;
     }

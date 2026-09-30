@@ -100,15 +100,6 @@ const socialImageURL = new URL(ogImage ? ogImage : '/images/social-card.png', As
     ].forEach((link) => link.remove())
   )
 
-  function animate() {
-    document.querySelectorAll('.animate').forEach((el, i) => {
-      setTimeout(() => {
-        el.classList.add('show')
-      }, i * 150)
-    })
-  }
-  document.addEventListener('DOMContentLoaded', animate)
-  document.addEventListener('astro:after-swap', animate)
 </script>
 
 {/* Vercel speed insights */}

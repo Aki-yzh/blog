@@ -7,25 +7,23 @@ html.dark {
 }
 
 .animate {
-  opacity: 0;
-  transform: translateY(10px);
-  transition:
-    opacity 0.4s ease,
-    transform 0.4s ease;
+  animation: enter-page 0.3s ease-out both;
 }
 
-.animate.show {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes enter-page {
+  from {
+    opacity: 0.85;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-@media (prefers-reduced-motion) {
+@media (prefers-reduced-motion: reduce) {
   .animate {
-    opacity: 0;
-    transform: translateY(5px);
-    transition:
-      opacity 0.1s ease,
-      transform 0.1s ease;
+    animation: none;
   }
 }
 

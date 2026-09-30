@@ -12,13 +12,13 @@ const { title, description, image } = Astro.props
 ---
 
 <div
-  class='group relative h-full overflow-hidden rounded-2xl border border-border bg-background px-4 py-2 transition-colors hover:bg-primary-foreground sm:py-3'
+  class='group not-prose relative h-full overflow-hidden rounded-2xl border border-border bg-background px-4 py-2 transition-colors hover:bg-primary-foreground sm:py-3'
 >
   <div class='relative z-10 flex h-full items-center gap-3'>
     <div class='relative h-16 w-16 min-w-16 overflow-hidden rounded-full'>
       <img
         src={image}
-        class='my-0 bg-white'
+        class='my-0 h-full w-full bg-white object-cover'
         alt='avatar'
         loading='lazy'
         width='80'
