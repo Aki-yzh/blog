@@ -53,7 +53,19 @@ bun run content:check
 - Gunpla 分组与目录：`src/data/gunpla-groups.json`。只有新增分组时才需要修改。
 - ACG 页面级内容：`src/data/acg-page.json`，包含 Bangumi 入口、近期动态和 Wall of Fame。
 
-所有列表都按 `order` 升序展示。Gunpla 和论文的 `order` 在各自集合内唯一；ACG 的 `order` 在栏目内唯一，动画时间线按年份分别排序。标题或简介需要显式换行时，JSON 中可以使用字符串数组。
+Gunpla 和 ACG 按 `order` 升序展示。Gunpla 和论文的 `order` 在各自集合内唯一；ACG 的 `order` 在栏目内唯一，动画时间线按年份分别排序。标题或简介需要显式换行时，JSON 中可以使用字符串数组。
+
+### 论文排序与首页展示
+
+论文自动按本人作者排名升序、发表时间降序排列；排名与日期相同才比较 `order`。管理页和新增向导均支持以下字段：
+
+- `authorRank`：本人作者排名，例如二作填 `2`。留空时按作者列表中 `<strong>本人姓名</strong>` 的位置判断；未标记的条目排在后面。
+- `publishedDate`：`YYYY-MM` 或 `YYYY-MM-DD`，例如 `2026-09-30`。只知道月份时填写 `2026-09`；留空则按 `year` 排列，不需要编造具体日期。
+- `publication`：延续现有格式，如 `(Ubicomp)Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies`。
+
+首页默认展示排序后的前 3 篇，其余可原地展开和收起；“查看全部论文”进入 About 的完整列表。以后继续添加论文，三个页面会自动同步，无需调整页面代码。
+
+本次补入的 PathClean、mmMind、mmUbiSense、DuBCG，分别通过 [MobiCom 官方日程](https://sigmobile.org/mobicom/2026/accepted_papers_schedule.html)、[arXiv](https://arxiv.org/abs/2608.04127)、[本人 ORCID 记录](https://orcid.org/0009-0006-3342-4311)及 DOI 元数据核对。mmMind 当前按 arXiv 预印本记录，不标注未经确认的会议。Google Scholar 在本次访问中要求人机验证，因此这些新增条目不代表已完整对账 Scholar 中的所有记录。
 
 ## 图片与链接
 

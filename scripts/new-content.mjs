@@ -217,6 +217,25 @@ async function createPublication() {
   const rawLink = await askOptional('论文链接')
   const link = rawLink ? assertHttpUrl(rawLink, '论文链接') : undefined
   const item = { title, authors, publication, year, order }
+  const rawRank = await askOptional('本人作者排名（留空按加粗姓名的位置自动判断）')
+  if (rawRank) {
+    const rank = Number(rawRank)
+    if (!Number.isInteger(rank) || rank < 1) throw new Error('作者排名应为正整数')
+    item.authorRank = rank
+  }
+  const publishedDate = await askOptional('发表日期（YYYY-MM 或 YYYY-MM-DD，可留空）')
+  if (publishedDate) {
+    const fullDate = publishedDate.length === 7 ? `${publishedDate}-01` : publishedDate
+    const parsed = new Date(`${fullDate}T00:00:00Z`)
+    if (
+      !/^\d{4}-(0[1-9]|1[0-2])(?:-(0[1-9]|[12]\d|3[01]))?$/.test(publishedDate) ||
+      Number.isNaN(parsed.getTime()) ||
+      !parsed.toISOString().startsWith(fullDate) ||
+      !publishedDate.startsWith(`${year}-`)
+    )
+      throw new Error('发表日期无效，或与年份不一致')
+    item.publishedDate = publishedDate
+  }
   if (link !== undefined) item.link = link
 
   writeNewJson(resolve(root, `${slug}.json`), item)

@@ -13,14 +13,19 @@ const { title, authors, publication, year, link, ...attrs } = Astro.props
 ---
 
 <div
-  class='group relative flex flex-col gap-y-2 rounded-2xl border border-border bg-background p-4 transition-colors hover:bg-primary-foreground'
+  class='paper-card not-prose group relative flex flex-col gap-y-2 rounded-2xl border border-border bg-background p-4 transition-colors hover:bg-primary-foreground'
   {...attrs}
 >
-  <a href={link} target='_blank' rel='noopener noreferrer' class='text-lg font-semibold text-foreground no-underline'>
+  <a
+    href={link}
+    target='_blank'
+    rel='noopener noreferrer'
+    class='text-lg font-semibold leading-snug text-foreground no-underline'
+  >
     {title}
   </a>
-  <p class="text-sm text-muted-foreground" set:html={authors}></p>
-  <p class='text-sm text-muted-foreground'>
+  <p class='m-0 text-sm leading-relaxed text-muted-foreground' set:html={authors} />
+  <p class='m-0 text-sm leading-relaxed text-muted-foreground'>
     <em>{publication}</em>, {year}
   </p>
 </div>

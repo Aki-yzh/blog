@@ -21,10 +21,24 @@ export function createContentSchemas(groups) {
         authors: z.string().min(1),
         publication: z.string().min(1),
         year: z.number().int().min(1900),
+        authorRank: z.number().int().positive().optional(),
+        publishedDate: z
+          .string()
+          .refine((value) => {
+            if (!/^\d{4}-(0[1-9]|1[0-2])(?:-(0[1-9]|[12]\d|3[01]))?$/.test(value)) return false
+            const date = value.length === 7 ? `${value}-01` : value
+            const parsed = new Date(`${date}T00:00:00Z`)
+            return !Number.isNaN(parsed.getTime()) && parsed.toISOString().startsWith(date)
+          }, '发表日期应为有效的 YYYY-MM 或 YYYY-MM-DD')
+          .optional(),
         link: z.url().optional(),
         order: z.number().int().positive()
       })
-      .strict(),
+      .strict()
+      .refine((paper) => !paper.publishedDate || paper.publishedDate.startsWith(`${paper.year}-`), {
+        message: '发表日期必须与年份一致',
+        path: ['publishedDate']
+      }),
     gunpla: z
       .object({
         order: z.number().int().positive(),

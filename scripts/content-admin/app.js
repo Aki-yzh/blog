@@ -267,8 +267,21 @@ function renderFields() {
       hint: data.section === 'game' ? '游戏条目可以留空' : ''
     })
   } else {
-    add({ key: 'order', label: '排序', type: 'number' })
+    add({ key: 'order', label: '同排名同日期时的排序', type: 'number' })
     add({ key: 'year', label: '年份', type: 'number' })
+    add({
+      key: 'authorRank',
+      label: '本人作者排名',
+      type: 'number',
+      required: false,
+      hint: '越小越靠前；留空则按加粗姓名的位置自动判断'
+    })
+    add({
+      key: 'publishedDate',
+      label: '发表日期',
+      required: false,
+      hint: 'YYYY-MM 或 YYYY-MM-DD；同作者排名按时间由新到旧排列'
+    })
     add({ key: 'title', label: '论文标题', wide: true })
     add({
       key: 'authors',
@@ -333,8 +346,8 @@ function collect() {
           .map((value) => value.trim())
           .filter(Boolean)
         data[control.name] = lines.length === 1 ? lines[0] : lines
-      } else if (control.type === 'number') data[control.name] = Number(control.value)
-      else if (!control.required && !control.value.trim()) delete data[control.name]
+      } else if (!control.required && !control.value.trim()) delete data[control.name]
+      else if (control.type === 'number') data[control.name] = Number(control.value)
       else data[control.name] = control.value.trim()
     })
   return data

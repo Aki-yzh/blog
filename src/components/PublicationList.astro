@@ -2,13 +2,20 @@
 import type { CollectionEntry } from 'astro:content'
 
 import PaperCard from '@/components/PaperCard.astro'
+import { comparePublications } from '../utils/publications.mjs'
 
 interface Props {
   items: CollectionEntry<'publications'>[]
+  initialCount?: number
+  allHref?: string
 }
 
-const { items } = Astro.props
-const sortedItems = [...items].sort((left, right) => left.data.order - right.data.order)
+const { items, initialCount, allHref = '/about#Pub' } = Astro.props
+const sortedItems = [...items].sort((left, right) => comparePublications(left.data, right.data))
+const count =
+  initialCount === undefined ? sortedItems.length : Math.max(1, Math.floor(initialCount))
+const visibleItems = sortedItems.slice(0, count)
+const remainingItems = sortedItems.slice(count)
 const itemOrders = new Set(sortedItems.map((item) => item.data.order))
 
 if (itemOrders.size !== sortedItems.length) {
@@ -16,9 +23,9 @@ if (itemOrders.size !== sortedItems.length) {
 }
 ---
 
-<div class='flex flex-col gap-y-4'>
+<div class='publication-list not-prose flex flex-col gap-y-4'>
   {
-    sortedItems.map(({ data: { title, authors, publication, year, link } }) => (
+    visibleItems.map(({ data: { title, authors, publication, year, link } }) => (
       <PaperCard
         title={title}
         authors={authors}
@@ -28,4 +35,61 @@ if (itemOrders.size !== sortedItems.length) {
       />
     ))
   }
+  {
+    remainingItems.length > 0 && (
+      <details class='publication-more'>
+        <summary class='flex cursor-pointer list-none items-center justify-center gap-2 rounded-xl border border-border px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-primary-foreground hover:text-foreground'>
+          <span class='when-closed'>展开其余 {remainingItems.length} 篇</span>
+          <span class='when-open'>收起论文列表</span>
+          <svg
+            aria-hidden='true'
+            class='size-4 transition-transform'
+            viewBox='0 0 24 24'
+            fill='none'
+            stroke='currentColor'
+            stroke-width='1.5'
+          >
+            <path d='m6 9 6 6 6-6' />
+          </svg>
+        </summary>
+        <div class='mt-4 flex flex-col gap-y-4'>
+          {remainingItems.map(({ data }) => (
+            <PaperCard
+              title={data.title}
+              authors={data.authors}
+              publication={data.publication}
+              year={data.year}
+              link={data.link}
+            />
+          ))}
+        </div>
+      </details>
+    )
+  }
+  {
+    initialCount !== undefined && (
+      <a
+        href={allHref}
+        class='self-end text-sm text-muted-foreground no-underline transition-colors hover:text-primary'
+      >
+        查看全部论文（{sortedItems.length}）<span aria-hidden='true'> →</span>
+      </a>
+    )
+  }
 </div>
+
+<style>
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  .when-open,
+  details[open] .when-closed {
+    display: none;
+  }
+  details[open] .when-open {
+    display: inline;
+  }
+  details[open] summary svg {
+    transform: rotate(180deg);
+  }
+</style>

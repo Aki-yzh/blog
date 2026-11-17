@@ -99,7 +99,7 @@ const publications = await getCollection('publications')
       )
     }
     <Section title='Publications'>
-      <PublicationList items={publications} />
+      <PublicationList items={publications} initialCount={3} />
     </Section>
     <Section title='Projects'>
         <GithubCard owner="Aki-yzh" repo="Mosaic-image" />

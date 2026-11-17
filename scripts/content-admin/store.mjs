@@ -12,6 +12,7 @@ import {
 } from 'node:fs'
 import { dirname, extname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { createContentSchemas } from '../../src/content-schemas.mjs'
+import { comparePublications } from '../../src/utils/publications.mjs'
 
 export class ContentError extends Error {
   constructor(message, status = 400) {
@@ -113,7 +114,12 @@ export function createContentStore(repoRoot) {
         return entry.isFile() && entry.name.endsWith('.json') ? [read(kind, id)] : []
       })
     }
-    return walk(base).sort((a, b) => a.data.order - b.data.order || a.id.localeCompare(b.id))
+    return walk(base).sort(
+      (a, b) =>
+        (kind === 'publications'
+          ? comparePublications(a.data, b.data)
+          : a.data.order - b.data.order) || a.id.localeCompare(b.id)
+    )
   }
   function scope(kind, data) {
     return kind === 'acg'
